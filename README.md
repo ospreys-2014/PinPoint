@@ -1,7 +1,7 @@
 PinPoint
 ========
 
-** PinPoint is a google chrome extension that allows you to makes notes on particuar points in a video so you can revisit them later with ease. **
+**PinPoint is a google chrome extension that allows you to makes notes on particuar points in a video so you can revisit them later with ease.**
 
 ### Team Members:
 - Edwin
