@@ -4,7 +4,7 @@
     "description": "get the current time of youtube video",
     "version": "0.1",
     "background": {
-        "scripts": ["event.js"],
+        "scripts": ["background.js", "jquery-2.1.1.min.js"],
         "persistent": false
     },
     "browser_action": {

@@ -6,16 +6,13 @@ function onPageDetailsReceived(pageDetails)  {
     document.getElementById('note').innerText = pageDetails.note;
 }
 
-
-// POST the data to the server using XMLHttpRequest
-
-
 // When the popup HTML has loaded
-window.addEventListener('load', function() {
-    statusDisplay = document.getElementById('note-display');
-    document.getElementById('add-note').addEventListener('click', "submit", function(){
-        console.log("button linked!")
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    // var saveButton = document.getElementById('save');
+
+    // console.log("boobs");
+    // });
+
 
     // Get the event page
     chrome.runtime.getBackgroundPage(function(eventPage) {
@@ -25,3 +22,5 @@ window.addEventListener('load', function() {
         eventPage.getPageDetails(onPageDetailsReceived);
     });
 });
+
+
