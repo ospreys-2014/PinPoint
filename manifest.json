@@ -1,27 +1,20 @@
 {
-  "manifest_version": 2,
-
-  "name": "One-click Kittens",
-  "description": "This extension demonstrates a browser action with kittens.",
-  "version": "1.0",
-  "background": {
-      "scripts": [
-        "jquery-2.1.1.min.js",
-        "test.js",
-        "popup.js"
-      ]
+    "manifest_version": 2,
+    "name": "video time",
+    "description": "get the current time of youtube video",
+    "version": "0.1",
+    "background": {
+        "scripts": ["event.js"],
+        "persistent": false
     },
-  "permissions": [
-    "https://secure.flickr.com/",
-    "activeTab"
-  ],
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [ {
-    "js":["jquery-2.1.1.min.js","test.js", "popup.js"],
-    "matches":["http://*/*","https://*/*"],
-    "run_at": "document_end"
-  }]
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    /*websites where this extention will work*/
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+    ]
 }

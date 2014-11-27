@@ -1,36 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
+    <head>
+        <style>
+            body {
+                min-width: 420px;
+                overflow-x: hidden;
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+            }
+            input, textarea {
+                width: 420px;
+            }
+            input#save {
+                font-weight: bold; width: auto;
+            }
+        </style>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <form id="add-note">
+            <p><label for="website">website</label><br/>
+            <input type="text" id="website" name="website" size="10" value="" /></p>
 
-      img {
-        margin: 5px;
-        border: 2px solid black;
-        vertical-align: middle;
-        width: 75px;
-        height: 75px;
-      }
-    </style>
-    <div class="text-box">
-      <textarea></textarea>
-      <input type="submit" value="submit" id="ext-btn">
-    </div>
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
-     -->
-    <script src="popup.js"></script>
-    <script src="test.js"></script>
-    <script src="jquery-2.1.1.min.js"></script>
-  </head>
-  <body>
-  </body>
+            <p><label for="time">time</label><br />
+            <input type="text" id="time" name="time" size="10" value="" /></p>
+
+            <p><label for="note">note</label><br />
+            <input type="text" id="note" name="note" size="50" value="" /></p>
+
+            <input id="save" type="submit" value="create note" />
+            <span id="note-display"></span>
+            </p>
+        </form>
+    </body>
 </html>
 
