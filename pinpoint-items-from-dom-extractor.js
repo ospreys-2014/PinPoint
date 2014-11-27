@@ -5,6 +5,7 @@ PinPoint.ItemsfromDomExtractor = function(targetName) {
 PinPoint.ItemsfromDomExtractor.prototype = {
   getElements : function(element) {
     var timeDivArray = document.getElementsbyClassName("ytp-time-current")
-    console.log("ytp-time-current")
+    var time = timeDivArray[0].innerHTML
+
   }
 }
