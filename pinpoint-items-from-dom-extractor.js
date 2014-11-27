@@ -6,10 +6,17 @@ PinPoint.ItemsfromDomExtractor = function(targetName) {
 // YouTube: "ytp-time-current"
 // Vimeo: "box"
 
+// Returns the current time of the video at the time the function was called.
 PinPoint.ItemsFromDomExtractor.prototype = {
-  getTime : function(className) {
-    var timeDivArray = document.getElementsbyClassName(className);
+  getTime: function(className) {
+    var timeDivArray = document.getElementsByClassName(className);
     var time = timeDivArray[0].innerHTML;
     return time;
+  }
+
+// Gets URL for use with assignClassName function
+  getUrl: function() {
+    var url = document.URL
+    return url
   }
 }
