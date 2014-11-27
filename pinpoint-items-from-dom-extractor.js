@@ -2,7 +2,7 @@ PinPoint.ItemsfromDomExtractor = function(targetName) {
   this.targetName = targetName;
 }
 
-// We'll need logic stating what className to use depending on sit:
+// We'll need logic stating what className to use depending on site:
 // YouTube: "ytp-time-current"
 // Vimeo: "box"
 
