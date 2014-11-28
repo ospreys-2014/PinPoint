@@ -12,17 +12,23 @@ function addNote(){
     localStorage["note"] = note;
     document.getElementById('note-display').innerText = note;
     var newnote = document.getElementById('note-display').innerText;
-    chrome.storage.local.set({"value": newnote}, function(){
-    console.log('saved');
-    }
+    // chrome.storage.local.set({"value": newnote}, function(){
+    // console.log('saved');
+    // }
 }
 
 // Event listener for the create note button
 document.addEventListener('DOMContentLoaded', function(){
     var button = document.getElementById("save");
+    var link = document.getElementById("test_link");
     button.addEventListener('click', function(){
         addNote();
-    })
+    });
+
+    link.addEventListener('click', function(){
+        console.log("hi");
+        chrome.tabs.update(null, {url:"https://www.youtube.com/watch?v=3yNSF7ljOoU&t=0m26s"});
+    });
 })
 
 // When the popup HTML has loaded
