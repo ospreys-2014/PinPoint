@@ -1,9 +1,8 @@
-PinPoint.Note.Controller = function(){
+PinPoint.NoteController = function(){
 	this.notes = []
 };
 
-PinPoint.Note.Controller.prototype = {
-	getTime: function(){
-
-	};
+PinPoint.NoteController.getTime = function(pageDetails){
+	var time = pageDetails.time;
+	return time;
 };
