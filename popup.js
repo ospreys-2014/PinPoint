@@ -7,15 +7,15 @@ function onPageDetailsReceived(pageDetails)  {
 }
 
 // Uses local storage to add a note
-function addNote(){
-    var note = document.getElementById('note').value;
-    localStorage["note"] = note;
-    document.getElementById('note-display').innerText = note;
-    var newnote = document.getElementById('note-display').innerText;
-    chrome.storage.local.set({"value": newnote}, function(){
-    console.log('saved');
-    }
-}
+// function addNote(){
+//     var note = document.getElementById('note').value;
+//     localStorage["note"] = note;
+//     document.getElementById('note-display').innerText = note;
+//     var newnote = document.getElementById('note-display').innerText;
+//     chrome.storage.local.set({"value": newnote}, function(){
+//     console.log('saved');
+//     }
+// }
 
 // Event listener for the create note button
 document.addEventListener('DOMContentLoaded', function(){
@@ -32,7 +32,8 @@ window.addEventListener('load', function() {
         // Call the getPageInfo function in the event page, passing in
         // our onPageDetailsReceived function as the callback. This injects
         // content.js into the current tab's HTML
-        eventPage.getPageDetails(onPageDetailsReceived);
+        // var x = new PinPoint.NoteController();
+        eventPage.getPageDetails(PinPoint.NoteController.getTime);
     });
 });
 
