@@ -18,18 +18,24 @@ function addNote(){
 }
 
 // Event listener for the create note button
-document.addEventListener('DOMContentLoaded', function(){
-    var button = document.getElementById("save");
-    var link = document.getElementById("test_link");
-    button.addEventListener('click', function(){
-        addNote();
-    });
+    document.addEventListener('DOMContentLoaded', function(){
+        var button = document.getElementById("save");
+        var link = document.getElementById("test_link");
+        button.addEventListener('click', function(){
+            addNote();
+        });
 
-    link.addEventListener('click', function(){
-        console.log("hi");
-        chrome.tabs.update(null, {url:"https://www.youtube.com/watch?v=3yNSF7ljOoU&t=0m26s"});
-    });
-})
+        link.addEventListener('click', function(){
+            var url = setURL();
+            chrome.tabs.update(null, {url: url + "t=0m26s"});
+        });
+    })
+
+    function setURL(pageDetails){
+        console.log(pageDetails);
+        var url = pageDetails.website;
+        return url
+    }
 
 // When the popup HTML has loaded
 window.addEventListener('load', function() {
@@ -39,6 +45,7 @@ window.addEventListener('load', function() {
         // our onPageDetailsReceived function as the callback. This injects
         // content.js into the current tab's HTML
         eventPage.getPageDetails(onPageDetailsReceived);
+        eventPage.getPageDetails(setURL);
     });
 });
 
