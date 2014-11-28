@@ -18,20 +18,28 @@
     </head>
     <body>
         <form id="add-note">
-            <p><label for="website">website</label><br/>
-            <input type="text" id="website" name="website" size="10" value="" /></p>
+            <p>
+                <label for="website">website</label><br/>
+                <input type="text" id="website" name="website" size="10" value=""/>
+            </p>
 
             <p><label for="time">time</label><br />
             <input type="text" id="time" name="time" size="10" value="" /></p>
 
-            <p><label for="note">note</label><br />
-            <input type="text" id="note" name="note" size="50" value="" /></p>
+            <p>
+                <label for="note">note</label><br />
+                <input type="text" id="note" name="note" size="50" value="" />
+            </p>
 
             <input id="save" type="submit" value="create note" />
-            <span id="note-display"></span>
-            </p>
+
+            <div id="note-display">
+                <p>test</p>
+            </div>
+
         </form>
         <script src="popup.js"></script>
+        <script src="jquery-2.1.1.min.js"></script>
     </body>
 </html>
 
