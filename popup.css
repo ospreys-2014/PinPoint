@@ -1,0 +1,19 @@
+div {
+    max-width: 450px;
+    max-height: 145px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    overflow: auto;
+}
+
+html {
+		max-height: 300px;
+}
+
+input {
+    width: 420px;
+}
+
+#save {
+    width: auto;
+}
