@@ -5,6 +5,10 @@ PinPoint.View = function(){
 
 PinPoint.View.prototype = {
 //dataSource is the controller
+  redraw: function(dataSource) {
+    this.populateNoteList(dataSource);
+  },
+
   populateNoteList: function(dataSource) {
     var noteListParent = this.noteListDOMRoot;
 
