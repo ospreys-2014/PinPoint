@@ -1,4 +1,4 @@
-time = ""
+// time = ""
 
 PinPoint.NoteController = function(){
 	this.notes = []
@@ -12,15 +12,14 @@ PinPoint.NoteController.storeNote = function(note){
 
 PinPoint.NoteController.getTime = function(pageDetails){
 	time = pageDetails.time;
-	// console.log(time)
-	return time;
+	console.log(time)
+	PinPoint.NoteController.giveTime(time);
 };
 
 
-PinPoint.NoteController.giveTime = function(note){
-	// note.noteTime = time;
-	console.log(time);
-	// console.log(this.time)
+PinPoint.NoteController.giveTime = function(time){
+	var newtime = time;
+	console.log(newtime);
 };
 
 PinPoint.NoteController.getUrl = function(){
