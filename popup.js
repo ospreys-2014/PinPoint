@@ -1,17 +1,20 @@
 // Uses local storage to add a note
 function storeToLocalStorage(note){
-    localStorage.setItem(Date.now(), JSON.stringify(note));
+    localStorage.setItem(note.storageKey, JSON.stringify(note));
+    PinPoint.NoteController.storeNote(note);
 }
 
 // Event listener for the create note button
 var button = document.getElementById("save");
 
 button.addEventListener('click', function(){
-    note = new PinPoint.Note();
+    var note = new PinPoint.Note();
+    PinPoint.NoteController.getUrl();
+    note.assignURL();
+    note.assignTimeUrl();
+    PinPoint.NoteController.formatTimeUrl(note);
     storeToLocalStorage(note);
-
-// PinPoint.Note.Controller.addNote(note);
-})
+});
 
 // working on loop for regex application
 // for (i=0; i<localStorage.length; i++)   {
@@ -27,14 +30,13 @@ button.addEventListener('click', function(){
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
     // Get the event page
-    console.log("Inside window.addeventlistener")
     chrome.runtime.getBackgroundPage(function(eventPage) {
         // Call the getTime function in the event page, passing in
         // our onPageDetailsReceived function as the callback. This injects
         // content.js into the current tab's HTML
 
         // jenbex testing note controller functions without lack of note object blocking us
-        // ****** eventPage.getPageDetails(PinPoint.NoteController.getTime);
+        eventPage.getPageDetails(PinPoint.NoteController.getTime);
         // var note = {noteTime: "9:30", timeUrl: ""}
         // PinPoint.NoteController.getUrl(note);
 
