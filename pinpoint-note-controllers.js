@@ -13,21 +13,32 @@ PinPoint.NoteController.getTime = function(pageDetails){
 	PinPoint.NoteController.giveTime(time);
 };
 
-var note = {noteTime: ""}
+var note = {noteTime: "", timeUrl: ""}
 
 PinPoint.NoteController.giveTime = function(note, time){
 	note.noteTime = time;
 };
 
-PinPoint.NoteController.getUrl = function(){
+PinPoint.NoteController.getUrl = function(note){
 	var url = ""
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 		url = tabs[0].url;
-		PinPoint.NoteController.formatTimeUrl(url)
+		PinPoint.NoteController.formatTimeUrl(note, url)
 	});
 };
 
-PinPoint.NoteController.formatTimeUrl = function(url){
-	console.log(url);
+PinPoint.NoteController.formatTimeUrl = function(note, url){
+	console.log(note);
+	var formattedTime = ""
+	if (note.noteTime.length > 5){
+		formattedTime = note.noteTime.replace(":", "h").replace(":", "m").concat("s")
+		var formattedUrl = url + "t=" + formattedTime;
+	}
+	else{
+		formattedTime = note.noteTime.replace(":", "m").concat("s")
+		var formattedUrl = url + "t=" + formattedTime;
+	}
+
+	console.log(formattedUrl);
 };
 

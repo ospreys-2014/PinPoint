@@ -33,7 +33,8 @@ window.addEventListener('load', function() {
         // our onPageDetailsReceived function as the callback. This injects
         // content.js into the current tab's HTML
         eventPage.getPageDetails(PinPoint.NoteController.getTime);
-        PinPoint.NoteController.getUrl();
+        var note = {noteTime: "10:23:90", timeUrl: ""}
+        PinPoint.NoteController.getUrl(note);
     });
 });
 
