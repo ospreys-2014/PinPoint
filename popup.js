@@ -32,8 +32,8 @@ window.addEventListener('load', function() {
         // Call the getPageInfo function in the event page, passing in
         // our onPageDetailsReceived function as the callback. This injects
         // content.js into the current tab's HTML
-        // var x = new PinPoint.NoteController();
         eventPage.getPageDetails(PinPoint.NoteController.getTime);
+        PinPoint.NoteController.giveTime();
     });
 });
 
