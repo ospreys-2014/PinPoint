@@ -7,7 +7,7 @@
 // }
 
 // Uses local storage to add a note
-function storeLocalStorage(note){
+function storeToLocalStorage(note){
     localStorage.setItem(Date.now(), JSON.stringify(note));
 }
 
@@ -16,13 +16,16 @@ var button = document.getElementById("save");
 
 button.addEventListener('click', function(){
     note = new PinPoint.Note();
-    storeLocalStorage(note);
+    storeToLocalStorage(note);
     // localStorage["note"] = note.noteContent;
     // alert(note.noteContent);
     // console.log("sweet")
     // PinPoint.Note.Controller.addNote(note);
 })
 
+// go through all the keys in localstorage
+// take the ones that begin with the correct url using regex(underscore)
+// find the values, put them in an array, iterate over the array and parse values
 
 
 // When the popup HTML has loaded
