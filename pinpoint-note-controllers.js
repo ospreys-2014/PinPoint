@@ -1,5 +1,3 @@
-// time = ""
-
 PinPoint.NoteController = function(){
 	this.notes = []
 	this.time = ""
@@ -12,26 +10,24 @@ PinPoint.NoteController.storeNote = function(note){
 
 PinPoint.NoteController.getTime = function(pageDetails){
 	time = pageDetails.time;
-	console.log(time)
 	PinPoint.NoteController.giveTime(time);
 };
 
+var note = {noteTime: ""}
 
-PinPoint.NoteController.giveTime = function(time){
-	var newtime = time;
-	console.log(newtime);
+PinPoint.NoteController.giveTime = function(note, time){
+	note.noteTime = time;
 };
 
 PinPoint.NoteController.getUrl = function(){
+	var url = ""
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-		url[0] = tabs[0].url;
-		console.log(url);
-		//We can console.log the url here, but since this call is
-		//asychronous we can't actually access the url outside this query
+		url = tabs[0].url;
+		PinPoint.NoteController.formatTimeUrl(url)
 	});
 };
 
-// PinPoint.NoteController.formatTimeUrl = function(url){
-// 	console.log(url[0].url);
-// };
+PinPoint.NoteController.formatTimeUrl = function(url){
+	console.log(url);
+};
 
