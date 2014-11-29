@@ -24,9 +24,10 @@ button.addEventListener('click', function(){
 //***** Need to change this to different event so we aren't
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
-    // Get the event page
+    //a new view should be instantiated inside the controller when the defineView method is called on the controller, see Steven's code in the grocery.js file (controller.defineView(new GroceryApp.View()))
     view = new PinPoint.View();
     view.loadNotesFromDatabase();
+    //get the event page
     chrome.runtime.getBackgroundPage(function(eventPage) {
         // Call the getTime function in the event page, passing in
         // our onPageDetailsReceived function as the callback. This injects
