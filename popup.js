@@ -8,7 +8,7 @@
 
 // Uses local storage to add a note
 function storeToLocalStorage(note){
-    localStorage.setItem(Date.now(), JSON.stringify(note));
+    localStorage.setItem(note.storageKey, JSON.stringify(note));
 }
 
 // Event listener for the create note button
@@ -20,6 +20,11 @@ button.addEventListener('click', function(){
 
     // PinPoint.Note.Controller.addNote(note);
 })
+
+for (i=0; i<localStorage.length; i++)   {
+    console.log(localStorage.key(i)+"=["+localStorage.getItem(localStorage.key(i))+"]");
+
+}
 
 // go through all the keys in localstorage
 // take the ones that begin with the correct url using regex(underscore)
