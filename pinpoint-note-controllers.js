@@ -5,7 +5,6 @@ PinPoint.NoteController = function(notes){
 	this.notes = [];
 	this.notes = this.notes.concat(notes)
 };
-
 //pushed new notes into notes array
 PinPoint.NoteController.storeNote = function(note){
 	this.notes.push(note);
