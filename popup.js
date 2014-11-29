@@ -13,6 +13,7 @@ button.addEventListener('click', function(){
     note.assignURL();
     note.assignTimeUrl();
     PinPoint.NoteController.formatTimeUrl(note);
+    note.assignStorageKey();
     storeToLocalStorage(note);
 });
 

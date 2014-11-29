@@ -3,7 +3,7 @@ PinPoint.Note = function(){
   this.timeUrl = "";
   this.websiteUrl = "";
   this.noteContent = document.getElementById('content').value;
-  this.storageKey = this.websiteUrl + "/" + Date.now()
+  this.storageKey = ""
 }
 
 PinPoint.Note.prototype.assignURL = function(){
@@ -14,3 +14,7 @@ PinPoint.Note.prototype.assignURL = function(){
 PinPoint.Note.prototype.assignTimeUrl = function(){
   this.timeUrl  = localStorage.timeUrl;
 };
+
+PinPoint.Note.prototype.assignStorageKey = function(){
+  this.storageKey = this.websiteUrl + "/" + Date.now()
+}
