@@ -1,24 +1,27 @@
+var note = {noteTime: "", timeUrl: ""} //jenbex testing note controller functions without lack of note object blocking us
+
 PinPoint.NoteController = function(){
 	this.notes = []
 	this.time = ""
 };
-
+//pushed new notes into notes array
 PinPoint.NoteController.storeNote = function(note){
 	this.notes.push(note);
 };
 
-
+//gets time at moment when user hits create note button
 PinPoint.NoteController.getTime = function(pageDetails){
 	time = pageDetails.time;
 	PinPoint.NoteController.giveTime(time);
 };
 
-var note = {noteTime: "", timeUrl: ""}
 
+// assigns time passed from getTime to noteTime attribute
 PinPoint.NoteController.giveTime = function(note, time){
 	note.noteTime = time;
 };
 
+//gets url from current page
 PinPoint.NoteController.getUrl = function(note){
 	var url = ""
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
@@ -27,18 +30,24 @@ PinPoint.NoteController.getUrl = function(note){
 	});
 };
 
+// formats the noteTime and adds it to the url passed from getUrl to create the url that
+//will allow user to jump to desired time
 PinPoint.NoteController.formatTimeUrl = function(note, url){
-	console.log(note);
 	var formattedTime = ""
 	if (note.noteTime.length > 5){
 		formattedTime = note.noteTime.replace(":", "h").replace(":", "m").concat("s")
-		var formattedUrl = url + "t=" + formattedTime;
+		var formattedUrl = url + "&t=" + formattedTime;
 	}
 	else{
 		formattedTime = note.noteTime.replace(":", "m").concat("s")
-		var formattedUrl = url + "t=" + formattedTime;
+		var formattedUrl = url + "&t=" + formattedTime;
 	}
 
-	console.log(formattedUrl);
+	PinPoint.NoteController.giveFormattedUrl(formattedUrl);
+};
+
+// assigns the formatted url to the note's timeUrl attribute.
+PinPoint.NoteController.giveFormattedUrl = function(formattedUrl){
+	note.timeUrl = formattedUrl;
 };
 
