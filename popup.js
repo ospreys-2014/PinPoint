@@ -7,23 +7,23 @@
 // }
 
 // Uses local storage to add a note
-// function addNote(){
-//     var note = document.getElementById('note').value;
-//     localStorage["note"] = note;
-//     document.getElementById('note-display').innerText = note;
-//     var newnote = document.getElementById('note-display').innerText;
-//     chrome.storage.local.set({"value": newnote}, function(){
-//     console.log('saved');
-//     }
-// }
+function storeLocalStorage(note){
+    localStorage.setItem(Date.now(), JSON.stringify(note));
+}
 
 // Event listener for the create note button
-// document.addEventListener('DOMContentLoaded', function(){
-    var button = document.getElementById("save");
-    button.addEventListener('click', function(){
-        addNote();
-    })
-// })
+var button = document.getElementById("save");
+
+button.addEventListener('click', function(){
+    note = new PinPoint.Note();
+    storeLocalStorage(note);
+    // localStorage["note"] = note.noteContent;
+    // alert(note.noteContent);
+    // console.log("sweet")
+    // PinPoint.Note.Controller.addNote(note);
+})
+
+
 
 // When the popup HTML has loaded
 window.addEventListener('load', function() {
