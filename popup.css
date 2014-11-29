@@ -1,5 +1,5 @@
 div {
-    max-width: 450px;
+    max-width: 475px;
     max-height: 145px;
     font-family: Arial, sans-serif;
     font-size: 12px;
@@ -11,7 +11,7 @@ html {
 }
 
 input {
-    width: 420px;
+    width: 400px;
 }
 
 #save {
