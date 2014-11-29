@@ -1,6 +1,6 @@
 // Uses local storage to add a note
 function storeToLocalStorage(note){
-    localStorage.setItem(note.storageKey, JSON.stringify(note));
+    localStorage.setItem(Date.now(), JSON.stringify(note));
 }
 
 // Event listener for the create note button
@@ -8,7 +8,6 @@ var button = document.getElementById("save");
 
 button.addEventListener('click', function(){
     note = new PinPoint.Note();
-    console.log("hello")
     storeToLocalStorage(note);
 
 // PinPoint.Note.Controller.addNote(note);
@@ -28,6 +27,7 @@ button.addEventListener('click', function(){
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
     // Get the event page
+    console.log("Inside window.addeventlistener")
     chrome.runtime.getBackgroundPage(function(eventPage) {
         // Call the getTime function in the event page, passing in
         // our onPageDetailsReceived function as the callback. This injects
