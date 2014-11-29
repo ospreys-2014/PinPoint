@@ -25,6 +25,8 @@ button.addEventListener('click', function(){
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
     // Get the event page
+    view = new PinPoint.View();
+    view.loadNotesFromDatabase();
     chrome.runtime.getBackgroundPage(function(eventPage) {
         // Call the getTime function in the event page, passing in
         // our onPageDetailsReceived function as the callback. This injects
