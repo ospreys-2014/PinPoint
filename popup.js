@@ -17,9 +17,7 @@ var button = document.getElementById("save");
 button.addEventListener('click', function(){
     note = new PinPoint.Note();
     storeToLocalStorage(note);
-    // localStorage["note"] = note.noteContent;
-    // alert(note.noteContent);
-    // console.log("sweet")
+
     // PinPoint.Note.Controller.addNote(note);
 })
 
