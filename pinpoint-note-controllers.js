@@ -9,6 +9,10 @@ PinPoint.NoteController = function(notes){
 Pinpoint.NoteController.prototype = {
 	defineView: function(view) {
 		this.view = view;
+	},
+
+	redraw: function() {
+		this.view.redraw(this);
 	}
 }
 
