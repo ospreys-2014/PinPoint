@@ -21,6 +21,37 @@ button.addEventListener('click', function(){
     // PinPoint.Note.Controller.addNote(note);
 })
 
+function addNote(){
+    var note = document.getElementById('note').value;
+    localStorage["note"] = note;
+    document.getElementById('note-display').innerText = note;
+    var newnote = document.getElementById('note-display').innerText;
+    // chrome.storage.local.set({"value": newnote}, function(){
+    // console.log('saved');
+    // }
+}
+
+// Event listener for the create note button
+    document.addEventListener('DOMContentLoaded', function(){
+        var button = document.getElementById("save");
+        var link = document.getElementById("test_link");
+        button.addEventListener('click', function(){
+            addNote();
+        });
+
+        link.addEventListener('click', function(){
+            var url = setURL();
+            chrome.tabs.update(null, {url: url + "t=0m26s"});
+        });
+    })
+
+    function setURL(pageDetails){
+        console.log(pageDetails);
+        var url = pageDetails.website;
+        return url
+    }
+
+
 for (i=0; i<localStorage.length; i++)   {
     console.log(localStorage.key(i)+"=["+localStorage.getItem(localStorage.key(i))+"]");
 
@@ -39,6 +70,8 @@ window.addEventListener('load', function() {
         // our onPageDetailsReceived function as the callback. This injects
         // content.js into the current tab's HTML
         // eventPage.getPageDetails(onPageDetailsReceived);
+
+
     });
 });
 

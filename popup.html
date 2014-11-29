@@ -1,44 +1,120 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="popup.css">
         <style>
-            body {
-                min-width: 420px;
-                overflow-x: hidden;
-                font-family: Arial, sans-serif;
-                font-size: 12px;
-            }
-            input, textarea {
-                width: 420px;
-            }
-            input#save {
-                font-weight: bold; width: auto;
-            }
+
         </style>
     </head>
     <body>
+        <div>
+        <a id='test_link' href="#">Test Link</a>
         <form id="add-note">
             <p>
-                <label for="website">website</label><br/>
-                <input type="text" id="website" name="website" size="10" value=""/>
+                <input type="hidden" id="website" name="website" size="10" value=""/>
             </p>
-
-            <p><label for="time">time</label><br />
-            <input type="text" id="time" name="time" size="10" value="" /></p>
-
             <p>
-                <label for="note">note</label><br />
-                <input type="text" id="content" name="note" size="50" value="" />
+
+                <input type="hidden" id="time" name="time" size="10" value="" />
             </p>
+            <p>
+                <input type="text" id="note" name="note" size="50" placeholder="Write your note here!" />
 
+            </p>
             <input id="save" type="submit" value="create note" />
-
-            <div id="note-display">
-                <p></p>
-            </div>
 
         </form>
         <script src="pinpoint-app.js"></script>
+
+        <br/>
+        <table>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+            <tr>
+                <td class="note-time">0:30</td>
+                <td class="note-content">This part's awesome.</td>
+            </tr>
+             <tr>
+                <td class="note-time">0:57</td>
+                <td class="note-content">This part's not.</td>
+            </tr>
+             <tr>
+                <td class="note-time">1:30</td>
+                <td class="note-content">YAY.</td>
+            </tr>
+        </table>
+    </div>
+
         <script src="popup.js"></script>
         <script src="pinpoint-note.js"></script>
         <script src="jquery-2.1.1.min.js"></script>
