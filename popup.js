@@ -1,17 +1,15 @@
 // Uses local storage to add a note
 function storeToLocalStorage(note){
     localStorage.setItem(note.storageKey, JSON.stringify(note));
-}
+};
 
 // Event listener for the create note button
 var button = document.getElementById("save");
-
+var view = ""
 button.addEventListener('click', function(){
     note = new PinPoint.Note();
     storeToLocalStorage(note);
-
-    // PinPoint.Note.Controller.addNote(note);
-})
+});
 
 // working on loop for regex application
     for (i=0; i<localStorage.length; i++)   {
