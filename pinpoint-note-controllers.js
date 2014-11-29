@@ -1,4 +1,5 @@
-var note = {noteTime: "", timeUrl: ""} //jenbex testing note controller functions without lack of note object blocking us
+//jenbex testing note controller functions without lack of note object blocking us
+// var note = {noteTime: "", timeUrl: ""}
 
 PinPoint.NoteController = function(){
 	this.notes = []
@@ -14,7 +15,6 @@ PinPoint.NoteController.getTime = function(pageDetails){
 	time = pageDetails.time;
 	PinPoint.NoteController.giveTime(time);
 };
-
 
 // assigns time passed from getTime to noteTime attribute
 PinPoint.NoteController.giveTime = function(note, time){
@@ -37,8 +37,7 @@ PinPoint.NoteController.formatTimeUrl = function(note, url){
 	if (note.noteTime.length > 5){
 		formattedTime = note.noteTime.replace(":", "h").replace(":", "m").concat("s")
 		var formattedUrl = url + "&t=" + formattedTime;
-	}
-	else{
+	} else {
 		formattedTime = note.noteTime.replace(":", "m").concat("s")
 		var formattedUrl = url + "&t=" + formattedTime;
 	}

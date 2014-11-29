@@ -10,13 +10,13 @@ button.addEventListener('click', function(){
     note = new PinPoint.Note();
     storeToLocalStorage(note);
 
-    // PinPoint.Note.Controller.addNote(note);
+// PinPoint.Note.Controller.addNote(note);
 })
 
 // working on loop for regex application
-    for (i=0; i<localStorage.length; i++)   {
-        console.log(localStorage.key(i)+"=["+localStorage.getItem(localStorage.key(i))+"]");
-    }
+for (i=0; i<localStorage.length; i++)   {
+    console.log(localStorage.key(i)+"=["+localStorage.getItem(localStorage.key(i))+"]");
+}
 
 // go through all the keys in localstorage
 // take the ones that begin with the correct url using regex(underscore)
