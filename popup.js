@@ -7,6 +7,7 @@ function storeToLocalStorage(note){
 var button = document.getElementById("create");
 var form = document.getElementById("add-note");
 button.addEventListener('click', function(){
+    console.log("hello");
   button.style.display = "none";
   form.style.display = "inline"
 
@@ -14,13 +15,29 @@ button.addEventListener('click', function(){
     storeToLocalStorage(note);
 });
 
-// working on loop for regex application
-function parseLocalStorage(url){
+// Array of notes in string format
+var notes = [];
+
+// Array of note objects to pass to controller
+var noteObjects = [];
+
+//
+function searchLocalStorage(url){
     for (i in localStorage) {
-        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//)) {
-            PinPoint.NoteController.storeNote()
+        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//)[0] == url) {
+            notes.push(i);
+        } else {
+            console.log("There are no notes for that url. Did you remember to type a url followed by a / ?");
         }
-        // i.match(url)
+    }
+    parseStorageSearch();
+}
+
+function parseLocalStorage(){
+    for (i in notes) {
+        var key = notes[i]
+        var retrievedObject = localStorage.getItem(key);
+        noteObjects.push(JSON.parse(retrievedObject));
     }
 }
 
@@ -35,9 +52,9 @@ function parseLocalStorage(url){
 window.addEventListener('load', function() {
 
 //parser will provide an array of notes to pass into PinPoint.NoteController(notes)
-  controller = new PinPoint.NoteController(notes);
-  controller.defineView(new PinPoint.View());
-  controller.redraw();
+  // controller = new PinPoint.NoteController(notes);
+  // controller.defineView(new PinPoint.View());
+  // controller.redraw();
   //get the event page
   chrome.runtime.getBackgroundPage(function(eventPage) {
       // Call the getTime function in the event page, passing in
