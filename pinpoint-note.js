@@ -2,7 +2,7 @@ PinPoint.Note = function(){
   this.noteTime = "";
   this.timeUrl = "";
   this.websiteUrl = "";
-  this.noteContent = document.getElementById('content').value;
+  this.noteContent = document.getElementById('note').value;
   this.storageKey = ""
 }
 
