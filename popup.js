@@ -24,26 +24,22 @@ button.addEventListener('click', function(){
 //***** Need to change this to different event so we aren't
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
-    //a new view should be instantiated inside the controller when the defineView method is called on the controller, see Steven's code in the grocery.js file (controller.defineView(new GroceryApp.View()))
-    var note = {
-        noteTime: '03:45',
-        noteContent: "last one!!!"
-    }
-    controller = new PinPoint.NoteController([note]);
-    controller.defineView(new PinPoint.View());
-    controller.redraw();
-    //get the event page
-    chrome.runtime.getBackgroundPage(function(eventPage) {
-        // Call the getTime function in the event page, passing in
-        // our onPageDetailsReceived function as the callback. This injects
-        // content.js into the current tab's HTML
+//parser will provide an array of notes to pass into PinPoint.NoteController(notes)
+  controller = new PinPoint.NoteController(notes);
+  controller.defineView(new PinPoint.View());
+  controller.redraw();
+  //get the event page
+  chrome.runtime.getBackgroundPage(function(eventPage) {
+      // Call the getTime function in the event page, passing in
+      // our onPageDetailsReceived function as the callback. This injects
+      // content.js into the current tab's HTML
 
-        // jenbex testing note controller functions without lack of note object blocking us
-        // ****** eventPage.getPageDetails(PinPoint.NoteController.getTime);
-        // var note = {noteTime: "9:30", timeUrl: ""}
-        // PinPoint.NoteController.getUrl(note);
+      // jenbex testing note controller functions without lack of note object blocking us
+      // ****** eventPage.getPageDetails(PinPoint.NoteController.getTime);
+      // var note = {noteTime: "9:30", timeUrl: ""}
+      // PinPoint.NoteController.getUrl(note);
 
-    });
+  });
 });
 
 

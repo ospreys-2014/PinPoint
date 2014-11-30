@@ -11,10 +11,6 @@ PinPoint.View.prototype = {
 
   populateDOMNoteList: function(dataSource) {
     var noteListParent = this.noteListDOMRoot;
-
-    // while (noteListParent.firstChild) {
-    //     noteListParent.removeChild(noteListParent.firstChild);
-    //   }
     dataSource.notes.forEach(function(note) {
       var newNode = new PinPoint.NotePresenter(note).present();
       console.log(newNode)
