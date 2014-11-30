@@ -9,10 +9,11 @@ var button = document.getElementById("save");
 
 button.addEventListener('click', function(){
     var note = new PinPoint.Note();
-    PinPoint.NoteController.getUrl();
+    note.getUrl();
     note.assignURL();
+    note.assignTime();
     note.assignTimeUrl();
-    PinPoint.NoteController.formatTimeUrl(note);
+    note.assignFormatTimeUrl();
     note.assignStorageKey();
     storeToLocalStorage(note);
 });

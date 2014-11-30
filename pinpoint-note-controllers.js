@@ -20,38 +20,9 @@ PinPoint.NoteController.getTime = function(pageDetails){
 	localStorage["time"] = time;
 };
 
-PinPoint.NoteController.getUrl = function(pageDetails){
-	url = pageDetails.website;
-	PinPoint.Note.prototype.giveUrl(url);
-};
-
 // assigns time passed from getTime to noteTime attribute
 PinPoint.NoteController.giveTime = function(note, time){
 	note.noteTime = time;
-};
-
-//gets url from current page
-PinPoint.NoteController.getUrl = function(){
-	var url = ""
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-		url = tabs[0].url;
-		localStorage["url"] = url;
-	});
-};
-
-// formats the noteTime and adds it to the url passed from getUrl to create the url that
-//will allow user to jump to desired time
-PinPoint.NoteController.formatTimeUrl = function(note){
-	var formattedTime = ""
-	if (note.noteTime.length > 5){
-		formattedTime = note.noteTime.replace(":", "h").replace(":", "m").concat("s")
-		var formattedUrl = note.websiteUrl + "&t=" + formattedTime;
-	} else {
-		formattedTime = note.noteTime.replace(":", "m").concat("s")
-		var formattedUrl = note.websiteUrl + "&t=" + formattedTime;
-	}
-	localStorage["timeUrl"] = formattedUrl
-	// PinPoint.NoteController.giveFormattedUrl(formattedUrl);
 };
 
 // assigns the formatted url to the note's timeUrl attribute.
