@@ -13,7 +13,6 @@ PinPoint.View.prototype = {
     var noteListParent = this.noteListDOMRoot;
     dataSource.notes.forEach(function(note) {
       var newNode = new PinPoint.NotePresenter(note).present();
-      console.log(newNode)
       noteListParent.appendChild(newNode);
     });
   }
