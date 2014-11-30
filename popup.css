@@ -1,0 +1,22 @@
+div {
+  min-width: 25em;
+  min-height: 15em;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  overflow: auto;
+}
+
+input {
+  width: 24em;
+}
+
+#save {
+  width: auto;
+}
+
+#add-note {
+  display: none;
+}
+#all-notes {
+  margin-top: 1em;
+}
