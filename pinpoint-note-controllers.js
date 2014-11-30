@@ -1,7 +1,18 @@
-PinPoint.NoteController = function(){
-	this.notes = []
-	this.time = ""
+PinPoint.NoteController = function(notes){
+	this.notes = [];
+	this.notes = this.notes.concat(notes)
 };
+
+PinPoint.NoteController.prototype = {
+	defineView: function(view) {
+		this.view = view;
+	},
+
+	redraw: function() {
+		this.view.redraw(this);
+	}
+}
+
 //pushed new notes into notes array
 PinPoint.NoteController.storeNote = function(note){
 	this.notes.push(note);

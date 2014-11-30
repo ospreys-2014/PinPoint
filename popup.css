@@ -1,19 +1,23 @@
 div {
-    max-width: 475px;
-    max-height: 145px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    overflow: auto;
-}
-
-html {
-		max-height: 300px;
+  min-width: 25em;
+  min-height: 15em;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  overflow: auto;
 }
 
 input {
-    width: 400px;
+  width: 24em;
 }
 
 #save {
-    width: auto;
+  width: auto;
+}
+
+#add-note {
+  display: none;
+}
+
+#all-notes {
+  margin-top: 1em;
 }

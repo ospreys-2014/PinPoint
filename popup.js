@@ -5,20 +5,24 @@ function storeToLocalStorage(note){
 }
 
 // Event listener for the create note button
-var button = document.getElementById("save");
+var button = document.getElementById("create");
+var form = document.getElementById("add-note");
 button.addEventListener('click', function(){
-    var note = new PinPoint.Note();
-    PinPoint.NoteController.run(note);
+  button.style.display = "none";
+  form.style.display = "inline"
+
+    note = new PinPoint.Note();
+    storeToLocalStorage(note);
 });
 
-// When the popup HTML has loaded
 //***** Need to change this to different event so we aren't
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
-    PinPoint.NoteController.getUrl();
-    chrome.runtime.getBackgroundPage(function(eventPage) {
-        eventPage.getPageDetails(PinPoint.NoteController.getTime);
+  controller = new PinPoint.NoteController(notes);
+  controller.defineView(new PinPoint.View());
+  controller.redraw();
+  PinPoint.NoteController.getUrl();
+  chrome.runtime.getBackgroundPage(function(eventPage) {
+    eventPage.getPageDetails(PinPoint.NoteController.getTime);
     });
 });
-
-
