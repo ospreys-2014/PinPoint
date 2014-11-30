@@ -31,7 +31,6 @@ PinPoint.Note.prototype.assignTimeUrl = function(){
 };
 
 PinPoint.Note.prototype.assignStorageKey = function(){
-    console.log(this);
   this.storageKey = this.websiteUrl + "/" + Date.now();
 };
 
