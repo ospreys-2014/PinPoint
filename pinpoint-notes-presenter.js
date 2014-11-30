@@ -18,7 +18,7 @@ PinPoint.NotePresenter.prototype = {
 
     timeLink.setAttribute('id', 'time_link');
     timeLink.setAttribute('href', this.note.timeUrl );
-    timeLink.setAttribute('target', )
+    timeLink.setAttribute('target', "_blank")
     timeLink.innerText = this.note.noteTime;
 
     contentNode.className = 'note_content';
