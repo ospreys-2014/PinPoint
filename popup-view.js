@@ -1,6 +1,6 @@
 PinPoint.View = function(){
   //Steven's storeListDOMRoot is equivalent to our noteList
-  this.noteListDOMRoot = document.getElementsByTagName('table');
+  this.noteListDOMRoot = document.getElementById("notes-table")
 }
 
 PinPoint.View.prototype = {
@@ -12,11 +12,12 @@ PinPoint.View.prototype = {
   populateDOMNoteList: function(dataSource) {
     var noteListParent = this.noteListDOMRoot;
 
-    while (noteListParent.firstChild) {
-        noteListParent.removeChild(noteListParent.firstChild);
-      }
-    dataSource.noteList.forEach(function(note) {
-      var newNode = new PinPointApp.NotePresenter(note).present();
+    // while (noteListParent.firstChild) {
+    //     noteListParent.removeChild(noteListParent.firstChild);
+    //   }
+    dataSource.notes.forEach(function(note) {
+      var newNode = new PinPoint.NotePresenter(note).present();
+      console.log(newNode)
       noteListParent.appendChild(newNode);
     });
   }

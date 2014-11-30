@@ -6,7 +6,7 @@ PinPoint.NoteController = function(notes){
 	this.notes = this.notes.concat(notes)
 };
 
-Pinpoint.NoteController.prototype = {
+PinPoint.NoteController.prototype = {
 	defineView: function(view) {
 		this.view = view;
 	},
