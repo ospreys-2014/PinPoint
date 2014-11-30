@@ -5,6 +5,6 @@ function getPageDetails(callback) {
     // Perform the callback when a message is received from the content script
     chrome.runtime.onMessage.addListener(function(message)  {
         // Call the callback function
-        callback(message);
+        callback(message.website);
     });
 };
