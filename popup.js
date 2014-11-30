@@ -4,34 +4,11 @@ function storeToLocalStorage(note){
     PinPoint.NoteController.storeNote(note);
 }
 
-var createButton = document.getElementById("create");
-var form = document.getElementById("add-note");
-
-button.addEventListener('click', function(){
-    button.style.display = "none";
-    form.style.display = "inline"
-
-    note = new PinPoint.Note();
-    storeToLocalStorage(note);
-});
-
 // Array of notes in string format
 var notes = [];
 
 // Array of note objects to pass to controller
 var noteObjects = [];
-
-// Searches the keys in LocalStorage and returns an array of matches
-function searchLocalStorage(url){
-    for (i in localStorage) {
-        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//)[0] == url) {
-            notes.push(i);
-        } else {
-            console.log("There are no notes for that url. Did you remember to type a url followed by a / ?");
-        }
-    }
-    parseStorageSearch();
-}
 
 // Parses all strigified objects into JSON objects
 function parseLocalStorage(){
@@ -42,6 +19,22 @@ function parseLocalStorage(){
     }
 }
 
+// Searches the keys in LocalStorage and returns an array of matches
+function searchLocalStorage(url){
+    var key = url + "/";
+    console.log(key)
+    for (i in localStorage) {
+        console.log(i)
+        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//) == key) {
+            notes.push(i);
+        }
+    }
+    parseLocalStorage();
+}
+
+
+var createButton = document.getElementById("create");
+var form = document.getElementById("add-note");
 createButton.addEventListener('click', function(){
   createButton.style.display = "none";
   form.style.display = "inline";
@@ -61,7 +54,8 @@ saveButton.addEventListener('click', function(){
 
 window.addEventListener('load', function() {
   PinPoint.NoteController.getUrl();
-  controller = new PinPoint.NoteController(note);
+  searchLocalStorage(localStorage["url"]);
+  controller = new PinPoint.NoteController(noteObjects);
   controller.defineView(new PinPoint.View());
   controller.redraw();
 });
