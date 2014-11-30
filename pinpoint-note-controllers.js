@@ -1,6 +1,3 @@
-//jenbex testing note controller functions without lack of note object blocking us
-// var note = {noteTime: "", timeUrl: ""}
-
 PinPoint.NoteController = function(){
 	this.notes = []
 	this.time = ""
@@ -11,7 +8,12 @@ PinPoint.NoteController.storeNote = function(note){
 };
 
 PinPoint.NoteController.run = function(note){
-	note.getUrl();
+	  note.assignURL();
+    note.assignTime();
+    note.formatTimeUrl();
+    note.assignTimeUrl();
+    note.assignStorageKey();
+    storeToLocalStorage(note);
 };
 
 //gets time at moment when user hits create note button
@@ -20,14 +22,10 @@ PinPoint.NoteController.getTime = function(pageDetails){
 	localStorage["time"] = time;
 };
 
-// assigns time passed from getTime to noteTime attribute
-PinPoint.NoteController.giveTime = function(note, time){
-	note.noteTime = time;
+PinPoint.NoteController.getUrl = function(){
+	var url = ""
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    url = tabs[0].url;
+    localStorage["url"] = url;
+  });
 };
-
-// assigns the formatted url to the note's timeUrl attribute.
-PinPoint.NoteController.giveFormattedUrl = function(formattedUrl){
-	console.log(formattedUrl)
-	note.timeUrl = formattedUrl;
-};
-
