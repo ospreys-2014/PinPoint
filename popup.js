@@ -15,9 +15,15 @@ button.addEventListener('click', function(){
 });
 
 // working on loop for regex application
-    for (i=0; i<localStorage.length; i++)   {
-        console.log(localStorage.key(i)+"=["+localStorage.getItem(localStorage.key(i))+"]");
+function parseLocalStorage(url){
+    for (i in localStorage) {
+        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//)) {
+            PinPoint.NoteController.storeNote()
+        }
+        // i.match(url)
     }
+}
+
 
 // go through all the keys in localstorage
 // take the ones that begin with the correct url using regex(underscore)
@@ -27,6 +33,7 @@ button.addEventListener('click', function(){
 //***** Need to change this to different event so we aren't
 // getting time on load, but click event instead *******
 window.addEventListener('load', function() {
+
 //parser will provide an array of notes to pass into PinPoint.NoteController(notes)
   controller = new PinPoint.NoteController(notes);
   controller.defineView(new PinPoint.View());
