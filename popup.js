@@ -4,9 +4,12 @@ function storeToLocalStorage(note){
 };
 
 // Event listener for the create note button
-var button = document.getElementById("save");
-var view = ""
+var button = document.getElementById("create");
+var form = document.getElementById("add-note");
 button.addEventListener('click', function(){
+  button.style.display = "none";
+  form.style.display = "inline"
+
     note = new PinPoint.Note();
     storeToLocalStorage(note);
 });
