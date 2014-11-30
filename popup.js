@@ -22,9 +22,7 @@ function parseLocalStorage(){
 // Searches the keys in LocalStorage and returns an array of matches
 function searchLocalStorage(url){
     var key = url + "/";
-    console.log(key)
     for (i in localStorage) {
-        console.log(i)
         if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//) == key) {
             notes.push(i);
         }
@@ -49,6 +47,15 @@ saveButton.addEventListener('click', function(){
   saveButton.style.display = "none";
   note = new PinPoint.Note();
   PinPoint.NoteController.run(note);
+});
+
+document.addEventListener('DOMContentLoaded', function(){
+  var link = document.getElementById("time_link");
+  console.log(link)
+
+  link.addEventListener('click', function(){
+    chrome.tabs.update(null, {url: "http://www.google.com"});
+  });
 });
 
 
