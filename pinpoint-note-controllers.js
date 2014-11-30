@@ -1,9 +1,21 @@
 var note = {noteTime: "", timeUrl: ""} //jenbex testing note controller functions without lack of note object blocking us
-
-PinPoint.NoteController = function(){
-	this.notes = []
-	this.time = ""
+//LocalStorage is parsed into note objects and passed into the
+//NoteController to be shown in the pop-up.
+PinPoint.NoteController = function(notes){
+	this.notes = [];
+	this.notes = this.notes.concat(notes)
 };
+
+PinPoint.NoteController.prototype = {
+	defineView: function(view) {
+		this.view = view;
+	},
+
+	redraw: function() {
+		this.view.redraw(this);
+	}
+}
+
 //pushed new notes into notes array
 PinPoint.NoteController.storeNote = function(note){
 	this.notes.push(note);
