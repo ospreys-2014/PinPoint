@@ -49,14 +49,14 @@ saveButton.addEventListener('click', function(){
   PinPoint.NoteController.run(note);
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-  var link = document.getElementById("time_link");
-  console.log(link)
+// document.addEventListener('DOMContentLoaded', function(){
+//   var link = document.getElementById("time_link");
+//   console.log(link)
 
-  link.addEventListener('click', function(){
-    chrome.tabs.update(null, {url: "http://www.google.com"});
-  });
-});
+//   link.addEventListener('click', function(){
+//     chrome.tabs.update(null, {url: "http://www.google.com"});
+//   });
+// });
 
 
 window.addEventListener('load', function() {
