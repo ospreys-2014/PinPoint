@@ -1,10 +1,12 @@
 describe("View", function() {
   beforeEach(function() {
     view = new PinPoint.View();
-    // controller = new PinPoint.NoteController(['placeholder']);
+    controller = {
+      notes:['placeholder for controller notes']
+    };
   })
 
-  xit("should be defined", function() {
+  it("should be defined", function() {
     expect(view).toBeDefined();
   })
 
@@ -15,9 +17,10 @@ describe("View", function() {
       expect(view.populateDOMNoteList).toHaveBeenCalled();
     })
 
-    xit("should have a controller as an argument", function(){
+    it("should have a controller as an argument", function(){
+      spyOn(view, "populateDOMNoteList");
       view.redraw(controller);
-      expect(view.redraw.args[0]).toEqual(controller);
+      expect(view.populateDOMNoteList).toHaveBeenCalledWith(controller);
     })
   })
 
