@@ -40,6 +40,7 @@ createButton.addEventListener('click', function(){
     });
 });
 
+
 // Event listener for the create note button
 var saveButton = document.getElementById("save");
 saveButton.addEventListener('click', function(){
@@ -54,4 +55,12 @@ window.addEventListener('load', function() {
   controller = new PinPoint.NoteController(noteObjects);
   controller.defineView(new PinPoint.View());
   controller.redraw();
+  var link = document.getElementById("link");
+  console.log(link)
+
+  link.addEventListener('click', function(){
+      chrome.tabs.update(null, {url: "http://www.google.com"});
+   });
 });
+
+
