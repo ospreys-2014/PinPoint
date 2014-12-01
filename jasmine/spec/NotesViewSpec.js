@@ -32,6 +32,7 @@ describe("View", function() {
   })
   describe("View#populateDOMNoteList", function() {
     it("should have a controller as an argument", function() {
+      spyOn(view, "populateDOMNoteList");
       view.populateDOMNoteList(dummyController);
       expect(view.populateDOMNoteList).toHaveBeenCalledWith(dummyController);
     })
