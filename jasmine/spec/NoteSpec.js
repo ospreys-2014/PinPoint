@@ -26,4 +26,13 @@ describe("Note", function(){
       expect(note.noteContent).not.toEqual(null);
     });
   });
+
+  describe("#assignTime", function(){
+    it("should assign note's noteTime attribute to a time.", function(){
+      note.assignTime();
+      expect(note.noteTime).not.toEqual("");
+      expect(note.noteTime).not.toEqual(undefined);
+      expect(note.noteTime).not.toEqual(null);
+    });
+  });
 });
