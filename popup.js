@@ -22,16 +22,13 @@ function parseLocalStorage(){
 // Searches the keys in LocalStorage and returns an array of matches
 function searchLocalStorage(url){
     var key = url + "/";
-    console.log(key)
     for (i in localStorage) {
-        console.log(i)
         if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//) == key) {
             notes.push(i);
         }
     }
     parseLocalStorage();
 }
-
 
 var createButton = document.getElementById("create");
 var form = document.getElementById("add-note");
@@ -50,7 +47,6 @@ saveButton.addEventListener('click', function(){
   note = new PinPoint.Note();
   PinPoint.NoteController.run(note);
 });
-
 
 window.addEventListener('load', function() {
   PinPoint.NoteController.getUrl();

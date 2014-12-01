@@ -23,6 +23,7 @@ PinPoint.NoteController.run = function(note){
     note.assignTime();
     note.formatTimeUrl();
     note.assignTimeUrl();
+    note.assignContent();
     note.assignStorageKey();
     storeToLocalStorage(note);
 };
