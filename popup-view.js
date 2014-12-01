@@ -6,6 +6,7 @@ PinPoint.View = function(){
 PinPoint.View.prototype = {
 //dataSource is the controller
   redraw: function(dataSource) {
+    this.noteListDOMRoot.innerHTML = '';
     this.populateDOMNoteList(dataSource);
   },
 

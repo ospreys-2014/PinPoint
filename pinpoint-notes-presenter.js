@@ -7,7 +7,6 @@ PinPoint.NotePresenter = function(note) {
 
 PinPoint.NotePresenter.prototype = {
   present: function() {
-    console.log(this.note)
     // Creates a 'tr' node that represents a note
     var noteNode = document.createElement(this.rootNodeType),
     // Creates a 'td' node that represents the time and content in the note - when var is included, errors are thrown for some reason.

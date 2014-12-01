@@ -1,51 +1,62 @@
-window.onload = function() {
+function drawPage() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    var url = tabs[0].url;
+    var notes = getNotes(url);
+    var table = document.getElementById('notes-table');
+    table.innerHTML = '';
+    for (note of notes) {
+      var node = new PinPoint.NotePresenter(note).present();
+      table.appendChild(node);
+    }
+  });
+}
+
+window.addEventListener('load', function() {
+  drawPage();
 
   // Uses local storage to add a note
   function getPageDetails(callback) {
+    // Perform the callback when a message is received from the content script
+    chrome.runtime.onMessage.addListener(callback);
     // Inject the content script into the current page
     chrome.tabs.executeScript(null, { file: 'content.js' });
-    // Perform the callback when a message is received from the content script
-    chrome.runtime.onMessage.addListener(function(message)  {
-      // Call the callback function
-      callback(message);
-    });
   };
 
   // Array of notes in string format
   var notes = [];
-  var currentNoteTime = "";
+  // var currentNoteTime = "";
   // Array of note objects to pass to controller
 
-  var createButton = document.getElementById("create");
+  // var createButton = document.getElementById("create");
   var form = document.getElementById("add-note");
 
-  createButton.addEventListener('click', function(){
-    createButton.style.display = "none";
-    form.style.display = "inline";
-    getPageDetails(function(pageDetails){
-
-      currentNoteTime = pageDetails.time;
-    });
-  });
+  // createButton.addEventListener('click', function(){
+  //   createButton.style.display = "none";
+  //   form.style.display = "inline";
+  // });
 
   // Event listener for the create note button
   var saveButton = document.getElementById("save");
 
-  saveButton.addEventListener('click', function(){
-    saveButton.style.display = "none";
-    // alert("pageDetails");
+  form.addEventListener('submit', function(e) { e.preventDefault(); });
+
+  saveButton.addEventListener('click', function(event){
+    console.log('hi!');
+    event.preventDefault();
+    // saveButton.style.display = "none";
+    console.log(event);
+    // debugger
     noteContentFromForm = document.getElementById('note').value
     getPageDetails(function(pageDetails){
+      console.log(pageDetails, "im the page details");
       var note = {
-        noteTime: currentNoteTime,
+        noteTime: pageDetails.time,
         content: noteContentFromForm,
       }
       addNote(pageDetails.website, note);
+      //window.location = window.location;
+      drawPage();
     });
   });
-}
-
-
-window.addEventListener('load', function() {
-  controller = new PinPoint.NoteController();
 });
+
