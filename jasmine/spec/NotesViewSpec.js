@@ -14,6 +14,11 @@ describe("View", function() {
       view.redraw(controller);
       expect(view.populateDOMNoteList).toHaveBeenCalledWith(1);
     })
+
+    it("should have a controller as an argument", function(){
+      view.redraw(controller);
+      expect(view.redraw.args[0]).toEqual(controller);
+    })
   })
 
 })
