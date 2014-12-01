@@ -51,8 +51,14 @@ saveButton.addEventListener('click', function(){
   PinPoint.NoteController.run(note);
 });
 
+function clearOldNotes(){
+  if (document.getElementsById("all-notes")) {
+    (document.getElementsByTagName(table)).empty;
+  };
+}
 
 window.addEventListener('load', function() {
+  // clearOldNotes();
   PinPoint.NoteController.getUrl();
   searchLocalStorage(localStorage["url"]);
   controller = new PinPoint.NoteController(noteObjects);
