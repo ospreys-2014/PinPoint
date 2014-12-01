@@ -7,6 +7,7 @@ PinPoint.NotePresenter = function(note) {
 
 PinPoint.NotePresenter.prototype = {
   present: function() {
+    console.log(this.note)
     // Creates a 'tr' node that represents a note
     var noteNode = document.createElement(this.rootNodeType),
     // Creates a 'td' node that represents the time and content in the note - when var is included, errors are thrown for some reason.
@@ -25,7 +26,7 @@ PinPoint.NotePresenter.prototype = {
     // Opens the link in a new tab
     linkNode.setAttribute('target', "_blank")
     // Creates the text for the link
-    linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.noteContent + "</span>";
+    linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.content + "</span>";
 
     // Append the td 'timeAncContentNode' to the tr 'noteNode'
     noteNode.appendChild(timeAndContentNode);
