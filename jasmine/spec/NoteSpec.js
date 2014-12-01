@@ -17,4 +17,13 @@ describe("Note", function(){
       expect(note.websiteUrl).not.toEqual(null);
     });
   });
+
+  describe("#assignContent", function(){
+    xit("should assign note's noteContent attribute to new value.", function(){
+      note.assignContent();
+      expect(note.noteContent).toEqual("");
+      expect(note.noteContent).not.toEqual(undefined);
+      expect(note.noteContent).not.toEqual(null);
+    });
+  });
 });
