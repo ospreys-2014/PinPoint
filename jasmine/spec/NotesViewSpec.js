@@ -36,5 +36,7 @@ describe("View", function() {
       view.populateDOMNoteList(dummyController);
       expect(view.populateDOMNoteList).toHaveBeenCalledWith(dummyController);
     })
+    //Not sure how to further test the inner workings of
+    //this method because it is manipulating DOM elements
   })
 })
