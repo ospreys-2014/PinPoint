@@ -44,4 +44,13 @@ describe("Note", function(){
       expect(note.timeUrl).not.toEqual(null);
     });
   });
+
+  describe("#assignStorageKey()", function(){
+    it("should assign a new storage key to the note's storage key attribute", function() {
+      note.assignStorageKey();
+      expect(note.storageKey).not.toEqual("")
+      expect(note.storageKey).not.toEqual(undefined)
+      expect(note.storageKey).not.toEqual(null)
+    });
+  });
 });
