@@ -29,6 +29,7 @@ window.onload = function() {
     createButton.style.display = "none";
     form.style.display = "inline";
     getPageDetails(function(pageDetails){
+
       currentNoteTime = pageDetails.time;
     });
   });
@@ -38,10 +39,12 @@ window.onload = function() {
 
   saveButton.addEventListener('click', function(){
     saveButton.style.display = "none";
+    // alert("pageDetails");
+    noteContentFromForm = document.getElementById('note').value
     getPageDetails(function(pageDetails){
       var note = {
         noteTime: currentNoteTime,
-        content: document.getElementById('note').value
+        content: noteContentFromForm,
       }
       addNote(pageDetails.website, note);
     });
