@@ -12,9 +12,11 @@ function addNote(url, note) {
 
 function getNotes(url){
   if (localStorage[url] == null){
+    console.log("in the if of getNotes");
     return []
   } else {
     var retrievedObject = localStorage.getItem(url)
+    console.log(retrievedObject);
     return JSON.parse(retrievedObject)
   }
 }

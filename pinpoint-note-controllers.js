@@ -2,7 +2,7 @@ PinPoint.NoteController = function(){
 	this.notes = [];
 	chrome.tabs.query({active: true, currentWindow: true}, (function(tabs){
     this.url = tabs[0].url;
-    this.getNotes();
+    this.getNotes(this.url);
     controller.defineView(new PinPoint.View());
     controller.redraw();
 	}).bind(this));

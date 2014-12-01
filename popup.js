@@ -18,7 +18,7 @@ window.onload = function() {
 
   // Array of notes in string format
   var notes = [];
-
+  var currentNoteTime = "";
   // Array of note objects to pass to controller
   var noteObjects = [];
 
@@ -29,23 +29,26 @@ window.onload = function() {
     createButton.style.display = "none";
     form.style.display = "inline";
     getPageDetails(function(pageDetails){
-      var note = {
-        noteTime: pageDetails.time,
-        content: document.getElementById('note').value
-      }
-      addNote(pageDetails.website, note);
+      currentNoteTime = pageDetails.time;
     });
   });
 
   // Event listener for the create note button
   var saveButton = document.getElementById("save");
+
   saveButton.addEventListener('click', function(){
     saveButton.style.display = "none";
-    note = new PinPoint.Note();
-    PinPoint.NoteController.run(note);
+    getPageDetails(function(pageDetails){
+      var note = {
+        noteTime: currentNoteTime,
+        content: document.getElementById('note').value
+      }
+      addNote(pageDetails.website, note);
+    });
   });
-
 }
+
+
 window.addEventListener('load', function() {
   controller = new PinPoint.NoteController();
 });
