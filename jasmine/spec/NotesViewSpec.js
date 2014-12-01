@@ -9,10 +9,10 @@ describe("View", function() {
   })
 
   describe("View#redraw", function() {
-    it("should call populateDOMNoteList", function(){
+    it("should call populateDOMNoteList with one argument", function(){
       spyOn(view, "populateDOMNoteList");
       view.redraw(controller);
-      expect(view.populateDOMNoteList).toHaveBeenCalled();
+      expect(view.populateDOMNoteList).toHaveBeenCalledWith(1);
     })
   })
 
