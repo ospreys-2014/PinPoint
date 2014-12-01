@@ -1,4 +1,6 @@
-function drawPage() {
+var PinPoint = PinPoint || {};
+
+PinPoint.updatePopup = function() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
     var url = tabs[0].url;
     var notes = getNotes(url);
@@ -9,10 +11,10 @@ function drawPage() {
       table.appendChild(node);
     }
   });
-}
+};
 
 window.addEventListener('load', function() {
-  drawPage();
+  PinPoint.updatePopup();
 
   // Uses local storage to add a note
   function getPageDetails(callback) {
@@ -33,9 +35,6 @@ window.addEventListener('load', function() {
   saveButton.addEventListener('click', function(event){
     console.log('hi!');
     event.preventDefault();
-    // saveButton.style.display = "none";
-    console.log(event);
-    // debugger
     noteContentFromForm = document.getElementById('note').value
     getPageDetails(function(pageDetails){
       console.log(pageDetails, "im the page details");
@@ -45,7 +44,7 @@ window.addEventListener('load', function() {
       }
       addNote(pageDetails.website, note);
 
-      drawPage();
+      PinPoint.updatePopup();
     });
   });
 });
