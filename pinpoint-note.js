@@ -14,9 +14,9 @@ PinPoint.Note.prototype.assignURL = function(){
   this.websiteUrl = localStorage.url;
 };
 
-PinPoint.Note.prototype.assignNoteContent = function(){
-  this.noteContent = document.getElementById('note').value
-}
+PinPoint.Note.prototype.assignContent = function(){
+  this.noteContent = document.getElementById('note').value;
+};
 
 PinPoint.Note.prototype.assignTime = function(){
   this.noteTime = localStorage.time;
