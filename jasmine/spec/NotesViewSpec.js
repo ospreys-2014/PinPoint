@@ -1,7 +1,7 @@
 describe("View", function() {
   beforeEach(function() {
     view = new PinPoint.View();
-    controller = {
+    dummyController = {
       notes:['placeholder for controller notes']
     };
   })
@@ -19,9 +19,11 @@ describe("View", function() {
 
     it("should have a controller as an argument", function(){
       spyOn(view, "populateDOMNoteList");
-      view.redraw(controller);
-      expect(view.populateDOMNoteList).toHaveBeenCalledWith(controller);
+      view.redraw(dummyController);
+      expect(view.populateDOMNoteList).toHaveBeenCalledWith(dummyController);
     })
+
+
   })
 
 })
