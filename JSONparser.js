@@ -1,9 +1,12 @@
 function addNote(url, note) {
+  var array = [];
   if (localStorage[url] != null){
-    getNotes(url)
-    localStorage[url].push(note)
+    array.concat(getNotes(url))
+    array.push(note);
+    localStorage[url] = JSON.stringify(array);
   } else {
-    localStorage[url] = [note]
+    localStorage[url] = array;
+    localStorage[url] = JSON.stringify(array);
   }
 }
 

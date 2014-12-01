@@ -6,14 +6,14 @@ window.onload = function() {
     chrome.tabs.executeScript(null, { file: 'content.js' });
     // Perform the callback when a message is received from the content script
     chrome.runtime.onMessage.addListener(function(message)  {
-        // Call the callback function
-        callback(message);
+      // Call the callback function
+      callback(message);
     });
   };
 
   function storeToLocalStorage(note){
-      localStorage.setItem(note.storageKey, JSON.stringify(note));
-      PinPoint.NoteController.storeNote(note);
+    localStorage.setItem(note.storageKey, JSON.stringify(note));
+    PinPoint.NoteController.storeNote(note);
   }
 
   // Array of notes in string format
@@ -48,12 +48,4 @@ window.onload = function() {
 }
 window.addEventListener('load', function() {
   controller = new PinPoint.NoteController();
-
-  // console.log("Page Loading.." + Date.now());
-  // PinPoint.NoteController.getUrl();
-  // console.log(localStorage["url"]);
-  // searchLocalStorage(localStorage["url"]);
-  // controller = new PinPoint.NoteController(noteObjects);
-  // controller.defineView(new PinPoint.View());
-  // controller.redraw();
 });
