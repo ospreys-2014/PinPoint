@@ -35,4 +35,13 @@ describe("Note", function(){
       expect(note.noteTime).not.toEqual(null);
     });
   });
+
+  describe("#assignTimeUrl", function(){
+    it("should assign note's timeUrl attribute to localstorage timeUrl.", function(){
+      note.assignTimeUrl();
+      expect(note.timeUrl).not.toEqual("");
+      expect(note.timeUrl).not.toEqual(undefined);
+      expect(note.timeUrl).not.toEqual(null);
+    });
+  });
 });
