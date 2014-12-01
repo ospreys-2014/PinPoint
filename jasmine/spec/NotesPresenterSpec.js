@@ -11,4 +11,10 @@ describe("NotePresenter", function(){
     expect(notePresenter).toBeDefined();
   });
 
+  it("should contain a note when instantiated",function(){
+    expect(notePresenter.note).toBeDefined;
+    expect(notePresenter.note).not.toEqual(undefined);
+    expect(notePresenter.note).not.toEqual(null);
+  })
+
 });
