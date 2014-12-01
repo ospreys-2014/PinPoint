@@ -56,11 +56,16 @@ window.addEventListener('load', function() {
   controller.defineView(new PinPoint.View());
   controller.redraw();
 
-  var link = document.getElementById("link");
-  link.addEventListener('click', function(){
-    var href = link.href;
-      chrome.tabs.update(null, {url: href});
-   });
+  var links = document.getElementsByClassName("link");
+  for(var i=0;i < links.length; i++){
+    console.log(i);
+
+    links[0].addEventListener('click', function(){
+          console.log(i);
+        chrome.tabs.update(null, {url: links[0].href});
+      });
+    };
+
 });
 
 

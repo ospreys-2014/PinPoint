@@ -19,7 +19,7 @@ PinPoint.NotePresenter.prototype = {
     timeAndContentNode.className = 'note_info';
 
     // Gives the link an id.
-    linkNode.setAttribute('id', 'link');
+    linkNode.setAttribute('class', 'link');
     // Sets the link to a specific time within the video
     linkNode.setAttribute('href', this.note.timeUrl );
     // Opens the link in a new tab
