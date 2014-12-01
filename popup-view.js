@@ -11,6 +11,7 @@ PinPoint.View.prototype = {
 
   populateDOMNoteList: function(dataSource) {
     var noteListParent = this.noteListDOMRoot;
+    dataSource.notes.sort(function(a,b) { return a.seconds - b.seconds } );
     dataSource.notes.forEach(function(note) {
       var newNode = new PinPoint.NotePresenter(note).present();
       noteListParent.appendChild(newNode);
