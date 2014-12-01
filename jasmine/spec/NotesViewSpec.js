@@ -10,6 +10,13 @@ describe("View", function() {
     expect(view).toBeDefined();
   })
 
+  // This test is tricky to do because this attribute
+  // noteListDOMROOT are <table> tags
+  xit("should have a noteListDOMROOT when instantiated", function() {
+    expect(view.noteListDOMROOT).not.toEqual(null);
+    expect(view.noteListDOMROOT).not.toEqual(undefined);
+  })
+
   describe("View#redraw", function() {
     it("should call populateDOMNoteList with one argument", function(){
       spyOn(view, "populateDOMNoteList");
