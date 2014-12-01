@@ -22,18 +22,8 @@ window.addEventListener('load', function() {
     chrome.tabs.executeScript(null, { file: 'content.js' });
   };
 
-  // Array of notes in string format
-  var notes = [];
-  // var currentNoteTime = "";
-  // Array of note objects to pass to controller
-
   // var createButton = document.getElementById("create");
   var form = document.getElementById("add-note");
-
-  // createButton.addEventListener('click', function(){
-  //   createButton.style.display = "none";
-  //   form.style.display = "inline";
-  // });
 
   // Event listener for the create note button
   var saveButton = document.getElementById("save");
@@ -54,7 +44,7 @@ window.addEventListener('load', function() {
         content: noteContentFromForm,
       }
       addNote(pageDetails.website, note);
-      //window.location = window.location;
+
       drawPage();
     });
   });
