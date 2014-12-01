@@ -6,6 +6,15 @@
   margin-left: 8.2em;
 }
 
+#link {
+  text-decoration: none;
+  color: black;
+}
+
+#content {
+  margin-left: 2em;
+}
+
 #all-notes {
   width: 20em;
   max-height: 25em;
@@ -42,9 +51,9 @@ table {
   table-layout: fixed;
 }
 
-.note_content {
+.note_info {
   word-wrap: break-word;
-  max-width: 12em;
+  max-width: 15em;
 }
 
 

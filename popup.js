@@ -30,7 +30,6 @@ function searchLocalStorage(url){
     parseLocalStorage();
 }
 
-
 var createButton = document.getElementById("create");
 var form = document.getElementById("add-note");
 createButton.addEventListener('click', function(){
@@ -48,16 +47,6 @@ saveButton.addEventListener('click', function(){
   note = new PinPoint.Note();
   PinPoint.NoteController.run(note);
 });
-
-// document.addEventListener('DOMContentLoaded', function(){
-//   var link = document.getElementById("time_link");
-//   console.log(link)
-
-//   link.addEventListener('click', function(){
-//     chrome.tabs.update(null, {url: "http://www.google.com"});
-//   });
-// });
-
 
 window.addEventListener('load', function() {
   PinPoint.NoteController.getUrl();
