@@ -3,7 +3,7 @@ describe("Note", function(){
     note = new PinPoint.Note();
     localStorage["time"] = "0:30"
     localStorage["url"] = "http://www.youtube.com/12i3t47grfi"
-    // localStorage["timeUrl"] = "http://www.youtube.com/12i3t47grfi&t=0m30s";
+    localStorage["timeUrl"] = "http://www.youtube.com/12i3t47grfi&t=0m30s";
   });
 
   it("should be defined.", function(){
