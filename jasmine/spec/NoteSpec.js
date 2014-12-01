@@ -3,6 +3,7 @@ describe("Note", function(){
     note = new PinPoint.Note();
     localStorage["time"] = "0:30"
     localStorage["url"] = "http://www.youtube.com/12i3t47grfi"
+    // localStorage["timeUrl"] = "http://www.youtube.com/12i3t47grfi&t=0m30s";
   });
 
   it("should be defined.", function(){
@@ -36,14 +37,6 @@ describe("Note", function(){
     });
   });
 
-  describe("#assignTimeUrl", function(){
-    it("should assign note's timeUrl attribute to localstorage timeUrl.", function(){
-      note.assignTimeUrl();
-      expect(note.timeUrl).not.toEqual("");
-      expect(note.timeUrl).not.toEqual(undefined);
-      expect(note.timeUrl).not.toEqual(null);
-    });
-  });
 
   describe("#assignStorageKey()", function(){
     it("should assign a new storage key to the note's storage key attribute", function() {
@@ -51,6 +44,24 @@ describe("Note", function(){
       expect(note.storageKey).not.toEqual("")
       expect(note.storageKey).not.toEqual(undefined)
       expect(note.storageKey).not.toEqual(null)
+    });
+  });
+
+  describe("#formatTimeUrl()", function(){
+    xit("should store a formatted url to localStorage['timeUrl']", function() {
+      note.formatTimeUrl();
+      expect(localStorage["timeUrl"]).not.toEqual(undefined)
+      expect(localStorage["timeUrl"]).not.toEqual(null)
+      expect(localStorage["timeUrl"]).not.toEqual("")
+    });
+  });
+
+  describe("#assignTimeUrl", function(){
+    it("should assign note's timeUrl attribute to localstorage timeUrl.", function(){
+      note.assignTimeUrl();
+      expect(note.timeUrl).not.toEqual("");
+      expect(note.timeUrl).not.toEqual(undefined);
+      expect(note.timeUrl).not.toEqual(null);
     });
   });
 });
