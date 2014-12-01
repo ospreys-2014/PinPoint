@@ -56,10 +56,10 @@ PinPoint.NoteController.run = function(){
 };
 
 //gets time at moment when user hits create note button
-PinPoint.NoteController.getTime = function(pageDetails){
-	time = pageDetails.time;
-	localStorage["time"] = time;
-};
+// PinPoint.NoteController.getTime = function(pageDetails){
+// 	time = pageDetails.time;
+// 	localStorage["time"] = time;
+// };
 
 PinPoint.NoteController.getUrl = function(){
 	var url = ""
