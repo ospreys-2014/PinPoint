@@ -49,9 +49,13 @@ saveButton.addEventListener('click', function(){
 });
 
 window.addEventListener('load', function() {
+
   PinPoint.NoteController.getUrl();
   searchLocalStorage(localStorage["url"]);
   controller = new PinPoint.NoteController(noteObjects);
   controller.defineView(new PinPoint.View());
   controller.redraw();
+  chrome.browserAction.setBadgeText({text: noteObjects.length.toString()});
+  chrome.browserAction.setBadgeBackgroundColor({text: noteObjects.length.toString()});
+
 });
