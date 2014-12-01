@@ -23,7 +23,7 @@ PinPoint.NotePresenter.prototype = {
     // Sets the link to a specific time within the video
     linkNode.setAttribute('href', this.note.timeUrl );
     // Opens the link in a new tab
-    linkNode.setAttribute('target', "_blank")
+    // linkNode.setAttribute('target', "_blank")
     // Creates the text for the link
     linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.noteContent + "</span>";
 
