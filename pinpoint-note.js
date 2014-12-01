@@ -2,12 +2,16 @@ PinPoint.Note = function(){
   this.noteTime = "";
   this.timeUrl = "";
   this.websiteUrl = "";
-  this.noteContent = document.getElementById('note').value;
+  this.noteContent = "";
   this.storageKey = ""
 }
 
 PinPoint.Note.prototype.assignURL = function(){
   this.websiteUrl = localStorage.url;
+};
+
+PinPoint.Note.prototype.assignContent = function(){
+  this.noteContent = document.getElementById('note').value;
 };
 
 PinPoint.Note.prototype.assignTime = function(){
