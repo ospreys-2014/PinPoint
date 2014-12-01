@@ -17,7 +17,4 @@ PinPoint.NoteController.prototype = {
 		this.view.redraw(this);
 	},
 
-  storeNote: function(note) {
-    this.notes.push(note);
-  },
 }

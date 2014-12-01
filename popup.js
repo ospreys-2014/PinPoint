@@ -11,16 +11,10 @@ window.onload = function() {
     });
   };
 
-  function storeToLocalStorage(note){
-    localStorage.setItem(note.storageKey, JSON.stringify(note));
-    PinPoint.NoteController.storeNote(note);
-  }
-
   // Array of notes in string format
   var notes = [];
   var currentNoteTime = "";
   // Array of note objects to pass to controller
-  var noteObjects = [];
 
   var createButton = document.getElementById("create");
   var form = document.getElementById("add-note");
