@@ -23,5 +23,6 @@ describe("NotePresenter", function(){
   it("should contain a childNodeType of 'td'",function() {
     expect(notePresenter.childNodeType).toEqual('td');
   })
+  //TODO: find a way to test that a new noteNode is returned
 
 });
