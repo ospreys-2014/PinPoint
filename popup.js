@@ -56,6 +56,10 @@ window.addEventListener('load', function() {
   controller.defineView(new PinPoint.View());
   controller.redraw();
   chrome.browserAction.setBadgeText({text: noteObjects.length.toString()});
-  chrome.browserAction.setBadgeBackgroundColor({text: noteObjects.length.toString()});
+  //This gives us a nice light-ish purple
+  chrome.browserAction.setBadgeBackgroundColor({color:[140, 5, 220, 170]});
+  //COLOR OPTION 2: This gives us a nice golden orange color
+  // chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
+
 
 });
