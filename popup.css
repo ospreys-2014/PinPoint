@@ -58,4 +58,24 @@ table {
   min-width: 18em;
 }
 
-
+#create, #save {
+  border-top: 1px solid #96d1f8;
+  background: #65a9d7;
+  background: -webkit-gradient(linear, left top, left bottom, from(red), to(pink));
+  background: -webkit-linear-gradient(top, #fe5757, #fe8585);
+  background: -moz-linear-gradient(top, #fe5757, #65a9d7);
+  background: -ms-linear-gradient(top, #fe5757, #65a9d7);
+  background: -o-linear-gradient(top, #fe5757, #65a9d7);
+  padding: 10px 20px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: white;
+  font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+}
