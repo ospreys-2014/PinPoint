@@ -55,11 +55,11 @@ window.addEventListener('load', function() {
   controller = new PinPoint.NoteController(noteObjects);
   controller.defineView(new PinPoint.View());
   controller.redraw();
-  var link = document.getElementById("link");
-  console.log(link)
 
+  var link = document.getElementById("link");
   link.addEventListener('click', function(){
-      chrome.tabs.update(null, {url: "http://www.google.com"});
+    var href = link.href;
+      chrome.tabs.update(null, {url: href});
    });
 });
 
