@@ -17,4 +17,11 @@ describe("NotePresenter", function(){
     expect(notePresenter.note).not.toEqual(null);
   })
 
+  it("should contain a rootNodeType of 'tr'",function() {
+    expect(notePresenter.rootNodeType).toEqual('tr');
+  })
+  it("should contain a childNodeType of 'td'",function() {
+    expect(notePresenter.childNodeType).toEqual('td');
+  })
+
 });
