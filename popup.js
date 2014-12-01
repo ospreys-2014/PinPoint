@@ -57,14 +57,16 @@ window.addEventListener('load', function() {
   controller.redraw();
 
   var links = document.getElementsByClassName("link");
-  for(var i=0;i < links.length; i++){
-    console.log(i);
 
-    links[0].addEventListener('click', function(){
-          console.log(i);
-        chrome.tabs.update(null, {url: links[0].href});
-      });
-    };
+  for(var i=0;i< links.length; i++) {
+    links[i].addEventListener("click", tabUpdate(i));
+   };
+
+  function tabUpdate(i) {
+      return function(){
+        chrome.tabs.update(null, {url: links[i].href});
+      };
+  };
 
 });
 
