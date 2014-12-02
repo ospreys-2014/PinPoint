@@ -13,8 +13,11 @@ PinPoint.NotePresenter.prototype = {
     timeAndContentNode = document.createElement(this.childNodeType);
     // Creates an 'a' node to link to a point in the video - when var is included, errors are thrown for some reason.
     linkNode = document.createElement(this.linkNodeType);
-    // Assigns class names
+    //Creates delete link
+    deleteNode = document.createElement(this.linkNodeType);
 
+
+    // Assigns class names
     noteNode.className = "note";
     timeAndContentNode.className = 'note_info';
 
@@ -31,6 +34,11 @@ PinPoint.NotePresenter.prototype = {
     noteNode.appendChild(timeAndContentNode);
     // Append the 'timeAncContentNode' to the tr 'noteNode'
     timeAndContentNode.appendChild(linkNode);
+
+    deleteNode.setAttribute('class', 'delete');
+    deleteNode.setAttribute('href', '#');
+    deleteNode.innerHTML = "x";
+    timeAndContentNode.appendChild(deleteNode);
 
     return noteNode;
   }

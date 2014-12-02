@@ -6,6 +6,23 @@
   margin-left: 8.2em;
 }
 
+.delete{
+  font-size: .1em;
+  float: right;
+  text-decoration: none;
+  color: black;
+  background-color: silver;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.delete:hover {
+  background-color: red;
+}
+
 .link {
   text-decoration: none;
   color: black;
