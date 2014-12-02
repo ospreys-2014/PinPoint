@@ -3,10 +3,17 @@
     "name": "video time",
     "description": "get the current time of youtube video",
     "version": "0.1",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
     "browser_action": {
         "default_icon": "icon.png",
         "default_popup": "popup.html"
     },
+    "content_scripts": [{
+            "matches": ["<all_urls>"],
+            "js": ["widget.js"]}],
     "permissions": [
         "storage",
         "tabs",
