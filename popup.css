@@ -77,9 +77,15 @@ table tr td {
 #content {
   margin-left: 1.2em;
 }
-tr:hover {
-  background-color: #fe5757;
-  opacity: 0.7
+
+#time {
+    border-bottom: 3px solid transparent;
+    transition: 0.5s ease;
+    white-space: nowrap;
+}
+#time:hover {
+  border-bottom: 1px solid rgb(56, 249, 3);
+  width:20%;
 }
 
 tr:nth-child(odd) {
