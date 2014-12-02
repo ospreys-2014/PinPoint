@@ -14,20 +14,44 @@ li {
   padding-right: 10px;
 }
 #title {
-  padding-right: .5em;
-  font-size: 1.2em;
+  padding-right: 1.7em;
+  font-size: 1.4em;
 
 }
 section {
-  padding:.1em;
+  padding:.05em;
   color: white;
   background: rgb(27, 111, 221);
   text-align: center;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .fa {
   color: white;
+}
+
+/*** Dropdown Menu Bar ****/
+#drop-down {
+  position: absolute;
+  right: 0;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  font-size: .7em;
+}
+#drop-down li {
+  background: #555;
+  display: block;
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+  padding:.2em;
+}
+#drop-down li:hover { background: #666; }
+
+li:hover #drop-down {
+  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 
@@ -42,9 +66,13 @@ table tr td {
   border-bottom: 2px solid black;
 }
 
-table tr:hover {
+tr:hover {
   background-color: #fe5757;
   opacity: 0.7
+}
+
+tr:nth-child(odd) {
+  background-color:rgb(48, 48, 48);
 }
 
 #all-notes {
