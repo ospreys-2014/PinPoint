@@ -25,7 +25,7 @@ PinPoint.NotePresenter.prototype = {
     // Opens the link in a new tab
     linkNode.setAttribute('target', "_blank")
     // Creates the text for the link
-    linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.noteContent + "</span>";
+    linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.content + "</span>";
 
     // Append the td 'timeAncContentNode' to the tr 'noteNode'
     noteNode.appendChild(timeAndContentNode);

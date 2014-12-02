@@ -1,57 +1,51 @@
-// Uses local storage to add a note
-function storeToLocalStorage(note){
-    localStorage.setItem(note.storageKey, JSON.stringify(note));
-    PinPoint.NoteController.storeNote(note);
-}
+var PinPoint = PinPoint || {};
 
-// Array of notes in string format
-var notes = [];
-
-// Array of note objects to pass to controller
-var noteObjects = [];
-
-// Parses all strigified objects into JSON objects
-function parseLocalStorage(){
-    for (i in notes) {
-        var key = notes[i]
-        var retrievedObject = localStorage.getItem(key);
-        noteObjects.push(JSON.parse(retrievedObject));
+PinPoint.updatePopup = function() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    // Pull the url from the current tab
+    var url = tabs[0].url;
+    // Create array of note objects belonging to current url; returns empty array if no notes present.
+    var notes = getNotes(url);
+    var table = document.getElementById('notes-table');
+    table.innerHTML = '';
+    // Appends note objects to the table
+    // for (i = 0; i < notes.length; i++) {
+    // }
+    for (note of notes) {
+      var node = new PinPoint.NotePresenter(note).present();
+      table.appendChild(node);
     }
-}
-
-// Searches the keys in LocalStorage and returns an array of matches
-function searchLocalStorage(url){
-    var key = url + "/";
-    for (i in localStorage) {
-        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//) == key) {
-            notes.push(i);
-        }
-    }
-    parseLocalStorage();
-}
-
-var createButton = document.getElementById("create");
-var form = document.getElementById("add-note");
-createButton.addEventListener('click', function(){
-  createButton.style.display = "none";
-  form.style.display = "inline";
-  chrome.runtime.getBackgroundPage(function(eventPage) {
-    eventPage.getPageDetails(PinPoint.NoteController.getTime);
-    });
-});
-
-// Event listener for the create note button
-var saveButton = document.getElementById("save");
-saveButton.addEventListener('click', function(){
-  saveButton.style.display = "none";
-  note = new PinPoint.Note();
-  PinPoint.NoteController.run(note);
-});
+  });
+};
 
 window.addEventListener('load', function() {
-  PinPoint.NoteController.getUrl();
-  searchLocalStorage(localStorage["url"]);
-  controller = new PinPoint.NoteController(noteObjects);
-  controller.defineView(new PinPoint.View());
-  controller.redraw();
+  // Load popup with the saved notes for this video
+  // debugger
+  PinPoint.updatePopup();
+  // Uses local storage to add a note
+  function getPageDetails(callback) {
+    // Perform the callback when a message is received from the content script
+    chrome.runtime.onMessage.addListener(callback);
+    // Inject the content script into the current page
+    chrome.tabs.executeScript(null, { file: 'content.js' });
+  };
+
+  var saveButton = document.getElementById("save");
+  var form = document.getElementById("add-note");
+
+  // Saves a note to localStorage via addNote
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    noteContentFromForm = document.getElementById('note').value
+    getPageDetails(function(pageDetails){
+      var note = {
+        noteTime: pageDetails.time,
+        content: noteContentFromForm,
+      }
+      addNote(pageDetails.website, note);
+      PinPoint.updatePopup();
+      window.location = window.location;
+    });
+  });
 });
+
