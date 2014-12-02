@@ -17,6 +17,8 @@ span {
 /*** Title section ***/
 ul {
   list-style: none;
+  margin: 0;
+  padding:.2em;
 }
 li {
   display: inline-block;
@@ -28,7 +30,6 @@ li {
 
 }
 section {
-  padding:.05em;
   color: white;
   background: rgb(27, 111, 221);
   text-align: center;
@@ -80,8 +81,10 @@ table tr td {
 
 #time {
     border-bottom: 3px solid transparent;
-    transition: 0.5s ease;
+    transition: 0.7s ease;
+    width: 0px;
     white-space: nowrap;
+    display: inline-block;
 }
 #time:hover {
   border-bottom: 1px solid rgb(56, 249, 3);
@@ -96,7 +99,7 @@ tr:nth-child(odd) {
 
 #all-notes {
   width: 20em;
-  max-height: 25em;
+  max-height: 15em;
   font-size: 1.2em;
   overflow: auto;
   margin-top: 1em;
