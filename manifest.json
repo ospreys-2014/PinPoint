@@ -4,7 +4,7 @@
     "description": "get the current time of youtube video",
     "version": "0.1",
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["background.js", "JSONparser.js"],
         "persistent": true
     },
     "browser_action": {

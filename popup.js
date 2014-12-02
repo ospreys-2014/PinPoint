@@ -43,21 +43,6 @@ window.addEventListener('load', function() {
     chrome.tabs.executeScript(null, { file: 'content.js' });
   };
 
-  formatNoteUrl = function(pageDetails){
-    var timeStamp = pageDetails.time
-    var baseUrl = getBaseUrl(pageDetails.website)
-    var formattedTime = ""
-    var formattedUrl = ""
-      if (timeStamp.length > 5){
-        formattedTime = timeStamp.replace(":", "h").replace(":", "m").concat("s")
-        formattedUrl = baseUrl + "&t=" + formattedTime;
-      } else {
-        formattedTime = timeStamp.replace(":", "m").concat("s")
-        formattedUrl = baseUrl + "&t=" + formattedTime;
-      }
-    return formattedUrl;
-  };
-
   var saveButton = document.getElementById("save");
   var form = document.getElementById("add-note");
 
