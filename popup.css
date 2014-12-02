@@ -1,8 +1,17 @@
 body {
   margin:0;
   background:rgb(37,37,37);
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
   color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+
+}
+span {
+  display: block;
 }
 
 /*** Title section ***/
@@ -62,10 +71,12 @@ table {
 }
 table tr td {
   padding: 1em;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  display: block;
 }
 
+#content {
+  margin-left: 1.2em;
+}
 tr:hover {
   background-color: #fe5757;
   opacity: 0.7
@@ -73,6 +84,8 @@ tr:hover {
 
 tr:nth-child(odd) {
   background-color:rgb(48, 48, 48);
+  display: block;
+
 }
 
 #all-notes {
@@ -114,11 +127,3 @@ tr:nth-child(odd) {
   margin-left: 8.2em;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-}
-
-#content {
-  margin-left: 2em;
-}
