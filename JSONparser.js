@@ -10,7 +10,7 @@ function getNotes(url){
   } else {
     var retrievedObject = localStorage.getItem(url)
     return JSON.parse(retrievedObject)
-    console.log(retrievedObject);
+    console.log(noteObjects);
   }
 }
 
