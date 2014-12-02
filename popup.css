@@ -1,32 +1,19 @@
 body {
   margin:0;
   background:rgb(37,37,37);
-}
-#create {
-  margin-left: 8.2em;
+  font-family: sans-serif;
 }
 
-#save {
-  margin-left: 8.2em;
+/*** Title section ***/
+
+section {
+  padding:.5em;
+  color: white;
+  background: rgb(27, 111, 221);
+  text-align: center;
+  font-size: 2em;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-}
-
-#content {
-  margin-left: 2em;
-}
-
-#all-notes {
-  width: 20em;
-  max-height: 25em;
-  font-family: Arial, sans-serif;
-  font-size: 1.2em;
-  overflow: auto;
-  margin-top: 1em;
-}
 
 /**** Notes Table ****/
 table {
@@ -42,6 +29,14 @@ table tr td {
 table tr:hover {
   background-color: #fe5757;
   opacity: 0.7
+}
+
+#all-notes {
+  width: 20em;
+  max-height: 25em;
+  font-size: 1.2em;
+  overflow: auto;
+  margin-top: 1em;
 }
 
 .note_info {
@@ -63,7 +58,23 @@ table tr:hover {
 
   padding: 10px 20px;
   color: white;
-  font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
   text-decoration: none;
   vertical-align: middle;
+}
+
+#create {
+  margin-left: 8.2em;
+}
+
+#save {
+  margin-left: 8.2em;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+#content {
+  margin-left: 2em;
 }
