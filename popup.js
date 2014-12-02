@@ -6,11 +6,15 @@ PinPoint.updatePopup = function() {
     var url = tabs[0].url;
     // Create array of note objects belonging to current url; returns empty array if no notes present.
     var notes = getNotes(url);
+    // Sorts the notes by time of video
+    notes.sort(function(a,b) { return a.seconds - b.seconds } );
+
     var table = document.getElementById('notes-table');
     table.innerHTML = '';
-    // Appends note objects to the table
-    // for (i = 0; i < notes.length; i++) {
-    // }
+    // Badge icon
+    chrome.browserAction.setBadgeText({text: notes.length.toString()});
+    chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
+
     for (note of notes) {
       var node = new PinPoint.NotePresenter(note).present();
       table.appendChild(node);
@@ -20,7 +24,6 @@ PinPoint.updatePopup = function() {
 
 window.addEventListener('load', function() {
   // Load popup with the saved notes for this video
-  // debugger
   PinPoint.updatePopup();
   // Uses local storage to add a note
   function getPageDetails(callback) {
@@ -28,6 +31,18 @@ window.addEventListener('load', function() {
     chrome.runtime.onMessage.addListener(callback);
     // Inject the content script into the current page
     chrome.tabs.executeScript(null, { file: 'content.js' });
+  };
+
+  var links = document.getElementsByClassName("link");
+
+  for(var i=0;i< links.length; i++) {
+    links[i].addEventListener("click", tabUpdate(i));
+  };
+
+  function tabUpdate(i) {
+    return function(){
+    chrome.tabs.update(null, {url: links[i].href});
+    };
   };
 
   var saveButton = document.getElementById("save");
@@ -41,11 +56,14 @@ window.addEventListener('load', function() {
       var note = {
         noteTime: pageDetails.time,
         content: noteContentFromForm,
+        seconds: pageDetails.seconds,
       }
       addNote(pageDetails.website, note);
       PinPoint.updatePopup();
+      // Refreshes popup
       window.location = window.location;
     });
   });
 });
+
 
