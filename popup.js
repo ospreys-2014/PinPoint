@@ -19,6 +19,16 @@ PinPoint.updatePopup = function() {
       var node = new PinPoint.NotePresenter(note).present();
       table.appendChild(node);
     }
+
+    var links = document.getElementsByClassName("link");
+      for(var i=0;i< links.length; i++) {
+        links[i].addEventListener("click", tabUpdate(i));
+      };
+      function tabUpdate(i) {
+        return function(){
+        chrome.tabs.update(null, {url: links[i].href});
+      };
+    };
   });
 };
 
@@ -33,16 +43,20 @@ window.addEventListener('load', function() {
     chrome.tabs.executeScript(null, { file: 'content.js' });
   };
 
-  var links = document.getElementsByClassName("link");
 
-  for(var i=0;i< links.length; i++) {
-    links[i].addEventListener("click", tabUpdate(i));
-  };
-
-  function tabUpdate(i) {
-    return function(){
-    chrome.tabs.update(null, {url: links[i].href});
-    };
+  formatNoteUrl = function(pageDetails){
+    var timeStamp = pageDetails.time
+    var url = pageDetails.website
+    var formattedTime = ""
+    var formattedUrl = ""
+      if (timeStamp.length > 5){
+        formattedTime = timeStamp.replace(":", "h").replace(":", "m").concat("s")
+        formattedUrl = url + "&t=" + formattedTime;
+      } else {
+        formattedTime = timeStamp.replace(":", "m").concat("s")
+        formattedUrl = url + "&t=" + formattedTime;
+      }
+    return formattedUrl;
   };
 
   var saveButton = document.getElementById("save");
@@ -57,13 +71,13 @@ window.addEventListener('load', function() {
         noteTime: pageDetails.time,
         content: noteContentFromForm,
         seconds: pageDetails.seconds,
+        noteUrl: formatNoteUrl(pageDetails),
       }
       addNote(pageDetails.website, note);
       PinPoint.updatePopup();
+
       // Refreshes popup
       window.location = window.location;
     });
   });
 });
-
-
