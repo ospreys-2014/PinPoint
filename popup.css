@@ -1,3 +1,7 @@
+body {
+  margin:0;
+  background:rgb(37,37,37);
+}
 #create {
   margin-left: 8.2em;
 }
@@ -24,14 +28,6 @@
   margin-top: 1em;
 }
 
-input {
-  /*width: 24em;*/
-}
-
-#save {
-  /*width: auto;*/
-}
-
 table tr td {
   padding: 1em;
   border-top: 2px solid black;
@@ -56,12 +52,7 @@ table {
 
 #save {
   border-top: 1px solid #96d1f8;
-  background: #65a9d7;
-  background: -webkit-gradient(linear, left top, left bottom, from(red), to(pink));
-  background: -webkit-linear-gradient(top, #fe5757, #fe8585);
-  background: -moz-linear-gradient(top, #fe5757, #65a9d7);
-  background: -ms-linear-gradient(top, #fe5757, #65a9d7);
-  background: -o-linear-gradient(top, #fe5757, #65a9d7);
+
   padding: 10px 20px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
