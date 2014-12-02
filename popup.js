@@ -50,6 +50,7 @@ saveButton.addEventListener('click', function(){
 });
 
 window.addEventListener('load', function() {
+
   PinPoint.NoteController.getUrl();
   searchLocalStorage(localStorage["url"]);
   controller = new PinPoint.NoteController(noteObjects);
@@ -57,7 +58,6 @@ window.addEventListener('load', function() {
   controller.redraw();
 
   var links = document.getElementsByClassName("link");
-
   for(var i=0;i< links.length; i++) {
     links[i].addEventListener("click", tabUpdate(i));
    };
@@ -68,6 +68,11 @@ window.addEventListener('load', function() {
       };
   };
 
+  chrome.browserAction.setBadgeText({text: noteObjects.length.toString()});
+  //This gives us a nice light-ish purple
+  chrome.browserAction.setBadgeBackgroundColor({color:[140, 5, 220, 170]});
+  //COLOR OPTION 2: This gives us a nice golden orange color
+  // chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
 });
 
 
