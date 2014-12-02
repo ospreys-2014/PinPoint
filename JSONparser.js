@@ -1,6 +1,5 @@
 function addNote(url, note) {
   var baseUrl = getBaseUrl(url)
-  console.log("baseurl", baseUrl)
   var noteObjects = getNotes(baseUrl);
   noteObjects.push(note);
   saveNotes(baseUrl, noteObjects);
@@ -8,12 +7,21 @@ function addNote(url, note) {
 
 function getNotes(url){
   var baseUrl = getBaseUrl(url)
-  console.log("getNotes", baseUrl)
   if (localStorage[baseUrl] == null){
     return []
   } else {
     var retrievedObject = localStorage.getItem(baseUrl)
     return JSON.parse(retrievedObject)
+  }
+}
+
+function deleteNote(url, s){
+  var notes = JSON.parse(localStorage.getItem(url))
+  for(var i = 0; i < notes.length; i++){
+    if(notes[i].seconds == s){
+      notes.splice(i, 1);
+      saveNotes(url, notes);
+    }
   }
 }
 
@@ -27,6 +35,5 @@ function getBaseUrl(url){
     return url
   } else {
     return url
-    console.log("is a base url")
   }
 }
