@@ -43,18 +43,17 @@ window.addEventListener('load', function() {
     chrome.tabs.executeScript(null, { file: 'content.js' });
   };
 
-
   formatNoteUrl = function(pageDetails){
     var timeStamp = pageDetails.time
-    var url = pageDetails.website
+    var baseUrl = getBaseUrl(pageDetails.website)
     var formattedTime = ""
     var formattedUrl = ""
       if (timeStamp.length > 5){
         formattedTime = timeStamp.replace(":", "h").replace(":", "m").concat("s")
-        formattedUrl = url + "&t=" + formattedTime;
+        formattedUrl = baseUrl + "&t=" + formattedTime;
       } else {
         formattedTime = timeStamp.replace(":", "m").concat("s")
-        formattedUrl = url + "&t=" + formattedTime;
+        formattedUrl = baseUrl + "&t=" + formattedTime;
       }
     return formattedUrl;
   };
@@ -78,6 +77,7 @@ window.addEventListener('load', function() {
 
       // Refreshes popup
       window.location = window.location;
+
     });
   });
 });
