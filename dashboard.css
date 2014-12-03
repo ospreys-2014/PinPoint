@@ -68,6 +68,7 @@ body img{
 
 /* back, initially hidden pane */
 .back {
+	text-align: center;
 	transform: rotateY(180deg);
 	border: 3px solid rgb(27, 111, 221);
 	height: 195px;
