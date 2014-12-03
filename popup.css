@@ -1,11 +1,22 @@
-#create {
-  margin-left: 8.2em;
+body {
+  margin:0;
+  background:rgb(37,37,37);
+  font-family: "Lato", sans-serif;
+  color: white;
 }
 
-#save {
-  margin-left: 8.2em;
+hr{
+  width: 85%;
+  border-top:1px solid rgb(38, 38, 38);
+  border-bottom:1px solid rgb(28, 28, 28);
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/*** Delete button ***/
 .delete{
   font-size: .1em;
   float: right;
@@ -23,47 +34,99 @@
   background-color: red;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
+/*** Title section ***/
+section {
+  list-style: none;
+  margin-bottom: 0 ;
+  padding:.2em;
+}
+li {
+  display: inline-block;
+  padding-right: 10px;
+}
+#title {
+  padding-right: 1.7em;
+  font-size: 1.4em;
+
+}
+section {
+  color: white;
+  background: rgb(27, 111, 221);
+  text-align: center;
+  font-size: 2em;
+}
+
+.fa {
+  color: white;
+}
+
+#notes-icon {
+  text-align: center;
+  display: block;
+}
+
+/*** Dropdown Menu Bar ****/
+#drop-down {
+  position: absolute;
+  right: 0;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  font-size: .7em;
+}
+
+#drop-down li {
+  background: #555;
+  display: block;
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+  padding:.2em;
+}
+
+#drop-down li:hover { background: #666; }
+
+li:hover #drop-down {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/**** Notes Table ****/
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+table tr td {
+  padding: 1em;
 }
 
 #content {
-  margin-left: 2em;
+  margin-left: 1.2em;
+}
+
+#time {
+    border-bottom: 3px solid transparent;
+    transition: 0.7s ease;
+    width: 0px;
+    white-space: nowrap;
+}
+#time:hover {
+  border-bottom: 1px solid rgb(56, 249, 3);
+  width:20%;
+}
+
+tr:nth-child(odd) {
+  background-color:rgb(48, 48, 48);
+  display: block;
+
 }
 
 #all-notes {
   width: 20em;
-  max-height: 25em;
-  font-family: Arial, sans-serif;
+  max-height: 15em;
   font-size: 1.2em;
   overflow: auto;
   margin-top: 1em;
-}
-
-input {
-  /*width: 24em;*/
-}
-
-#save {
-  /*width: auto;*/
-}
-
-table tr td {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
-
-table tr:hover {
-  background-color: #fe5757;
-  opacity: 0.7
-}
-
-table {
-  border-collapse: collapse;
-  table-layout: fixed;
 }
 
 .note_info {
@@ -72,24 +135,30 @@ table {
   min-width: 18em;
 }
 
+/*****Note Form*****/
+#note {
+  margin-top: 0;
+  width:100%;
+  height: 5em;
+  background-color: transparent;
+  border: 1px;
+  font-size: 1.5em;
+}
 #save {
   border-top: 1px solid #96d1f8;
-  background: #65a9d7;
-  background: -webkit-gradient(linear, left top, left bottom, from(red), to(pink));
-  background: -webkit-linear-gradient(top, #fe5757, #fe8585);
-  background: -moz-linear-gradient(top, #fe5757, #65a9d7);
-  background: -ms-linear-gradient(top, #fe5757, #65a9d7);
-  background: -o-linear-gradient(top, #fe5757, #65a9d7);
+  margin-bottom: 1em;
   padding: 10px 20px;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  border-radius: 40px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
   color: white;
-  font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
   text-decoration: none;
   vertical-align: middle;
 }
+
+#create {
+  margin-left: 8.2em;
+}
+
+#save {
+  margin-left: 8.2em;
+}
+
+
