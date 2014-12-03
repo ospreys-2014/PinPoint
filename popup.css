@@ -11,7 +11,7 @@ hr{
   border-bottom:1px solid rgb(28, 28, 28);
 }
 
-a {
+a, .link{
   text-decoration: none;
   color: white;
 }
@@ -99,18 +99,20 @@ li:hover #drop-down {
 table tr td {
   padding: 1em;
 }
-
+/*
 #content {
   margin-left: 1.2em;
-}
+}*/
 
 #time {
+    margin:.5em;
     border-bottom: 3px solid transparent;
     transition: 0.7s ease;
     width: 0px;
     white-space: nowrap;
 }
 #time:hover {
+  text-decoration: none;
   border-bottom: 1px solid rgb(56, 249, 3);
   width:20%;
 }
@@ -122,7 +124,7 @@ tr:nth-child(odd) {
 }
 
 #all-notes {
-  width: 20em;
+  /*width: 20em;*/
   max-height: 15em;
   font-size: 1.2em;
   overflow: auto;
@@ -130,9 +132,7 @@ tr:nth-child(odd) {
 }
 
 .note_info {
-  word-wrap: break-word;
-  max-width: 18em;
-  min-width: 18em;
+  width: 100%;
 }
 
 /*****Note Form*****/
@@ -146,9 +146,9 @@ tr:nth-child(odd) {
 }
 #save {
   border-top: 1px solid rgb(42,42,42);
-  margin-bottom: 1em;
+/*  margin-bottom: 1em;
   padding: 10px 20px;
-  color: white;
+*/  color: white;
   text-decoration: none;
   vertical-align: middle;
 }
@@ -157,8 +157,5 @@ tr:nth-child(odd) {
   margin-left: 8.2em;
 }
 
-#save {
-  margin-left: 8.2em;
-}
 
 
