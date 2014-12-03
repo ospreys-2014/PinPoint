@@ -24,3 +24,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   }
   sendResponse(getNotes(message.url))
 })
+
+chrome.browserAction.setPopup({popup: "popup.html"})
+

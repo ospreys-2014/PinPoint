@@ -65,4 +65,10 @@ window.addEventListener('load', function() {
 
     });
   });
+
+  var searchButton = document.getElementById("search-button")
+  searchButton.addEventListener("click", function(){
+    chrome.tabs.create({url: "options.html"})
+  })
+
 });
