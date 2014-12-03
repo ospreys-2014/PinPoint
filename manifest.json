@@ -9,17 +9,17 @@
     },
     "browser_action": {
         "default_icon": "icon.png"
-        // "default_popup": "popup.html"
     },
     "content_scripts": [{
-            "matches": ["<all_urls>"],
+            "matches": ["http://www.youtube.com/*", "https://www.youtube.com/*"],
             "all_frames": true,
-            "js": ["widget.js", "pinpoint-notes-presenter.js"]}],
+            "js": ["widget.js", "pinpoint-notes-presenter.js"],
+            "css": ["pinpoint.css"]}],
     "permissions": [
         "storage",
         "tabs",
-        "http://*/*",
-        "https://*/*"
+        "http://www.youtube.com/*",
+        "https://www.youtube.com/*"
     ],
     "options_page": "searchpage.html"
 }

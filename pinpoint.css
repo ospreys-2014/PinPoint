@@ -1,3 +1,4 @@
+/*** Pop Up***/
 body {
   margin:0;
   background:rgb(37,37,37);
@@ -11,28 +12,11 @@ hr{
   border-bottom:1px solid rgb(28, 28, 28);
 }
 
-a {
+a, .link{
   text-decoration: none;
   color: white;
 }
 
-/*** Delete button ***/
-.delete{
-  font-size: .1em;
-  float: right;
-  text-decoration: none;
-  color: black;
-  background-color: silver;
-  padding: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 20px;
-  opacity: .5;
-}
-
-.delete:hover {
-  background-color: red;
-}
 
 /*** Title section ***/
 section {
@@ -91,51 +75,51 @@ li:hover #drop-down {
   visibility: visible;
 }
 
-/**** Notes Table ****/
-table {
+/**** Sidebar Table ****/
+#notes-table {
+  /*opacity: .5;*/
+  max-width: 80%;
+  /*width:11.8em;*/
+  max-height: 1em;
   border-collapse: collapse;
   table-layout: fixed;
+  overflow: auto;
 }
 table tr td {
-  padding: 1em;
-}
-
-#content {
-  margin-left: 1.2em;
+  padding: 1em 0 1em 1em;
+  font-size: .8em;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
 
 #time {
+    margin-right:.5em;
     border-bottom: 3px solid transparent;
     transition: 0.7s ease;
     width: 0px;
     white-space: nowrap;
 }
 #time:hover {
+  text-decoration: none;
   border-bottom: 1px solid rgb(56, 249, 3);
   width:20%;
 }
 
 tr:nth-child(odd) {
   background-color:rgb(48, 48, 48);
-  display: block;
 
 }
-
+/***Div Containing Notes Table***/
 #all-notes {
-  width: 20em;
-  max-height: 15em;
+  font-size: 1em;
+  height: 8em;
   font-size: 1.2em;
-  overflow: auto;
+  max-width: 8em;
+  overflow-y: auto;
   margin-top: 1em;
 }
 
-.note_info {
-  word-wrap: break-word;
-  max-width: 18em;
-  min-width: 18em;
-}
-
-/*****Note Form*****/
+/*****Sidebar Note Form*****/
 #note {
   margin-top: 0;
   width:100%;
@@ -145,20 +129,40 @@ tr:nth-child(odd) {
   font-size: 1.5em;
 }
 #save {
-  border-top: 1px solid #96d1f8;
-  margin-bottom: 1em;
-  padding: 10px 20px;
+  display: none;
+  border-top: 1px;
+  padding: 1em;
   color: white;
+  font-size: 1.4em;
+  background: rgb(27, 111, 221);
   text-decoration: none;
   vertical-align: middle;
+  width: 100%;
+}
+#save:hover {
+  color: rgb(27, 111, 221);
 }
 
-#create {
-  margin-left: 8.2em;
+#sidebar {
+  height: 8em;
+  overflow: auto;
 }
 
-#save {
-  margin-left: 8.2em;
+/*** Sidebar Delete button ***/
+.delete{
+  margin:4em;
+  font-size: .1em;
+  float: right;
+  text-decoration: none;
+  color: black;
+  background-color: silver;
+  padding: 2px;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.delete:hover {
+  background-color: red;
 }
 
 
