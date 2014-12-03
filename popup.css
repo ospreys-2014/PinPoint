@@ -18,9 +18,9 @@ a {
 }
 */
 /*** Title section ***/
-#title-bar {
+section {
   list-style: none;
-  margin: 0 auto;
+  margin-bottom: 0 ;
   padding:.2em;
 }
 li {
@@ -43,15 +43,12 @@ section {
   color: white;
 }
 
-#comment-icon {
+#notes-icon {
   text-align: center;
   display: block;
 }
 
 /*** Dropdown Menu Bar ****/
-/*form {
-  margin-bottom: 3em;
-}*/
 #drop-down {
   position: absolute;
   right: 0;
@@ -123,6 +120,7 @@ tr:nth-child(odd) {
 
 /*****Note Form*****/
 #note {
+  margin-top: 0;
   width:100%;
   height: 5em;
   background-color: transparent;
