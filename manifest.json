@@ -4,7 +4,7 @@
     "description": "get the current time of youtube video",
     "version": "0.1",
     "background": {
-        "scripts": ["background.js", "JSONparser.js"],
+        "scripts": ["JSONparser.js"],
         "persistent": true
     },
     "browser_action": {
@@ -13,7 +13,8 @@
     },
     "content_scripts": [{
             "matches": ["<all_urls>"],
-            "js": ["widget.js"]}],
+            "all_frames": true,
+            "js": ["widget.js", "pinpoint-notes-presenter.js"]}],
     "permissions": [
         "storage",
         "tabs",

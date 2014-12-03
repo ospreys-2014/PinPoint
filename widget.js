@@ -3,7 +3,20 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	this.drawScreenIcon();
+	// this.drawScreenIcon();
+	// this.drawSideBar()
+	this.video.addEventListener('mouseenter', function(event){
+		console.log(event)
+		this.drawSideBar()
+	}.bind(this));
+	this.video.addEventListener('mouseleave', function(event){
+		console.log(event)
+		if (event.fromElement === this.video && event.toElement != this.sideBar) {
+			this.destroySideBar()
+		}
+
+	}.bind(this));
+
 }
 
 
@@ -27,8 +40,8 @@ PinPoint.Widget.prototype = {
 	onIconClick: function(event){
 		event.stopPropagation();
 		this.icon.style.display = "none";
-		this.drawSideBar();
 		this.transformScreen();
+		this.sideBar.style.display = "block"
 	},
 
 	onSideBarClick: function(event){
@@ -36,26 +49,33 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawSideBar: function(){
-		this.sideBar = document.createElement("div");
+		if (!this.sideBar) {
+			this.sideBar = document.createElement("div");
 
-		this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
-
-		this.sideBar.style.display = "block";
-		this.sideBar.style.height = "500px";
-		this.sideBar.style.width = "100px";
-		this.sideBar.style.position = "absolute";
-		this.sideBar.style.top = this.video.offsetTop + "px";
-		this.sideBar.style.left = this.video.offsetLeft + "px";
-		this.sideBar.style.backgroundColor = "blue";
-		this.sideBar.style.zIndex = 5e6;
-		this.video.offsetParent.appendChild(this.sideBar);
-		this.drawForm();
-		this.drawTable();
+			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
+			this.sideBar.style.display = "block";
+			this.sideBar.style.height = "500px";
+			this.sideBar.style.width = "100px";
+			this.sideBar.style.position = "absolute";
+			this.sideBar.style.top = this.video.offsetTop + "px";
+			this.sideBar.style.left = this.video.offsetLeft + "px";
+			this.sideBar.style.backgroundColor = "blue";
+			this.sideBar.style.zIndex = 5e6;
+			this.video.offsetParent.appendChild(this.sideBar);
+			this.drawForm();
+			this.drawTable();
+			this.appendNotes()
+		}
 	},
 
-	transformScreen: function(){
-		this.video.style.transform = "translate(180px) scale(0.895, 1.0)";
+	destroySideBar: function(){
+		this.sideBar.parentNode.removeChild(this.sideBar);
+		this.sideBar = null
 	},
+
+	// transformScreen: function(){
+	// 	// this.video.style.transform = "translate(180px) scale(0.895, 1.0)";
+	// },
 
 	drawForm: function(){
 
@@ -84,43 +104,56 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawTable: function() {
-		var table = document.createElement("table");
-		table.setAttribute('class', 'notes-table');
-		this.sideBar.appendChild(table);
+		this.table = document.createElement("table");
+		this.table.setAttribute('class', 'notes-table');
+		this.sideBar.appendChild(this.table);
+
 	},
 
 	createNote: function(event){
     event.preventDefault();
-		var video = document.querySelector("video");
 		var noteContentFromForm = this.input.value;
-      var note = {
-        noteTime: document.getElementsByClassName('ytp-time-current')[0].innerHTML,
-        content: noteContentFromForm,
-        seconds: video.currentTime,
-        noteUrl: formatNoteUrl(noteTime)
-     	};
+    var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
+    var note = {
+      noteTime: time,
+      content: noteContentFromForm,
+      seconds: this.video.currentTime,
+    };
+    chrome.runtime.sendMessage({
+    	method: "add note",
+    	url: this.getUrl(),
+    	note: note
+    }, this.appendNotes.bind(this))
 	},
 
-	formatNoteUrl: function(time){
-    var timeStamp = time
-    var baseUrl = document.URL
-    var formattedTime = ""
-    var formattedUrl = ""
-      if (timeStamp.length > 5){
-        formattedTime = timeStamp.replace(":", "h").replace(":", "m").concat("s")
-        formattedUrl = baseUrl + "&t=" + formattedTime;
-      } else {
-        formattedTime = timeStamp.replace(":", "m").concat("s")
-        formattedUrl = baseUrl + "&t=" + formattedTime;
-      }
-    console.log(formattedUrl)
-    return formattedUrl;
+  displayNotes: function(notes){
+  	this.notes = notes
   },
+
+  appendNotes: function(){
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
+  	this.table.innerHTML = ""
+  		for (note of notes) {
+      	var node = new PinPoint.NotePresenter(note).present();
+     		this.table.appendChild(node);
+    	}
+		}.bind(this))
+
+  },
+
+  getUrl: function(){
+  	// other video source url's in if conditional
+  	if (this.video.dataset.youtubeId){
+  		var url = new URL("https://www.youtube.com/watch")
+  		url.search = "v=" + this.video.dataset.youtubeId
+  		return url.toString()
+		} else {
+			return this.video.src
+		}
+  },
+
+
 }
-
-chrome.runtime.sendMessage("hello", function(){
-
-})
 
 
 // PinPoint.updatePopup = function() {
@@ -159,7 +192,11 @@ function main(){
 
 	for (var i = 0; i < videos.length; i++){
 		videos[i].pinPointWidget = videos[i].pinPointWidget || new PinPoint.Widget(videos[i]);
+		console.log(window.location)
+		console.log(videos[i])
 	}
 }
+
+window.addEventListener('beforeunload', console.log.bind(console));
 
 main();
