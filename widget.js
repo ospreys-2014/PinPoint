@@ -79,7 +79,7 @@ PinPoint.Widget.prototype = {
 
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
-		this.submit.setAttribute('class',"save");
+		this.submit.setAttribute('id',"save");
 		this.submit.setAttribute('value',"Save note");
 
 		this.sideBar.appendChild(this.form);

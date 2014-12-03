@@ -145,7 +145,7 @@ tr:nth-child(odd) {
   font-size: 1.5em;
 }
 #save {
-  border-top: 1px solid #96d1f8;
+  border-top: 1px solid rgb(42,42,42);
   margin-bottom: 1em;
   padding: 10px 20px;
   color: white;
