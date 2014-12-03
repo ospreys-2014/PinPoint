@@ -35,19 +35,14 @@ section {
   list-style: none;
   margin-bottom: 0;
   text-align: center;
-  padding-right: 2.2em;
 }
 #title {
-  float:left;
+  /*float:left;*/
   background: rgb(27, 111, 221);
 
 }
-ul {
-  padding-top: 4em;
-}
 section ul li {
   display: block;
-  margin-bottom: .5em;
 }
 section {
   color: white;
@@ -61,7 +56,6 @@ section {
 /*** Dropdown Menu Bar ****/
 #drop-down {
   position: absolute;
-  right: 0;
   display: none;
   opacity: 0;
   visibility: hidden;
