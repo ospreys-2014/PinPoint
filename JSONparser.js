@@ -13,10 +13,10 @@ function getNotes(url){
   }
 }
 
-function deleteNote(url, s){
+function removeNote(url, seconds){
   var notes = JSON.parse(localStorage.getItem(url))
   for(var i = 0; i < notes.length; i++){
-    if(notes[i].seconds == s){
+    if(notes[i].seconds == seconds){
       notes.splice(i, 1);
       saveNotes(url, notes);
     }
@@ -30,8 +30,11 @@ function saveNotes(url, notes) {
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   if (message.method === "add note"){
     addNote(message.url, message.note)
+  } else if (message.method === "remove note"){
+    removeNote(message.url, message.seconds)
   }
   sendResponse(getNotes(message.url))
+
 })
 
 chrome.browserAction.setPopup({popup: "popup.html"})

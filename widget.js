@@ -4,11 +4,9 @@ var PinPoint = PinPoint || {};
 PinPoint.Widget = function(video){
 	this.video = video;
 	this.video.addEventListener('mouseenter', function(event){
-		console.log(event)
 		this.drawSideBar()
 	}.bind(this));
 	this.video.addEventListener('mouseleave', function(event){
-		console.log(event)
 		if (event.fromElement === this.video && event.toElement != this.sideBar) {
 			this.destroySideBar()
 		}
@@ -56,7 +54,8 @@ PinPoint.Widget.prototype = {
 			this.video.offsetParent.appendChild(this.sideBar);
 			this.drawForm();
 			this.drawTable();
-			this.appendNotes()
+			this.appendNotes();
+			// this.assignDeleteListeners()
 		}
 	},
 
@@ -122,6 +121,7 @@ PinPoint.Widget.prototype = {
      		this.table.appendChild(node);
     	}
 		}.bind(this))
+		this.assignDeleteListeners()
   },
 
   getUrl: function(){
@@ -134,6 +134,29 @@ PinPoint.Widget.prototype = {
 			return this.video.src
 		}
   },
+
+  assignDeleteListeners: function(){
+    console.log("in assign delete listeners")
+    var deleteButtons = document.getElementsByClassName("delete");
+    console.log(deleteButtons)
+    for(var i=0; i < deleteButtons.length; i++) {
+    	console.log("in for loop")
+      deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
+      console.log("clicked!")
+    };
+  },
+
+	sendToRemoveNote: function(index){
+		console.log("In send to remove note")
+		var seconds = deleteButtons[index].dataset.seconds
+		// return function(){
+			chrome.runtime.sendMessage({
+			method: "remove note",
+			url: this.getUrl(),
+			seconds: seconds
+			}, this.appendNotes.bind(this))
+		// };
+	}
 }
 
 function main(){

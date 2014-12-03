@@ -15,7 +15,7 @@ PinPoint.NotePresenter.prototype = {
     linkNode = document.createElement(this.linkNodeType);
     //Creates delete link
     deleteNode = document.createElement(this.childNodeType);
-    deleteLinkNode = document.createElement(this.rootNodeType)
+    deleteLinkNode = document.createElement(this.linkNodeType)
 
 
     // Assigns class names
@@ -38,7 +38,7 @@ PinPoint.NotePresenter.prototype = {
 
     deleteLinkNode.setAttribute('class', 'delete');
     deleteLinkNode.setAttribute('href', '#');
-    deleteLinkNode.setAttribute('data-note', this.note.seconds);
+    deleteLinkNode.setAttribute('data-seconds', this.note.seconds);
     deleteLinkNode.innerHTML = "x";
     deleteNode.appendChild(deleteLinkNode);
     noteNode.appendChild(deleteNode);

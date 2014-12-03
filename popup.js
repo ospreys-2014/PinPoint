@@ -30,17 +30,6 @@ PinPoint.updatePopup = function() {
         };
       };
 
-    var deleteButtons = document.getElementsByClassName("delete");
-    for(var i=0;i< deleteButtons.length; i++) {
-      deleteButtons[i].addEventListener("click", sendToDelete(i));
-    };
-
-    function sendToDelete(i) {
-      return function(){
-        deleteNote(url,deleteButtons[i].dataset.note);
-        window.location = window.location;
-      };
-    };
 
   });
 };
