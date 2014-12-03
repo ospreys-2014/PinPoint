@@ -1,10 +1,78 @@
-body {
-  background:rgb(37,37,37);
-}
-
 #main-head{
 	font-size: 70px;
 	color: white;
 	border-bottom:1px solid rgb(27, 111, 221);
 	font-family: "Lato", sans-serif;
 }
+
+body {
+	background:rgb(37,37,37);
+	color: white;
+}
+
+body img{
+	width: 300px;
+	height: 200px;
+}
+
+.grid{
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+
+.column {
+  float: left;
+  margin: 50px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid rgb(27, 111, 221);
+}
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 300px;
+	height: 200px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	/*top: 0;*/
+	/*left: 0;*/
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+	border: 3px solid rgb(27, 111, 221);
+	height: 195px;
+	width: 295px;
+}
+
+
+
