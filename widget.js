@@ -101,6 +101,8 @@ PinPoint.Widget.prototype = {
       noteTime: time,
       content: noteContentFromForm,
       seconds: this.video.currentTime,
+      url: this.getUrl()
+
     };
     chrome.runtime.sendMessage({
     	method: "add note",
@@ -126,9 +128,11 @@ PinPoint.Widget.prototype = {
 
   getUrl: function(){
   	// other video source url's in if conditional
+
   	if (this.video.dataset.youtubeId){
   		var url = new URL("https://www.youtube.com/watch")
   		url.search = "v=" + this.video.dataset.youtubeId
+      console.log("this is the url", url.href)
   		return url.toString()
 		} else {
 			return this.video.src
@@ -136,26 +140,19 @@ PinPoint.Widget.prototype = {
   },
 
   assignDeleteListeners: function(){
-    console.log("in assign delete listeners")
     var deleteButtons = document.getElementsByClassName("delete");
-    console.log(deleteButtons)
     for(var i=0; i < deleteButtons.length; i++) {
-    	console.log("in for loop")
       deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
-      console.log("clicked!")
     };
   },
 
 	sendToRemoveNote: function(index){
-		console.log("In send to remove note")
 		var seconds = deleteButtons[index].dataset.seconds
-		// return function(){
 			chrome.runtime.sendMessage({
 			method: "remove note",
 			url: this.getUrl(),
 			seconds: seconds
-			}, this.appendNotes.bind(this))
-		// };
+		}, this.appendNotes.bind(this))
 	}
 }
 
