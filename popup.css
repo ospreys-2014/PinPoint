@@ -99,11 +99,12 @@ li:hover #drop-down {
   overflow: auto;
 }
 table tr td {
-  padding: 1em 0 1em 1em;
+  padding: 1em 0 .5em 1em;
+  font-size: .8em;
 }
 
 #time {
-    margin:.5em;
+    margin-right:.5em;
     border-bottom: 3px solid transparent;
     transition: 0.7s ease;
     width: 0px;
@@ -121,6 +122,7 @@ tr:nth-child(odd) {
 }
 
 #all-notes {
+  font-size: 1em;
   max-height: 4em;
   font-size: 1.2em;
   overflow: auto;
@@ -144,8 +146,8 @@ tr:nth-child(odd) {
   border-top: 1px;
   padding: 1em;
   color: white;
-  font-size: 1em;
-  background-color: rgb(187, 228, 220);
+  font-size: 1.4em;
+  background: rgb(27, 111, 221);
   text-decoration: none;
   vertical-align: middle;
   width: 100%;
