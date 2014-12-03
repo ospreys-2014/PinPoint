@@ -3,8 +3,6 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	// this.drawScreenIcon();
-	// this.drawSideBar()
 	this.video.addEventListener('mouseenter', function(event){
 		console.log(event)
 		this.drawSideBar()
@@ -14,19 +12,13 @@ PinPoint.Widget = function(video){
 		if (event.fromElement === this.video && event.toElement != this.sideBar) {
 			this.destroySideBar()
 		}
-
 	}.bind(this));
-
 }
 
-
 PinPoint.Widget.prototype = {
-
 	drawScreenIcon: function(){
 		this.icon = document.createElement("div");
-
 		this.icon.addEventListener('click', this.onIconClick.bind(this));
-
 		this.icon.style.height = "100px";
 		this.icon.style.width = "100px";
 		this.icon.style.position = "absolute";
@@ -73,22 +65,15 @@ PinPoint.Widget.prototype = {
 		this.sideBar = null
 	},
 
-	// transformScreen: function(){
-	// 	// this.video.style.transform = "translate(180px) scale(0.895, 1.0)";
-	// },
-
 	drawForm: function(){
-
 		this.form = document.createElement("form");
 		this.form.setAttribute('id',"add-note");
-
 		this.form.addEventListener('submit', this.createNote.bind(this));
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
 		this.input.setAttribute('class', 'note-input')
-
-		// Stops youtube shortcuts
+		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){
 			event.stopPropagation();
 		})
@@ -107,7 +92,6 @@ PinPoint.Widget.prototype = {
 		this.table = document.createElement("table");
 		this.table.setAttribute('class', 'notes-table');
 		this.sideBar.appendChild(this.table);
-
 	},
 
 	createNote: function(event){
@@ -138,7 +122,6 @@ PinPoint.Widget.prototype = {
      		this.table.appendChild(node);
     	}
 		}.bind(this))
-
   },
 
   getUrl: function(){
@@ -151,41 +134,7 @@ PinPoint.Widget.prototype = {
 			return this.video.src
 		}
   },
-
-
 }
-
-
-// PinPoint.updatePopup = function() {
-//     var url = document.URL
-//     // Create array of note objects belonging to current url; returns empty array if no notes present.
-//     var notes = getNotes(url);
-//     // Sorts the notes by time of video
-//     notes.sort(function(a,b) { return a.seconds - b.seconds } );
-
-//     var table = document.getElementById('notes-table');
-//     table.innerHTML = '';
-//     // Badge icon
-//     chrome.browserAction.setBadgeText({text: notes.length.toString()});
-//     chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
-
-//     for (note of notes) {
-//       var node = new PinPoint.NotePresenter(note).present();
-//       table.appendChild(node);
-//     }
-
-//     var links = document.getElementsByClassName("link");
-//       for(var i=0;i< links.length; i++) {
-//         links[i].addEventListener("click", tabUpdate(i));
-//       };
-//       function tabUpdate(i) {
-//         return function(){
-//         chrome.tabs.update(null, {url: links[i].href});
-//       };
-//     };
-//   });
-// };
-
 
 function main(){
 	var videos = document.querySelectorAll("video");
