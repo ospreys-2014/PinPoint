@@ -1,0 +1,95 @@
+#create {
+  margin-left: 8.2em;
+}
+
+#save {
+  margin-left: 8.2em;
+}
+
+.delete{
+  font-size: .1em;
+  float: right;
+  text-decoration: none;
+  color: black;
+  background-color: silver;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.delete:hover {
+  background-color: red;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+#content {
+  margin-left: 2em;
+}
+
+#all-notes {
+  width: 20em;
+  max-height: 25em;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  overflow: auto;
+  margin-top: 1em;
+}
+
+input {
+  /*width: 24em;*/
+}
+
+#save {
+  /*width: auto;*/
+}
+
+table tr td {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+table tr:hover {
+  background-color: #fe5757;
+  opacity: 0.7
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.note_info {
+  word-wrap: break-word;
+  max-width: 18em;
+  min-width: 18em;
+}
+
+#save {
+  border-top: 1px solid #96d1f8;
+  background: #65a9d7;
+  background: -webkit-gradient(linear, left top, left bottom, from(red), to(pink));
+  background: -webkit-linear-gradient(top, #fe5757, #fe8585);
+  background: -moz-linear-gradient(top, #fe5757, #65a9d7);
+  background: -ms-linear-gradient(top, #fe5757, #65a9d7);
+  background: -o-linear-gradient(top, #fe5757, #65a9d7);
+  padding: 10px 20px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: white;
+  font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+}

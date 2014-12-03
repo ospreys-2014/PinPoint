@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "video time",
+    "description": "get the current time of youtube video",
+    "version": "0.1",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage",
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+    ]
+}

@@ -1,0 +1,1 @@
+var PinPoint = PinPoint || {};

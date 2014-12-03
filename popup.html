@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="popup.css">
+        <script src="pinpoint-app.js"></script>
+        <script src="popup.js"></script>
+        <script src="JSONparser.js"></script>
+        <script src="pinpoint-notes-presenter.js"></script>
+    </head>
+    <body>
+        <div id="pop-up-container">
+            <form id="add-note">
+                <p>
+                    <input type="hidden" id="website" name="website" size="10" value=""/>
+                </p>
+                <p>
+                    <input type="hidden" id="time" name="time" size="10" value="" />
+                </p>
+                <p>
+                    <input type="text" id="note" name="note" size="50" placeholder="                       Write your note here!" />
+                </p>
+                <input id="save" type="submit" value="Save Your Note" />
+            </form>
+            <div id="all-notes">
+                <table id="notes-table">
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
+
