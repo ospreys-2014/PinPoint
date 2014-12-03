@@ -45,7 +45,7 @@ PinPoint.Widget.prototype = {
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
 			this.sideBar.style.height = "500px";
-			this.sideBar.style.width = "100px";
+			this.sideBar.style.width = "11.85em";
 			this.sideBar.style.position = "absolute";
 			this.sideBar.style.top = this.video.offsetTop + "px";
 			this.sideBar.style.left = this.video.offsetLeft + "px";
@@ -89,7 +89,7 @@ PinPoint.Widget.prototype = {
 
 	drawTable: function() {
 		this.table = document.createElement("table");
-		this.table.setAttribute('class', 'notes-table');
+		this.table.setAttribute('id', 'notes-table');
 		this.sideBar.appendChild(this.table);
 	},
 

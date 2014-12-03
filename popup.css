@@ -92,7 +92,7 @@ li:hover #drop-down {
 }
 
 /**** Notes Table ****/
-table {
+#notes-table {
   border-collapse: collapse;
   table-layout: fixed;
 }
