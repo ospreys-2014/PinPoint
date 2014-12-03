@@ -93,12 +93,13 @@ li:hover #drop-down {
 
 /**** Notes Table ****/
 #notes-table {
+  width:11.8em;
   max-height: 8em;
   border-collapse: collapse;
   table-layout: fixed;
 }
 table tr td {
-  padding: 1em;
+  padding: 1em 0 1em 1em;
 }
 
 #time {
@@ -116,7 +117,6 @@ table tr td {
 
 tr:nth-child(odd) {
   background-color:rgb(48, 48, 48);
-  display: block;
 
 }
 
@@ -128,10 +128,10 @@ tr:nth-child(odd) {
   margin-top: 1em;
 }
 
-.note_info {
+/*note_info {
   width: 100%;
 }
-
+*/
 /*****Note Form*****/
 #note {
   margin-top: 0;
@@ -142,10 +142,20 @@ tr:nth-child(odd) {
   font-size: 1.5em;
 }
 #save {
-  border-top: 1px solid rgb(42,42,42);
+  border-top: 1px;
+  padding: 1em;
   color: white;
+  font-size: 1em;
+  background-color: rgb(187, 228, 220);
   text-decoration: none;
   vertical-align: middle;
+  width: 100%;
+}
+#save:hover {
+  color: rgb(27, 111, 221);
+}
+.delete {
+  margin:4em;
 }
 
 
