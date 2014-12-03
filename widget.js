@@ -3,14 +3,14 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	this.video.addEventListener('mouseenter', function(event){
+	// this.video.addEventListener('mouseenter', function(event){
 		this.drawSideBar()
-	}.bind(this));
-	this.video.addEventListener('mouseleave', function(event){
+	// }.bind(this));
+	// this.video.addEventListener('mouseleave', function(event){
 		if (event.fromElement === this.video && event.toElement != this.sideBar) {
 			this.destroySideBar()
 		}
-	}.bind(this));
+	// }.bind(this));
 }
 
 PinPoint.Widget.prototype = {
@@ -41,10 +41,9 @@ PinPoint.Widget.prototype = {
 	drawSideBar: function(){
 		if (!this.sideBar) {
 			this.sideBar = document.createElement("div");
-
+			this.sideBar.setAttribute('id', "sideBar")
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
-			this.sideBar.style.height = "500px";
 			this.sideBar.style.width = "11.79em";
 			this.sideBar.style.position = "absolute";
 			this.sideBar.style.top = this.video.offsetTop + "px";
@@ -106,7 +105,8 @@ PinPoint.Widget.prototype = {
     	method: "add note",
     	url: this.getUrl(),
     	note: note
-    }, this.appendNotes.bind(this))
+    }, this.appendNotes.bind(this));
+    this.input.value = "";
 	},
 
   displayNotes: function(notes){
@@ -114,6 +114,9 @@ PinPoint.Widget.prototype = {
   },
 
   appendNotes: function(){
+		this.notesDiv = document.createElement("div");
+		this.notesDiv.setAttribute('id',"all-notes");
+
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
   	this.table.innerHTML = ""
   		for (note of notes) {

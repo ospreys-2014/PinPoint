@@ -93,16 +93,13 @@ li:hover #drop-down {
 
 /**** Notes Table ****/
 #notes-table {
+  max-height: 8em;
   border-collapse: collapse;
   table-layout: fixed;
 }
 table tr td {
   padding: 1em;
 }
-/*
-#content {
-  margin-left: 1.2em;
-}*/
 
 #time {
     margin:.5em;
@@ -124,8 +121,8 @@ tr:nth-child(odd) {
 }
 
 #all-notes {
-  /*width: 20em;*/
-  max-height: 15em;
+  background:red;
+  max-height: 4em;
   font-size: 1.2em;
   overflow: auto;
   margin-top: 1em;
@@ -146,15 +143,9 @@ tr:nth-child(odd) {
 }
 #save {
   border-top: 1px solid rgb(42,42,42);
-/*  margin-bottom: 1em;
-  padding: 10px 20px;
-*/  color: white;
+  color: white;
   text-decoration: none;
   vertical-align: middle;
-}
-
-#create {
-  margin-left: 8.2em;
 }
 
 
