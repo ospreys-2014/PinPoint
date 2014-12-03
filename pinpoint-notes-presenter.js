@@ -36,7 +36,7 @@ PinPoint.NotePresenter.prototype = {
     // Append the 'timeAncContentNode' to the tr 'noteNode'
     timeAndContentNode.appendChild(linkNode);
 
-    deleteLinkNode.setAttribute('class', 'delete');
+    deleteLinkNode.setAttribute('class', 'pinpoint-delete');
     deleteLinkNode.setAttribute('href', '#');
     deleteLinkNode.setAttribute('data-seconds', this.note.seconds);
     deleteLinkNode.innerHTML = "x";

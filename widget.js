@@ -54,8 +54,7 @@ PinPoint.Widget.prototype = {
 			this.video.offsetParent.appendChild(this.sideBar);
 			this.drawForm();
 			this.drawTable();
-			this.appendNotes();
-			// this.assignDeleteListeners()
+			this.appendNotes(this.assignDeleteListeners);
 		}
 	},
 
@@ -95,7 +94,7 @@ PinPoint.Widget.prototype = {
 
 	createNote: function(event){
     event.preventDefault();
-		var noteContentFromForm = this.input.value;
+	var noteContentFromForm = this.input.value;
     var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
     var note = {
       title: document.title,
@@ -111,43 +110,49 @@ PinPoint.Widget.prototype = {
     }, this.appendNotes.bind(this))
 	},
 
-  displayNotes: function(notes){
-  	this.notes = notes
-  },
+	displayNotes: function(notes){
+		this.notes = notes
+	},
 
-  appendNotes: function(){
+	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-  	this.table.innerHTML = ""
-  		for (note of notes) {
-      	var node = new PinPoint.NotePresenter(note).present();
-     		this.table.appendChild(node);
-    	}
+	  	this.table.innerHTML = ""
+			for (note of notes) {
+	  	var node = new PinPoint.NotePresenter(note).present();
+	 		this.table.appendChild(node);
+		}
 		}.bind(this))
-		this.assignDeleteListeners()
-  },
+		callback();
+	},
 
-  getUrl: function(){
-  	// other video source url's in if conditional
+	getUrl: function(){
+		// other video source url's in if conditional
 
-  	if (this.video.dataset.youtubeId){
-  		var url = new URL("https://www.youtube.com/watch")
-  		url.search = "v=" + this.video.dataset.youtubeId
-      console.log("this is the url", url.href)
-  		return url.toString()
+		if (this.video.dataset.youtubeId){
+			var url = new URL("https://www.youtube.com/watch")
+			url.search = "v=" + this.video.dataset.youtubeId
+			return url.toString()
 		} else {
 			return this.video.src
 		}
-  },
+	},
 
-  assignDeleteListeners: function(){
-    var deleteButtons = document.getElementsByClassName("delete");
-    for(var i=0; i < deleteButtons.length; i++) {
-      deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
-    };
-  },
+	assignDeleteListeners: function(){
+	this.deleteButtons = document.getElementsByClassName("pinpoint-delete");
+	var array = this.deleteButtons;
+		for (i=0;i<array.length;i++){
+			console.log(i);
+			console.log("im assigning buttons!");
+			array[i].addEventListener("click", this.sendToRemoveNote(i));
+			console.log("fuck yourself");
+		}
+	// for(var i=0; i < deleteButtons.length; i++) {
+	//   deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i, event));
+	// };
+	},
 
 	sendToRemoveNote: function(index){
-		var seconds = deleteButtons[index].dataset.seconds
+		var seconds = this.deleteButtons[index].dataset.seconds
 			chrome.runtime.sendMessage({
 			method: "remove note",
 			url: this.getUrl(),
