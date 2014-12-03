@@ -2,6 +2,9 @@ body {
   background:rgb(37,37,37);
 }
 
-h1{
+#main-head{
+	font-size: 70px;
 	color: white;
+	border-bottom:1px solid rgb(27, 111, 221);
+	font-family: "Lato", sans-serif;
 }
