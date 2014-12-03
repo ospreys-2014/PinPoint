@@ -41,6 +41,9 @@ section {
   background: rgb(27, 111, 221);
 
 }
+#title-bar {
+  padding-top: 3.8em;
+}
 section ul li {
   display: block;
 }
