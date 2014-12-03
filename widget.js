@@ -30,8 +30,8 @@ PinPoint.Widget.prototype = {
 			this.sideBar.style.display = "block";
 			this.sideBar.style.width = "11.78em";
 			this.sideBar.style.position = "absolute";
-			this.sideBar.style.top = this.video.offsetTop + "px";
-			this.sideBar.style.left = this.video.offsetLeft + "px";
+			this.sideBar.style.top = this.youTubeVideoContainer.offsetTop + 62 + "px";
+			this.sideBar.style.left = this.youTubeVideoContainer.offsetLeft + "px";
 			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
 			this.sideBar.style.zIndex = 5e6;
 			this.video.offsetParent.appendChild(this.sideBar);
@@ -62,7 +62,6 @@ PinPoint.Widget.prototype = {
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
 		this.submit.setAttribute('id',"save");
-		this.submit.setAttribute('value',"Save note");
 
 		this.sideBar.appendChild(this.form);
 		this.form.appendChild(this.input);

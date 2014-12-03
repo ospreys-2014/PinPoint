@@ -109,12 +109,13 @@ tr:nth-child(odd) {
   background-color:rgb(48, 48, 48);
 
 }
-
+/***Div Containing Notes Table***/
 #all-notes {
   font-size: 1em;
-  max-height: 4em;
+  height: 8em;
   font-size: 1.2em;
-  overflow: auto;
+  max-width: 8em;
+  overflow-y: auto;
   margin-top: 1em;
 }
 
@@ -128,6 +129,7 @@ tr:nth-child(odd) {
   font-size: 1.5em;
 }
 #save {
+  display: none;
   border-top: 1px;
   padding: 1em;
   color: white;
@@ -142,7 +144,8 @@ tr:nth-child(odd) {
 }
 
 #sidebar {
-  max-height: 2em;
+  height: 8em;
+  overflow: auto;
 }
 
 /*** Sidebar Delete button ***/
