@@ -36,6 +36,7 @@ window.addEventListener('load', function(){
       back.setAttribute("class", "back");
       title.innerHTML = this.getNoteTitle();
       back.appendChild(title);
+      count.setAttribute("class", "count-p");
       count.innerHTML = this.noteCount();
       back.appendChild(count);
 
