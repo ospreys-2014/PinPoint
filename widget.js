@@ -3,9 +3,11 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	// this.video.addEventListener('mouseenter', function(event){
-		this.drawSideBar()
-	// }.bind(this));
+	this.video.addEventListener('mouseenter', function(event){
+    this.drawSideBar()
+    chrome.tabs.insertCSS({file: "pinpoint.css"});
+
+	}.bind(this));
 	// this.video.addEventListener('mouseleave', function(event){
 		if (event.fromElement === this.video && event.toElement != this.sideBar) {
 			this.destroySideBar()
@@ -87,7 +89,7 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawTable: function() {
-		this.tableContainer = document.createElement("table");
+		this.tableContainer = document.createElement("div");
 		this.tableContainer.setAttribute('id', "all-notes");
 		this.table = document.createElement("table");
 		this.table.setAttribute('id', 'notes-table');

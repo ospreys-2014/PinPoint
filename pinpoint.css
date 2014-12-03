@@ -1,3 +1,4 @@
+/*** Pop Up***/
 body {
   margin:0;
   background:rgb(37,37,37);
@@ -16,22 +17,6 @@ a, .link{
   color: white;
 }
 
-/*** Delete button ***/
-.delete{
-  margin:4em;
-  font-size: .1em;
-  float: right;
-  text-decoration: none;
-  color: black;
-  background-color: silver;
-  padding: 2px;
-  border-radius: 20px;
-  opacity: .5;
-}
-
-.delete:hover {
-  background-color: red;
-}
 
 /*** Title section ***/
 section {
@@ -90,7 +75,7 @@ li:hover #drop-down {
   visibility: visible;
 }
 
-/**** Notes Table ****/
+/**** Sidebar Table ****/
 #notes-table {
   /*opacity: .5;*/
   max-width: 80%;
@@ -133,11 +118,7 @@ tr:nth-child(odd) {
   margin-top: 1em;
 }
 
-/*note_info {
-  width: 100%;
-}
-*/
-/*****Note Form*****/
+/*****Sidebar Note Form*****/
 #note {
   margin-top: 0;
   width:100%;
@@ -164,5 +145,21 @@ tr:nth-child(odd) {
   max-height: 2em;
 }
 
+/*** Sidebar Delete button ***/
+.delete{
+  margin:4em;
+  font-size: .1em;
+  float: right;
+  text-decoration: none;
+  color: black;
+  background-color: silver;
+  padding: 2px;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.delete:hover {
+  background-color: red;
+}
 
 
