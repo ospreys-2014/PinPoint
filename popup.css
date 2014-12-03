@@ -14,9 +14,26 @@ hr{
 a {
   text-decoration: none;
   color: white;
-
 }
-*/
+
+/*** Delete button ***/
+.delete{
+  font-size: .1em;
+  float: right;
+  text-decoration: none;
+  color: black;
+  background-color: silver;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.delete:hover {
+  background-color: red;
+}
+
 /*** Title section ***/
 section {
   list-style: none;
@@ -57,6 +74,7 @@ section {
   visibility: hidden;
   font-size: .7em;
 }
+
 #drop-down li {
   background: #555;
   display: block;
@@ -64,6 +82,7 @@ section {
   text-shadow: 0 -1px 0 #000;
   padding:.2em;
 }
+
 #drop-down li:hover { background: #666; }
 
 li:hover #drop-down {
@@ -71,8 +90,6 @@ li:hover #drop-down {
   opacity: 1;
   visibility: visible;
 }
-
-
 
 /**** Notes Table ****/
 table {
