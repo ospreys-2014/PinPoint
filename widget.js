@@ -102,7 +102,6 @@ PinPoint.Widget.prototype = {
       content: noteContentFromForm,
       seconds: this.video.currentTime,
       url: this.getUrl()
-
     };
     chrome.runtime.sendMessage({
     	method: "add note",

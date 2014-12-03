@@ -29,7 +29,7 @@ window.addEventListener('load', function(){
       flipContainer.appendChild(flipper);
 
       front.setAttribute("class", "front");
-      thumbnail.setAttribute("src", "http://img.youtube.com/vi/QQWhJrkgXII/hqdefault.jpg");
+      thumbnail.setAttribute("src", this.youtubeImageGen());
       front.appendChild(thumbnail);
       back.setAttribute("class", "back");
 
@@ -39,6 +39,18 @@ window.addEventListener('load', function(){
 
       flipper.appendChild(front);
       flipper.appendChild(backLink);
+    },
+
+    youtubeParser: function(){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = this.url.match(regExp);
+      if (match&&match[7].length==11){
+        return match[7];
+      }
+    },
+
+    youtubeImageGen: function(){
+      return "http://img.youtube.com/vi/" + this.youtubeParser() + "/hqdefault.jpg";
     }
   }
 
