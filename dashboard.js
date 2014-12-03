@@ -17,6 +17,7 @@ window.addEventListener('load', function(){
       var flipper = document.createElement("div");
       var front = document.createElement("div");
       var back = document.createElement("div");
+      var thumbnail = document.createElement("img");
 
       cardDiv.setAttribute("class", "video-card");
       grid.appendChild(cardDiv);
@@ -29,6 +30,8 @@ window.addEventListener('load', function(){
       flipContainer.appendChild(flipper);
 
       front.setAttribute("class", "front");
+      thumbnail.setAttribute("src", "http://img.youtube.com/vi/QQWhJrkgXII/hqdefault.jpg");
+      front.appendChild(thumbnail);
       back.setAttribute("class", "back");
 
       flipper.appendChild(front);
