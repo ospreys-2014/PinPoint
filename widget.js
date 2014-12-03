@@ -41,7 +41,7 @@ PinPoint.Widget.prototype = {
 	drawSideBar: function(){
 		if (!this.sideBar) {
 			this.sideBar = document.createElement("div");
-
+      this.sideBar.setAttribute("class", "pinpoint-sideBar");
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
 			this.sideBar.style.height = "500px";
@@ -66,12 +66,12 @@ PinPoint.Widget.prototype = {
 
 	drawForm: function(){
 		this.form = document.createElement("form");
-		this.form.setAttribute('id',"add-note");
+		this.form.setAttribute('class',"pinpoint-add-note");
 		this.form.addEventListener('submit', this.createNote.bind(this));
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
-		this.input.setAttribute('class', 'note-input')
+		this.input.setAttribute('class', 'pinpoint-note-input')
 		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){
 			event.stopPropagation();
@@ -79,7 +79,7 @@ PinPoint.Widget.prototype = {
 
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
-		this.submit.setAttribute('class',"save");
+		this.submit.setAttribute('class',"pinpoint-save");
 		this.submit.setAttribute('value',"Save note");
 
 		this.sideBar.appendChild(this.form);
@@ -89,7 +89,7 @@ PinPoint.Widget.prototype = {
 
 	drawTable: function() {
 		this.table = document.createElement("table");
-		this.table.setAttribute('class', 'notes-table');
+		this.table.setAttribute('class', 'pinpoint-notes-table');
 		this.sideBar.appendChild(this.table);
 	},
 
@@ -140,7 +140,7 @@ PinPoint.Widget.prototype = {
   },
 
   assignDeleteListeners: function(){
-    var deleteButtons = document.getElementsByClassName("delete");
+    var deleteButtons = document.getElementsByClassName("pinpoint-delete");
     for(var i=0; i < deleteButtons.length; i++) {
       deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
     };
