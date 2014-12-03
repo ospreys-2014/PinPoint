@@ -54,7 +54,7 @@ PinPoint.Widget.prototype = {
 			this.video.offsetParent.appendChild(this.sideBar);
 			this.drawForm();
 			this.drawTable();
-			this.appendNotes(this.assignDeleteListeners);
+			this.appendNotes(); //this.assignDeleteListeners);
 		}
 	},
 
@@ -117,12 +117,21 @@ PinPoint.Widget.prototype = {
 	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
 	  	this.table.innerHTML = ""
+			var index = 0;
 			for (note of notes) {
-	  	var node = new PinPoint.NotePresenter(note).present();
-	 		this.table.appendChild(node);
-		}
+		  	var node = new PinPoint.NotePresenter(
+		  		note,
+		  		index,
+		  		this.getUrl(),
+		  		this.appendNotes.bind(this)).present();
+		  	index++;
+		 		this.table.appendChild(node);
+			}
 		}.bind(this))
-		callback();
+
+		/*setTimeout(function(){
+			callback(this);}.bind(this),2000);
+*/
 	},
 
 	getUrl: function(){
@@ -136,29 +145,35 @@ PinPoint.Widget.prototype = {
 			return this.video.src
 		}
 	},
+/*
+	assignDeleteListeners: function(context){
+		var buttons, i, widget;
+		var soopahContext = context;
 
-	assignDeleteListeners: function(){
-	this.deleteButtons = document.getElementsByClassName("pinpoint-delete");
-	var array = this.deleteButtons;
-		for (i=0;i<array.length;i++){
-			console.log(i);
-			console.log("im assigning buttons!");
-			array[i].addEventListener("click", this.sendToRemoveNote(i));
-			console.log("fuck yourself");
+		widget = this;
+		console.log("In deleteListeners")
+
+		buttons = Array.prototype.slice.call(document.getElementsByClassName("pinpoint-delete"), 0);
+
+		soopahContext.deleteButtons = buttons;
+		for (i=0; i < soopahContext.deleteButtons.length;i++){
+			soopahContext.deleteButtons[i]
+				.addEventListener("click", function() {
+					console.log(soopahContext);
+					soopahContext.sendToRemoveNote(i)
+				}.bind(this));
 		}
-	// for(var i=0; i < deleteButtons.length; i++) {
-	//   deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i, event));
-	// };
 	},
-
-	sendToRemoveNote: function(index){
-		var seconds = this.deleteButtons[index].dataset.seconds
+*/
+	/*sendToRemoveNote: function(index){
+		debugger
+		var seconds = this.deleteButtons[index-1].dataset.seconds
 			chrome.runtime.sendMessage({
 			method: "remove note",
 			url: this.getUrl(),
 			seconds: seconds
 		}, this.appendNotes.bind(this))
-	}
+	}*/
 }
 
 function main(){

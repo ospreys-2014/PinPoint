@@ -29,10 +29,15 @@ PinPoint.updatePopup = function() {
         chrome.tabs.update(null, {url: links[i].href});
         };
       };
-
-
   });
 };
+
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+  if (message.method === "add note"){
+    chrome.browserAction.setBadgeText({text: notes.length.toString()});
+    chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
+  }
+})
 
 window.addEventListener('load', function() {
   // Load popup with the saved notes for this video

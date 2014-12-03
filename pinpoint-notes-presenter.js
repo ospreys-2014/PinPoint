@@ -1,5 +1,8 @@
-PinPoint.NotePresenter = function(note) {
+PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
   this.note = note;
+  this.index = index;
+  this.url = url;
+  this.refreshFunc = refreshFunc;
   this.rootNodeType = "tr";
   this.childNodeType = "td";
   this.linkNodeType = "a";
@@ -42,6 +45,14 @@ PinPoint.NotePresenter.prototype = {
     deleteLinkNode.innerHTML = "x";
     deleteNode.appendChild(deleteLinkNode);
     noteNode.appendChild(deleteNode);
+    deleteLinkNode.addEventListener('click', function(){
+       chrome.runtime.sendMessage({
+            method: "remove note",
+            url: this.url,
+            index: this.index,
+            seconds: this.note.seconds,
+        }, this.refreshFunc)
+    }.bind(this));
 
     return noteNode;
   }
