@@ -155,13 +155,11 @@ PinPoint.Widget.prototype = {
 	sendToRemoveNote: function(index){
 		console.log("In send to remove note")
 		var seconds = deleteButtons[index].dataset.seconds
-		// return function(){
 			chrome.runtime.sendMessage({
 			method: "remove note",
 			url: this.getUrl(),
 			seconds: seconds
 			}, this.appendNotes.bind(this))
-		// };
 	}
 }
 
