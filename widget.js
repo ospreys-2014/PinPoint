@@ -98,6 +98,7 @@ PinPoint.Widget.prototype = {
 		var noteContentFromForm = this.input.value;
     var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
     var note = {
+      title: document.title,
       noteTime: time,
       content: noteContentFromForm,
       seconds: this.video.currentTime,
