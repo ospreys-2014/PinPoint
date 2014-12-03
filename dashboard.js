@@ -18,6 +18,7 @@ window.addEventListener('load', function(){
       var back = document.createElement("div");
       var thumbnail = document.createElement("img");
       var title = document.createElement("h3");
+      var count = document.createElement("p");
 
       cardDiv.setAttribute("class", "video-card");
       grid.appendChild(cardDiv);
@@ -34,8 +35,9 @@ window.addEventListener('load', function(){
       front.appendChild(thumbnail);
       back.setAttribute("class", "back");
       title.innerHTML = this.getNoteTitle();
-      back.innerHTML = this.noteCount();
       back.appendChild(title);
+      count.innerHTML = this.noteCount();
+      back.appendChild(count);
 
       backLink.setAttribute("href", this.url);
       backLink.setAttribute("target", "_blank");
