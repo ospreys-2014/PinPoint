@@ -32,6 +32,7 @@ window.addEventListener('load', function(){
       thumbnail.setAttribute("src", this.youtubeImageGen());
       front.appendChild(thumbnail);
       back.setAttribute("class", "back");
+      back.innerHTML = this.noteCount();
 
       backLink.setAttribute("href", this.url);
       backLink.setAttribute("target", "_blank");
@@ -51,6 +52,10 @@ window.addEventListener('load', function(){
 
     youtubeImageGen: function(){
       return "http://img.youtube.com/vi/" + this.youtubeParser() + "/hqdefault.jpg";
+    },
+
+    noteCount: function(){
+      return JSON.parse(localStorage[this.url]).length
     }
   }
 
