@@ -92,15 +92,19 @@ li:hover #drop-down {
 
 /**** Notes Table ****/
 #notes-table {
+  /*opacity: .5;*/
+  max-width: 80%;
   /*width:11.8em;*/
-  max-height: 4em;
+  max-height: 1em;
   border-collapse: collapse;
   table-layout: fixed;
   overflow: auto;
 }
 table tr td {
-  padding: 1em 0 .5em 1em;
+  padding: 1em 0 1em 1em;
   font-size: .8em;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
 
 #time {
@@ -154,6 +158,10 @@ tr:nth-child(odd) {
 }
 #save:hover {
   color: rgb(27, 111, 221);
+}
+
+#sidebar {
+  max-height: 2em;
 }
 
 

@@ -54,7 +54,6 @@ PinPoint.Widget.prototype = {
 			this.drawForm();
 			this.drawTable();
 			this.appendNotes();
-			// this.assignDeleteListeners()
 		}
 	},
 
@@ -84,6 +83,7 @@ PinPoint.Widget.prototype = {
 		this.sideBar.appendChild(this.form);
 		this.form.appendChild(this.input);
 		this.form.appendChild(this.submit);
+		this.sideBar.appendChild(this.form);
 	},
 
 	drawTable: function() {
