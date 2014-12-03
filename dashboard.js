@@ -2,10 +2,8 @@ var PinPoint = PinPoint || {};
 
 /// becca needs http://img.youtube.com/vi/<id>/hqdefault.
 window.addEventListener('load', function(){
-  PinPoint.VideoPresenter = function() {
-    // this.url = url;
-    this.linkNodeType = "a";
-    this.imageNodeType = "img";
+  PinPoint.VideoPresenter = function(url) {
+    this.url = url;
     this.present();
   }
 
@@ -16,6 +14,7 @@ window.addEventListener('load', function(){
       var flipContainer = document.createElement("div");
       var flipper = document.createElement("div");
       var front = document.createElement("div");
+      var backLink = document.createElement("a");
       var back = document.createElement("div");
       var thumbnail = document.createElement("img");
 
@@ -34,14 +33,18 @@ window.addEventListener('load', function(){
       front.appendChild(thumbnail);
       back.setAttribute("class", "back");
 
+      backLink.setAttribute("href", this.url);
+      backLink.setAttribute("target", "_blank");
+      backLink.appendChild(back)
+
       flipper.appendChild(front);
-      flipper.appendChild(back);
+      flipper.appendChild(backLink);
     }
   }
 
   function main(){
-    for (note in localStorage){
-      var presenter = new PinPoint.VideoPresenter()
+    for (url in localStorage){
+      var presenter = new PinPoint.VideoPresenter(url)
     }
   }
 
