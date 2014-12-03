@@ -17,25 +17,6 @@ PinPoint.Widget = function(video){
 }
 
 PinPoint.Widget.prototype = {
-	drawScreenIcon: function(){
-		this.icon = document.createElement("div");
-		this.icon.addEventListener('click', this.onIconClick.bind(this));
-		this.icon.style.height = "100px";
-		this.icon.style.width = "100px";
-		this.icon.style.position = "absolute";
-		this.icon.style.top = this.video.offsetTop + "px";
-		this.icon.style.left = this.video.offsetLeft + "px";
-		this.icon.style.backgroundColor = "red";
-		this.icon.style.zIndex = 5e6;
-		this.video.offsetParent.appendChild(this.icon);
-	},
-
-	onIconClick: function(event){
-		event.stopPropagation();
-		this.icon.style.display = "none";
-		this.transformScreen();
-		this.sideBar.style.display = "block"
-	},
 
 	onSideBarClick: function(event){
 		event.stopPropagation();
