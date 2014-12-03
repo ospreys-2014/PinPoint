@@ -117,7 +117,8 @@ PinPoint.Widget.prototype = {
 
   appendNotes: function(){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-  	this.table.innerHTML = ""
+  		this.table.innerHTML = ""
+  		notes.sort(function(a,b) { return a.seconds - b.seconds } );
   		for (note of notes) {
       	var node = new PinPoint.NotePresenter(note).present();
      		this.table.appendChild(node);
