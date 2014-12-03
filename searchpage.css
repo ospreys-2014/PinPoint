@@ -15,13 +15,13 @@ body img{
 	height: 200px;
 }
 
-.grid{
+#grid{
 	margin-right: 5%;
 	margin-left: 5%;
 }
 
 
-.column {
+.video-card {
   float: left;
   margin: 50px;
   width: 300px;
