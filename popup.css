@@ -76,6 +76,7 @@ a {
   display: block;
   color: #fff;
   text-shadow: 0 -1px 0 #000;
+  /*border-top: 5px solid transparent;*/
 }
 
 .pinpoint-drop-down li:hover { background: #666; }
@@ -155,5 +156,3 @@ tr:nth-child(odd) {
 .pinpoint-save {
   margin-left: 8.2em;
 }
-
-
