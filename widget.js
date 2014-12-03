@@ -3,6 +3,7 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
+  this.youTubeVideoContainer = video.parentNode
 	this.video.addEventListener('mouseenter', function(event){
     this.drawSideBar()
     chrome.tabs.insertCSS({file: "pinpoint.css"});
