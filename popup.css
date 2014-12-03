@@ -3,12 +3,8 @@ body {
   background:rgb(37,37,37);
   font-family: "Lato", sans-serif;
   color: white;
-}
-
-hr{
-  width: 85%;
-  border-top:1px solid rgb(38, 38, 38);
-  border-bottom:1px solid rgb(28, 28, 28);
+  height: 27em;
+  width:16em;
 }
 
 a {
@@ -38,16 +34,10 @@ a {
 section {
   list-style: none;
   margin-bottom: 0 ;
-  padding:.2em;
 }
-li {
-  display: inline-block;
-  padding-right: 10px;
-}
-#title {
-  padding-right: 1.7em;
-  font-size: 1.4em;
-
+section ul li {
+  display: block;
+  margin-bottom: .5em;
 }
 section {
   color: white;
@@ -58,11 +48,6 @@ section {
 
 .fa {
   color: white;
-}
-
-#notes-icon {
-  text-align: center;
-  display: block;
 }
 
 /*** Dropdown Menu Bar ****/
