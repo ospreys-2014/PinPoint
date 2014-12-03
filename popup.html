@@ -2,13 +2,13 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="popup.css">
-        <style>
-
-        </style>
+        <script src="pinpoint-app.js"></script>
+        <script src="popup.js"></script>
+        <script src="JSONparser.js"></script>
+        <script src="pinpoint-notes-presenter.js"></script>
     </head>
     <body>
         <div id="pop-up-container">
-            <button id ="create">Create a note!</button>
             <form id="add-note">
                 <p>
                     <input type="hidden" id="website" name="website" size="10" value=""/>
@@ -17,45 +17,17 @@
                     <input type="hidden" id="time" name="time" size="10" value="" />
                 </p>
                 <p>
-                    <input type="text" id="content" name="note" size="50" placeholder="Write your note here!" />
+                    <input type="text" id="note" name="note" size="50" placeholder="                       Write your note here!" />
                 </p>
-                <input id="save" type="submit" value="save note" />
+                <input id="save" type="submit" value="Save Your Note" />
             </form>
-            <script src="pinpoint-app.js"></script>
+            <button id="search-button">Search</button>
             <div id="all-notes">
                 <table id="notes-table">
-                    <tr>
-                        <td class="note-time">0:30</td>
-                        <td class="note-content">This part's awesome.</td>
-                    </tr>
-                     <tr>
-                        <td class="note-time">0:57</td>
-                        <td class="note-content">This part's not.</td>
-                    <tr>
-                        <td class="note-time">0:30</td>
-                        <td class="note-content">This part's awesome.</td>
-                    </tr>
-                    <tr>
-                        <td class="note-time">0:57</td>
-                        <td class="note-content">This part's not.</td>
-                    </tr>
-                    <tr>
-                        <td class="note-time">0:30</td>
-                        <td class="note-content">This part's awesome.</td>
-                    </tr>
-                    <tr>
-                        <td class="note-time">0:57</td>
-                        <td class="note-content">This part's not.</td>
-                    </tr>
-                    </tr>
                 </table>
             </div>
         </div>
-        <script src="popup.js"></script>
-        <script src="popup-view.js"></script>
-        <script src="pinpoint-note.js"></script>
-        <script src="pinpoint-note-controllers.js"></script>
-        <script src="pinpoint-notes-presenter.js"></script>
+
     </body>
 </html>
 

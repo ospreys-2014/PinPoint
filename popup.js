@@ -1,73 +1,74 @@
-// Uses local storage to add a note
-function storeToLocalStorage(note){
-    localStorage.setItem(note.storageKey, JSON.stringify(note));
+var PinPoint = PinPoint || {};
+
+PinPoint.updatePopup = function() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    // Pull the url from the current tab
+    var url = tabs[0].url;
+    // Create array of note objects belonging to current url; returns empty array if no notes present.
+    var notes = getNotes(url);
+    // Sorts the notes by time of video
+    notes.sort(function(a,b) { return a.seconds - b.seconds } );
+
+    var table = document.getElementById('notes-table');
+    table.innerHTML = '';
+    // Badge icon
+    chrome.browserAction.setBadgeText({text: notes.length.toString()});
+    chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
+
+    for (note of notes) {
+      var node = new PinPoint.NotePresenter(note).present();
+      table.appendChild(node);
+    }
+
+    var links = document.getElementsByClassName("link");
+      for(var i=0;i< links.length; i++) {
+        links[i].addEventListener("click", tabUpdate(i));
+      };
+      function tabUpdate(i) {
+        return function(){
+        chrome.tabs.update(null, {url: links[i].href});
+      };
+    };
+  });
 };
 
-// Event listener for the create note button
-var button = document.getElementById("create");
-var form = document.getElementById("add-note");
-button.addEventListener('click', function(){
-    console.log("hello");
-  button.style.display = "none";
-  form.style.display = "inline"
-
-    note = new PinPoint.Note();
-    storeToLocalStorage(note);
-});
-
-// Array of notes in string format
-var notes = [];
-
-// Array of note objects to pass to controller
-var noteObjects = [];
-
-//
-function searchLocalStorage(url){
-    for (i in localStorage) {
-        if (i.match(/^\w+\:\/\/www.youtube.com\/watch\?v=.+\//)[0] == url) {
-            notes.push(i);
-        } else {
-            console.log("There are no notes for that url. Did you remember to type a url followed by a / ?");
-        }
-    }
-    parseStorageSearch();
-}
-
-function parseLocalStorage(){
-    for (i in notes) {
-        var key = notes[i]
-        var retrievedObject = localStorage.getItem(key);
-        noteObjects.push(JSON.parse(retrievedObject));
-    }
-}
-
-
-// go through all the keys in localstorage
-// take the ones that begin with the correct url using regex(underscore)
-// find the values, put them in an array, iterate over the array and parse values
-
-// When the popup HTML has loaded
-//***** Need to change this to different event so we aren't
-// getting time on load, but click event instead *******
 window.addEventListener('load', function() {
+  // Load popup with the saved notes for this video
+  PinPoint.updatePopup();
+  // Uses local storage to add a note
+  function getPageDetails(callback) {
+    // Perform the callback when a message is received from the content script
+    chrome.runtime.onMessage.addListener(callback);
+    // Inject the content script into the current page
+    chrome.tabs.executeScript(null, { file: 'content.js' });
+  };
 
-//parser will provide an array of notes to pass into PinPoint.NoteController(notes)
-  // controller = new PinPoint.NoteController(notes);
-  // controller.defineView(new PinPoint.View());
-  // controller.redraw();
-  //get the event page
-  chrome.runtime.getBackgroundPage(function(eventPage) {
-      // Call the getTime function in the event page, passing in
-      // our onPageDetailsReceived function as the callback. This injects
-      // content.js into the current tab's HTML
+  var saveButton = document.getElementById("save");
+  var form = document.getElementById("add-note");
 
-      // jenbex testing note controller functions without lack of note object blocking us
-      // ****** eventPage.getPageDetails(PinPoint.NoteController.getTime);
-      // var note = {noteTime: "9:30", timeUrl: ""}
-      // PinPoint.NoteController.getUrl(note);
+  // Saves a note to localStorage via addNote
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    noteContentFromForm = document.getElementById('note').value
+    getPageDetails(function(pageDetails){
+      var note = {
+        noteTime: pageDetails.time,
+        content: noteContentFromForm,
+        seconds: pageDetails.seconds,
+        noteUrl: formatNoteUrl(pageDetails),
+      }
+      addNote(pageDetails.website, note);
+      PinPoint.updatePopup();
 
+      // Refreshes popup
+      window.location = window.location;
+
+    });
   });
+
+  var searchButton = document.getElementById("search-button")
+  searchButton.addEventListener("click", function(){
+    chrome.tabs.create({url: "options.html"})
+  })
+
 });
-
-
-

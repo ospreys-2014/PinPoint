@@ -1,1 +1,1 @@
-var PinPoint = {};
+var PinPoint = PinPoint || {};
