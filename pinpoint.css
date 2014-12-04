@@ -132,3 +132,8 @@ li:hover .pinpoint-drop-down {
 .delete:hover {
   background-color: red;
 }
+
+/*** Sidebar Save button (hidden) ***/
+.pinpoint-save {
+  display:none;
+}
