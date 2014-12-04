@@ -85,7 +85,7 @@ li:hover .pinpoint-drop-down {
 /**** Sidebar ****/
 
 .pinpoint-timelink {
-    margin-left:.39em;
+    margin-left:.59em;
     border-bottom: 3px solid transparent;
     /*transition: 0.7s ease;*/
     /*width: 0px;*/
@@ -103,7 +103,14 @@ li:hover .pinpoint-drop-down {
   position: relative;
   padding-bottom: 13px;
   height:auto;
-  overflow:hidden;
+  width: 100%;
+  overflow-x:hidden;
+
+}
+
+.pinpoint-note:hover {
+  /*border-bottom: 0.2em solid blue*/
+  opacity: .7;
 }
 
 .pinpoint-note-input {
@@ -150,13 +157,18 @@ li:hover .pinpoint-drop-down {
   margin-top: 10%;
   margin-bottom: 10%;
   width: 16em;
-  overflow: auto;
-  border: 2px solid;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border: 0.4em solid black;
+}
 
+.pinpoint-sideBar:hover {
+  overflow-y: auto;
 }
 
 .pinpoint-notes-container {
   margin-top: 1em;
+  width: 100%;
 }
 
 .pinpoint-note:nth-child(odd) {
@@ -170,7 +182,7 @@ li:hover .pinpoint-drop-down {
   font-family: "Nunito", sans-serif;
   color: white;
   font-size: 1em;
-  margin-left: .45em;
+  margin-left: .5em;
 }
 
 .pinpoint-delete:hover {
