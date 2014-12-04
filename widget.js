@@ -42,7 +42,7 @@ PinPoint.Widget.prototype = {
 	drawSideBar: function(){
 		if (!this.sideBar) {
 			this.sideBar = document.createElement("div");
-      this.sideBar.setAttribute("class", "pinpoint-sideBar");/**/
+      this.sideBar.setAttribute("class", "pinpoint-sideBar");
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
 			this.sideBar.style.position = "absolute";

@@ -32,22 +32,11 @@ PinPoint.updatePopup = function() {
   });
 };
 
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-  if (message.method === "add note"){
-    chrome.browserAction.setBadgeText({text: notes.length.toString()});
-    chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
-  }
-})
 
 window.addEventListener('load', function() {
   var dashLink = document.getElementById("dash-link")
   dashLink.addEventListener("click", function(){
     chrome.tabs.create({url: "dashboard.html"})
-  })
-
-  var aboutLink = document.getElementById("about-link")
-  aboutLink.addEventListener("click", function(){
-    chrome.tabs.create({url: "aboutus.html"})
   })
 });
 

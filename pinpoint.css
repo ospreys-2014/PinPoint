@@ -107,7 +107,7 @@ li:hover .pinpoint-drop-down {
 }
 
 .pinpoint-note-input {
-  width: 14.5em;
+  width: 15.6em;
   height: 2em;
 }
 
@@ -146,11 +146,13 @@ li:hover .pinpoint-drop-down {
 
 /*Outer Div Containing The All-Notes Div*/
 .pinpoint-sideBar {
-  height: 80%;
+  height: 50%;
   margin-top: 10%;
   margin-bottom: 10%;
   width: 16em;
   overflow: auto;
+  border: 2px solid;
+
 }
 
 .pinpoint-notes-container {

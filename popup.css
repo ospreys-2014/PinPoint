@@ -109,10 +109,10 @@ li:hover .pinpoint-drop-down {
 }
 
 .pinpoint-time {
-    border-bottom: 3px solid transparent;
-    transition: 0.7s ease;
-    width: 0px;
-    white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: 0.7s ease;
+  width: 0px;
+  white-space: nowrap;
 }
 .pinpoint-time:hover {
   border-bottom: 1px solid rgb(56, 249, 3);
