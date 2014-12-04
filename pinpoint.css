@@ -79,50 +79,15 @@ li:hover .pinpoint-drop-down {
     white-space: nowrap;
 }
 
-.pinpoint-content {
-  margin-left: 1.2em;
-}
-
-.pinpoint-time {
-  border-bottom: 3px solid transparent;
-  transition: 0.7s ease;
-  width: 0px;
-  white-space: nowrap;
-}
-
-.pinpoint-time:hover {
-  border-bottom: 1px solid rgb(56, 249, 3);
-  width:20%;
-}
-
-tr:nth-child(odd) {
-  background-color:rgb(48, 48, 48);
-
-.pinpoint-timelink:hover {
-  /*text-decoration: none;*/
-  /*border-bottom: 1px solid rgb(56, 249, 3);*/
-  /*width:20%;*/
-}
-
-/***Div Containing Notes ***/
-.pinpoint-all-notes {
-  /*font-size: 1em;*/
-  height: 13.9em;
-  font-size: 1.2em;
-  width: 10em;
-  /*overflow: auto;*/
-  margin-top: 1em;
-}
-/*****Sidebar Note Form*****/
-
 .pinpoint-note {
   position: relative;
+  padding-bottom: 13px;
   height:auto;
   overflow:hidden;
 }
 
 .pinpoint-note-input {
-  width: 11.27em;
+  width: 13.27em;
 }
 
 .pinpoint-content {
@@ -139,20 +104,16 @@ tr:nth-child(odd) {
   right: 100px;
   top: 1px;
   left: 1px;
-  /*left: 1.5em;*/
 }
-
 
 #save {
   display: none;
-  padding: 1em;
 }
 
 /*Outer Div Containing The All-Notes Div*/
 .pinpoint-sidebar {
   height: 19.5em;
   width: 13em;
-  /*overflow: auto;*/
 }
 
 /*** Sidebar Delete button ***/
@@ -164,7 +125,6 @@ tr:nth-child(odd) {
   padding: 2px;
   border-radius: 20px;
   opacity: .5;
-  /*position: absolute;*/
   left: -8.5em;
   top: 3em;
 }
@@ -172,5 +132,3 @@ tr:nth-child(odd) {
 .delete:hover {
   background-color: red;
 }
-
-
