@@ -11,9 +11,6 @@ PinPoint.updatePopup = function() {
 
     var table = document.getElementById('notes-table');
     table.innerHTML = '';
-    // Badge icon
-    chrome.browserAction.setBadgeText({text: notes.length.toString()});
-    chrome.browserAction.setBadgeBackgroundColor({color:[235, 105, 5, 220]});
 
     for (note of notes) {
       var node = new PinPoint.NotePresenter(note).present();

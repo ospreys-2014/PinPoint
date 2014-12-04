@@ -35,7 +35,6 @@ a {
 
 }
 .pinpoint-title {
-  /*float:left;*/
   background: rgb(27, 111, 221);
 
 }
@@ -59,9 +58,7 @@ a {
 
 .pinpoint-drop-down {
   position: absolute;
-  /*display: none;*/
   opacity: 0;
-  /*visibility: hidden;*/
   font-size: .7em;
   margin-left: -4em;
 }
@@ -71,7 +68,6 @@ a {
   display: block;
   color: #fff;
   text-shadow: 0 -1px 0 #000;
-  /*border-top: 5px solid transparent;*/
 }
 
 .pinpoint-drop-down li:hover { background: #666; }
@@ -79,7 +75,6 @@ a {
 li:hover .pinpoint-drop-down {
   display: block;
   opacity: 1;
-  /*visibility: visible;*/
 }
 
 /**** Sidebar ****/
@@ -87,9 +82,6 @@ li:hover .pinpoint-drop-down {
 .pinpoint-timelink {
     margin-left:.59em;
     border-bottom: 3px solid transparent;
-    /*transition: 0.7s ease;*/
-    /*width: 0px;*/
-    /*white-space: nowrap;*/
     color: white;
     text-decoration: none;
 }
@@ -197,6 +189,3 @@ li:hover .pinpoint-drop-down {
 .pinpoint-save {
   display:none;
 }
-
-
-
