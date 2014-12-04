@@ -14,7 +14,7 @@ function getNotes(url){
 }
 function removeNote(url, index){
   var notes = JSON.parse(localStorage.getItem(url))
-  notes.splice(index)
+  notes.splice(index, 1)
   saveNotes(url, notes);
 }
 

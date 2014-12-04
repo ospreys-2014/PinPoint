@@ -132,4 +132,6 @@ function main(){
 	}
 }
 
-main();
+window.addEventListener('DOMNodeInserted', function(){
+	main();
+});
