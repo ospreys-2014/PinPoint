@@ -1,15 +1,10 @@
-/*** Pop Up***/
-body {
+.pinpoint-body {
   margin:0;
   background:rgb(37,37,37);
   font-family: "Lato", sans-serif;
   color: white;
-}
-
-hr{
-  width: 85%;
-  border-top:1px solid rgb(38, 38, 38);
-  border-bottom:1px solid rgb(28, 28, 28);
+  height: 27em;
+  width:16em;
 }
 
 a, .link{
@@ -17,65 +12,64 @@ a, .link{
   color: white;
 }
 
-
 /*** Title section ***/
-section {
+.pinpoint-section {
   list-style: none;
-  margin-bottom: 0 ;
-  padding:.2em;
-}
-li {
-  display: inline-block;
-  padding-right: 10px;
-}
-#title {
-  padding-right: 1.7em;
-  font-size: 1.4em;
+  margin-bottom: 0;
+  text-align: center;
+  color: white;
+  font-size: 2em;
 
 }
-section {
-  color: white;
+.pinpoint-title {
+  /*float:left;*/
   background: rgb(27, 111, 221);
-  text-align: center;
-  font-size: 2em;
+
+}
+.pinpoint-title-bar {
+  padding-top: 3.8em;
 }
 
 .fa {
   color: white;
 }
 
-#notes-icon {
-  text-align: center;
+/*** Dropdown Menu Bar ****/
+.pinpoint-section .pinpoint-nav-icons li {
   display: block;
+  float: left;
 }
 
-/*** Dropdown Menu Bar ****/
-#drop-down {
+.pinpoint-nav-icons {
+  padding-left: 3.4em;
+}
+
+.pinpoint-drop-down {
   position: absolute;
-  right: 0;
   display: none;
   opacity: 0;
   visibility: hidden;
   font-size: .7em;
+  margin-left: -4em;
 }
 
-#drop-down li {
+.pinpoint-drop-down li {
   background: #555;
   display: block;
   color: #fff;
   text-shadow: 0 -1px 0 #000;
-  padding:.2em;
+  /*border-top: 5px solid transparent;*/
 }
 
-#drop-down li:hover { background: #666; }
+.pinpoint-drop-down li:hover { background: #666; }
 
-li:hover #drop-down {
+li:hover .pinpoint-drop-down {
   display: block;
   opacity: 1;
   visibility: visible;
 }
 
-/**** Sidebar Table ****/
+/**** Sidebar ****/
 
 .pinpoint-timelink {
     margin-right:.5em;
@@ -102,7 +96,6 @@ li:hover #drop-down {
   position: relative;
   display: inline-block;
   margin-left: 50px;
-
 }
 
 .pinpoint-time-and-delete {
@@ -139,4 +132,3 @@ li:hover #drop-down {
 .delete:hover {
   background-color: red;
 }
-

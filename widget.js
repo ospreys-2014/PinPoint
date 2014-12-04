@@ -41,7 +41,7 @@ PinPoint.Widget.prototype = {
 	drawSideBar: function(){
 		if (!this.sideBar) {
 			this.sideBar = document.createElement("div");
-			this.sideBar.setAttribute('id', "sideBar")
+      		this.sideBar.setAttribute("class", "pinpoint-sideBar");
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
 			this.sideBar.style.width = "13em";
@@ -65,13 +65,12 @@ PinPoint.Widget.prototype = {
 
 	drawForm: function(){
 		this.form = document.createElement("form");
-		this.form.setAttribute('id',"add-note");
-
+		this.form.setAttribute('class',"pinpoint-add-note");
 		this.form.addEventListener('submit', this.createNote.bind(this));
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
-		this.input.setAttribute('class', 'note-input')
+		this.input.setAttribute('class', 'pinpoint-note-input')
 		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){
 			event.stopPropagation();
@@ -79,7 +78,8 @@ PinPoint.Widget.prototype = {
 
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
-		this.submit.setAttribute('id',"save");
+
+		this.submit.setAttribute('class',"pinpoint-save");
 		this.submit.setAttribute('value',"Save note");
 
 
@@ -102,9 +102,11 @@ PinPoint.Widget.prototype = {
 		var noteContentFromForm = this.input.value;
     var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
     var note = {
+      title: document.title,
       noteTime: time,
       content: noteContentFromForm,
       seconds: this.video.currentTime,
+      url: this.getUrl()
     };
     chrome.runtime.sendMessage({
     	method: "add note",
@@ -123,7 +125,9 @@ PinPoint.Widget.prototype = {
 		this.notesDiv.setAttribute('class',"pinpoint-all-notes");
 
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-  	this.tableContainer.innerHTML = ""
+    	this.tableContainer.innerHTML = ""
+  		notes.sort(function(a,b) { return a.seconds - b.seconds } );
+
   		for (note of notes) {
       	var node = new PinPoint.NotePresenter(note).present();
      		this.tableContainer.appendChild(node);
@@ -134,9 +138,11 @@ PinPoint.Widget.prototype = {
 
   getUrl: function(){
   	// other video source url's in if conditional
+
   	if (this.video.dataset.youtubeId){
   		var url = new URL("https://www.youtube.com/watch")
   		url.search = "v=" + this.video.dataset.youtubeId
+      console.log("this is the url", url.href)
   		return url.toString()
 		} else {
 			return this.video.src
@@ -144,26 +150,19 @@ PinPoint.Widget.prototype = {
   },
 
   assignDeleteListeners: function(){
-    console.log("in assign delete listeners")
-    var deleteButtons = document.getElementsByClassName("delete");
-    console.log(deleteButtons)
+    var deleteButtons = document.getElementsByClassName("pinpoint-delete");
     for(var i=0; i < deleteButtons.length; i++) {
-    	console.log("in for loop")
       deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
-      console.log("clicked!")
     };
   },
 
 	sendToRemoveNote: function(index){
-		console.log("In send to remove note")
 		var seconds = deleteButtons[index].dataset.seconds
-		// return function(){
 			chrome.runtime.sendMessage({
 			method: "remove note",
 			url: this.getUrl(),
 			seconds: seconds
-			}, this.appendNotes.bind(this))
-		// };
+		}, this.appendNotes.bind(this))
 	}
 }
 
