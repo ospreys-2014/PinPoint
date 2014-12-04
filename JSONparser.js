@@ -1,4 +1,5 @@
 function addNote(url, note) {
+  debugger
   var noteObjects = getNotes(url);
   noteObjects.push(note);
   saveNotes(url, noteObjects);

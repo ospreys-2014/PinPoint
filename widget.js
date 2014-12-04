@@ -3,20 +3,36 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-  this.youTubeVideoContainer = video.parentNode
 	this.video.addEventListener('mouseenter', function(event){
-    this.drawSideBar()
-    chrome.tabs.insertCSS({file: "pinpoint.css"});
-
+		this.drawSideBar()
 	}.bind(this));
-	// this.video.addEventListener('mouseleave', function(event){
+	this.video.addEventListener('mouseleave', function(event){
 		if (event.fromElement === this.video && event.toElement != this.sideBar) {
 			this.destroySideBar()
 		}
-	// }.bind(this));
+	}.bind(this));
 }
 
 PinPoint.Widget.prototype = {
+	drawScreenIcon: function(){
+		this.icon = document.createElement("div");
+		this.icon.addEventListener('click', this.onIconClick.bind(this));
+		this.icon.style.height = "100px";
+		this.icon.style.width = "100px";
+		this.icon.style.position = "absolute";
+		this.icon.style.top = this.video.offsetTop + "px";
+		this.icon.style.left = this.video.offsetLeft + "px";
+		this.icon.style.backgroundColor = "red";
+		this.icon.style.zIndex = 5e6;
+		this.video.offsetParent.appendChild(this.icon);
+	},
+
+	onIconClick: function(event){
+		event.stopPropagation();
+		this.icon.style.display = "none";
+		this.transformScreen();
+		this.sideBar.style.display = "block"
+	},
 
 	onSideBarClick: function(event){
 		event.stopPropagation();
@@ -30,9 +46,10 @@ PinPoint.Widget.prototype = {
 			this.sideBar.style.display = "block";
 			this.sideBar.style.width = "11.78em";
 			this.sideBar.style.position = "absolute";
-			this.sideBar.style.top = this.youTubeVideoContainer.offsetTop + 62 + "px";
-			this.sideBar.style.left = this.youTubeVideoContainer.offsetLeft + "px";
+			this.sideBar.style.top = this.video.offsetTop + "px";
+			this.sideBar.style.left = this.video.offsetLeft + "px";
 			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
+      this.sideBar.style.height = "100%";
 			this.sideBar.style.zIndex = 5e6;
 			this.video.offsetParent.appendChild(this.sideBar);
 			this.drawForm();
@@ -49,6 +66,7 @@ PinPoint.Widget.prototype = {
 	drawForm: function(){
 		this.form = document.createElement("form");
 		this.form.setAttribute('id',"add-note");
+
 		this.form.addEventListener('submit', this.createNote.bind(this));
 
 		this.input = document.createElement("input");
@@ -62,19 +80,20 @@ PinPoint.Widget.prototype = {
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
 		this.submit.setAttribute('id',"save");
+		this.submit.setAttribute('value',"Save note");
 
-		this.sideBar.appendChild(this.form);
+
 		this.form.appendChild(this.input);
 		this.form.appendChild(this.submit);
 		this.sideBar.appendChild(this.form);
 	},
 
 	drawTable: function() {
-		this.tableContainer = document.createElement("div");
+		this.tableContainer = document.createElement("table");
 		this.tableContainer.setAttribute('id', "all-notes");
-		this.table = document.createElement("table");
-		this.table.setAttribute('id', 'notes-table');
-		this.tableContainer.appendChild(this.table);
+		// this.table = document.createElement("table");
+		// this.table.setAttribute('id', 'notes-table');
+		// this.tableContainer.appendChild(this.table);
 		this.sideBar.appendChild(this.tableContainer);
 	},
 
@@ -104,10 +123,10 @@ PinPoint.Widget.prototype = {
 		this.notesDiv.setAttribute('id',"all-notes");
 
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-  	this.table.innerHTML = ""
+  	this.tableContainer.innerHTML = ""
   		for (note of notes) {
       	var node = new PinPoint.NotePresenter(note).present();
-     		this.table.appendChild(node);
+     		this.tableContainer.appendChild(node);
     	}
 		}.bind(this))
 		this.assignDeleteListeners()
