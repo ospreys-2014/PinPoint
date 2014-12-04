@@ -1,8 +1,23 @@
+header{
+	border-bottom:1px solid rgb(27, 111, 221);
+	padding-bottom: 30px;
+}
+
 #main-head{
+  float: left;
 	font-size: 70px;
 	color: white;
-	border-bottom:1px solid rgb(27, 111, 221);
 	font-family: "Lato", sans-serif;
+}
+
+.pinpoint-logo{
+	margin-top: 45px;
+	margin-left: 20px;
+  width: 50px;
+  height: 50px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 30%;
 }
 
 body {
@@ -16,6 +31,7 @@ body img{
 }
 
 #grid{
+	position: absolute;
 	margin-right: 5%;
 	margin-left: 5%;
 }
@@ -68,10 +84,27 @@ body img{
 
 /* back, initially hidden pane */
 .back {
+	text-align: center;
 	transform: rotateY(180deg);
 	border: 3px solid rgb(27, 111, 221);
 	height: 195px;
 	width: 295px;
+}
+
+.back, a{
+	color: white;
+	text-decoration: none;
+}
+
+.count-p{
+	margin: 0 auto;
+	border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  background: rgb(27, 111, 221);
+  text-align: center;
+  font: 30px "Lato", sans-serif;
 }
 
 
