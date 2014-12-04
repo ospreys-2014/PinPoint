@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "video time",
+    "name": "PinPoint",
     "description": "get the current time of youtube video",
     "version": "0.1",
     "background": {
