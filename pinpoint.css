@@ -59,9 +59,9 @@ a {
 
 .pinpoint-drop-down {
   position: absolute;
-  display: none;
+  /*display: none;*/
   opacity: 0;
-  visibility: hidden;
+  /*visibility: hidden;*/
   font-size: .7em;
   margin-left: -4em;
 }
@@ -79,7 +79,7 @@ a {
 li:hover .pinpoint-drop-down {
   display: block;
   opacity: 1;
-  visibility: visible;
+  /*visibility: visible;*/
 }
 
 /**** Sidebar ****/
@@ -107,7 +107,7 @@ li:hover .pinpoint-drop-down {
 }
 
 .pinpoint-note-input {
-  width: 14.12em;
+  width: 14.5em;
   height: 2em;
 }
 
@@ -149,7 +149,8 @@ li:hover .pinpoint-drop-down {
   height: 80%;
   margin-top: 10%;
   margin-bottom: 10%;
-  width: 14.5em;
+  width: 16em;
+  overflow: auto;
 }
 
 .pinpoint-notes-container {
