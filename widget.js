@@ -15,26 +15,6 @@ PinPoint.Widget = function(video){
 }
 
 PinPoint.Widget.prototype = {
-	drawScreenIcon: function(){
-		this.icon = document.createElement("div");
-		this.icon.addEventListener('click', this.onIconClick.bind(this));
-		this.icon.style.height = "100px";
-		this.icon.style.width = "100px";
-		this.icon.style.position = "absolute";
-		this.icon.style.top = this.video.offsetTop + "px";
-		this.icon.style.left = this.video.offsetLeft + "px";
-		this.icon.style.backgroundColor = "red";
-		this.icon.style.zIndex = 5e6;
-		this.video.offsetParent.appendChild(this.icon);
-	},
-
-	onIconClick: function(event){
-		event.stopPropagation();
-		this.icon.style.display = "none";
-		this.transformScreen();
-		this.sideBar.style.display = "block"
-	},
-
 	onSideBarClick: function(event){
 		event.stopPropagation();
 	},
@@ -54,12 +34,6 @@ PinPoint.Widget.prototype = {
 			this.drawForm();
 			this.drawTable();
 			this.appendNotes();
-			var fonts = document.createElement('style');
-    	fonts.type = 'text/css';
-    	fonts.textContent = '@font-face { font-family: Lato; src: url("'
-        + chrome.extension.getURL('http://fonts.googleapis.com/css?family=Lato:100,300|Nunito:700')
-        + '"); }';
-			document.head.appendChild(fonts);
 		}
 	},
 
@@ -102,7 +76,7 @@ PinPoint.Widget.prototype = {
 
 	createNote: function(event){
     event.preventDefault();
-	var noteContentFromForm = this.input.value;
+		var noteContentFromForm = this.input.value;
     var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
     var note = {
       title: document.title,
@@ -110,7 +84,6 @@ PinPoint.Widget.prototype = {
       content: noteContentFromForm,
       seconds: this.video.currentTime,
       url: this.getUrl()
-      // noteURL: this.video
     };
     chrome.runtime.sendMessage({
     	method: "add note",
@@ -125,12 +98,8 @@ PinPoint.Widget.prototype = {
 	},
 
 	appendNotes: function(callback){
-		// this.notesDiv = document.createElement("div");
-		// this.noteDiv.setAttribute("class", "pinpoint-all-notes");
-
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
-
 	  	this.tableContainer.innerHTML = ""
 			var index = 0;
 			for (note of notes) {
@@ -146,8 +115,6 @@ PinPoint.Widget.prototype = {
 	},
 
 	getUrl: function(){
-		// other video source url's in if conditional
-
 		if (this.video.dataset.youtubeId){
 			var url = new URL("https://www.youtube.com/watch")
 			url.search = "v=" + this.video.dataset.youtubeId
@@ -160,14 +127,9 @@ PinPoint.Widget.prototype = {
 
 function main(){
 	var videos = document.querySelectorAll("video");
-
 	for (var i = 0; i < videos.length; i++){
 		videos[i].pinPointWidget = videos[i].pinPointWidget || new PinPoint.Widget(videos[i]);
-		console.log(window.location)
-		console.log(videos[i])
 	}
 }
-
-window.addEventListener('beforeunload', console.log.bind(console));
 
 main();

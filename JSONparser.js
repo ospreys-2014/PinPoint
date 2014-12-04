@@ -12,16 +12,10 @@ function getNotes(url){
     return JSON.parse(retrievedObject)
   }
 }
-// splice index
 function removeNote(url, index){
   var notes = JSON.parse(localStorage.getItem(url))
   notes.splice(index)
   saveNotes(url, notes);
-  // for(var i = 0; i < notes.length; i++){
-  //   if(notes[i].seconds == seconds){
-  //     notes.splice(i, 1);
-  //   }
-  // }
 }
 
 function saveNotes(url, notes) {
@@ -34,11 +28,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   } else if (message.method === "remove note"){
     removeNote(message.url, message.index)
   }
-  console.log("getting response")
-
   sendResponse(getNotes(message.url))
-
 })
 
 chrome.browserAction.setPopup({popup: "popup.html"})
-
