@@ -69,15 +69,14 @@ li:hover .pinpoint-drop-down {
   visibility: visible;
 }
 
-/**** Notes Table ****/
-.pinpoint-table {
-  border-collapse: collapse;
-  table-layout: fixed;
-  overflow: auto;
-}
+/**** Sidebar ****/
 
-.pinpoint-table tr td {
-  padding: 1em;
+.pinpoint-timelink {
+    margin-right:.5em;
+    border-bottom: 3px solid transparent;
+    transition: 0.7s ease;
+    width: 0px;
+    white-space: nowrap;
 }
 
 .pinpoint-content {
@@ -99,70 +98,79 @@ li:hover .pinpoint-drop-down {
 tr:nth-child(odd) {
   background-color:rgb(48, 48, 48);
 
+.pinpoint-timelink:hover {
+  /*text-decoration: none;*/
+  /*border-bottom: 1px solid rgb(56, 249, 3);*/
+  /*width:20%;*/
 }
 
+/***Div Containing Notes ***/
 .pinpoint-all-notes {
-  width: 20em;
-  max-height: 15em;
+  /*font-size: 1em;*/
+  height: 13.9em;
   font-size: 1.2em;
-  max-width: 8em;
-  overflow-y: auto;
+  width: 10em;
+  /*overflow: auto;*/
   margin-top: 1em;
 }
+/*****Sidebar Note Form*****/
 
-.pinpoint-note_info {
-  word-wrap: break-word;
-  max-width: 18em;
-  min-width: 18em;
-}
-
-/*****Note Form*****/
 .pinpoint-note {
-  margin-top: 0;
-  width:100%;
-  height: 5em;
-  background-color: transparent;
-  border: 1px;
-  font-size: 1.5em;
+  position: relative;
+  height:auto;
+  overflow:hidden;
 }
 
-.pinpoint-save {
-  border-top: 1px solid #96d1f8;
-  margin-bottom: 1em;
-  padding: 10px 20px;
-  color: white;
-  font-size: 1.4em;
-  background: rgb(27, 111, 221);
-  text-decoration: none;
-  vertical-align: middle;
-  width: 100%;
-}
-.pinpoint-save:hover {
-  color: rgb(27, 111, 221);
+.pinpoint-note-input {
+  width: 11.27em;
 }
 
-#sidebar {
-  height: 8em;
-  overflow: auto;
+.pinpoint-content {
+  width: 110px;
+  word-wrap: break-word;
+  position: relative;
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.pinpoint-time-and-delete {
+  display: inline-block;
+  position: absolute;
+  right: 100px;
+  top: 1px;
+  left: 1px;
+  /*left: 1.5em;*/
+}
+
+
+#save {
+  display: none;
+  padding: 1em;
+}
+
+/*Outer Div Containing The All-Notes Div*/
+.pinpoint-sidebar {
+  height: 19.5em;
+  width: 13em;
+  /*overflow: auto;*/
 }
 
 /*** Sidebar Delete button ***/
-.delete{
-  margin:4em;
+.pinpoint-delete{
   font-size: .1em;
-  float: right;
   text-decoration: none;
   color: black;
   background-color: silver;
   padding: 2px;
   border-radius: 20px;
   opacity: .5;
+  /*position: absolute;*/
+  left: -8.5em;
+  top: 3em;
 }
 
 .delete:hover {
   background-color: red;
 }
 
-.pinpoint-create {
-  margin-left: 8.2em;
-}
+
