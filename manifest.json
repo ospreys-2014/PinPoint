@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PinPoint",
     "description": "get the current time of youtube video",
-    "version": "0.1",
+    "version": "1.1",
     "background": {
         "scripts": ["JSONparser.js", "popup.js"],
         "persistent": true
