@@ -13,15 +13,16 @@ function getNotes(url){
     return JSON.parse(retrievedObject)
   }
 }
-
-function removeNote(url, seconds){
+// splice index
+function removeNote(url, index){
   var notes = JSON.parse(localStorage.getItem(url))
-  for(var i = 0; i < notes.length; i++){
-    if(notes[i].seconds == seconds){
-      notes.splice(i, 1);
-      saveNotes(url, notes);
-    }
-  }
+  notes.splice(index)
+  saveNotes(url, notes);
+  // for(var i = 0; i < notes.length; i++){
+  //   if(notes[i].seconds == seconds){
+  //     notes.splice(i, 1);
+  //   }
+  // }
 }
 
 function saveNotes(url, notes) {
@@ -32,7 +33,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   if (message.method === "add note"){
     addNote(message.url, message.note)
   } else if (message.method === "remove note"){
-    removeNote(message.url, message.seconds)
+    removeNote(message.url, message.index)
   }
   sendResponse(getNotes(message.url))
 

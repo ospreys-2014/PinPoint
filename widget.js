@@ -99,7 +99,7 @@ PinPoint.Widget.prototype = {
 
 	createNote: function(event){
     event.preventDefault();
-		var noteContentFromForm = this.input.value;
+	var noteContentFromForm = this.input.value;
     var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
     var note = {
       title: document.title,
@@ -116,54 +116,36 @@ PinPoint.Widget.prototype = {
     this.input.value = "";
 	},
 
-  displayNotes: function(notes){
-  	this.notes = notes
-  },
+	displayNotes: function(notes){
+		this.notes = notes
+	},
 
-  appendNotes: function(){
-		this.notesDiv = document.createElement("div");
-		this.notesDiv.setAttribute('class',"pinpoint-all-notes");
-
+	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-    	this.tableContainer.innerHTML = ""
-  		notes.sort(function(a,b) { return a.seconds - b.seconds } );
-
-  		for (note of notes) {
-      	var node = new PinPoint.NotePresenter(note).present();
-     		this.tableContainer.appendChild(node);
-    	}
+	  	this.table.innerHTML = ""
+			var index = 0;
+			for (note of notes) {
+		  	var node = new PinPoint.NotePresenter(
+		  		note,
+		  		index,
+		  		this.getUrl(),
+		  		this.appendNotes.bind(this)).present();
+		  	index++;
+		 		this.table.appendChild(node);
+			}
 		}.bind(this))
-		this.assignDeleteListeners()
-  },
+	},
+	getUrl: function(){
+		// other video source url's in if conditional
 
-  getUrl: function(){
-  	// other video source url's in if conditional
-
-  	if (this.video.dataset.youtubeId){
-  		var url = new URL("https://www.youtube.com/watch")
-  		url.search = "v=" + this.video.dataset.youtubeId
-      console.log("this is the url", url.href)
-  		return url.toString()
+		if (this.video.dataset.youtubeId){
+			var url = new URL("https://www.youtube.com/watch")
+			url.search = "v=" + this.video.dataset.youtubeId
+			return url.toString()
 		} else {
 			return this.video.src
 		}
-  },
-
-  assignDeleteListeners: function(){
-    var deleteButtons = document.getElementsByClassName("pinpoint-delete");
-    for(var i=0; i < deleteButtons.length; i++) {
-      deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
-    };
-  },
-
-	sendToRemoveNote: function(index){
-		var seconds = deleteButtons[index].dataset.seconds
-			chrome.runtime.sendMessage({
-			method: "remove note",
-			url: this.getUrl(),
-			seconds: seconds
-		}, this.appendNotes.bind(this))
-	}
+	},
 }
 
 function main(){

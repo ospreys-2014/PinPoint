@@ -1,6 +1,13 @@
-PinPoint.NotePresenter = function(note) {
+PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
   this.note = note;
+
   this.nodeType = "div";
+  this.index = index;
+  this.url = url;
+  this.refreshFunc = refreshFunc;
+
+  this.rootNodeType = "tr";
+  this.childNodeType = "td";
   this.linkNodeType = "a";
 }
 
@@ -20,7 +27,6 @@ PinPoint.NotePresenter.prototype = {
     //Creates content link
     contentLink = document.createElement(this.linkNodeType)
 
-
     // Assigns class names
     noteNode.className = "pinpoint-note";
     timeAndDeleteNode.className = 'pinpoint-time-and-delete';
@@ -32,26 +38,28 @@ PinPoint.NotePresenter.prototype = {
     timeLink.setAttribute('href', this.note.noteUrl );
     contentLink.setAttribute('href', this.note.noteURL)
 
-
     // Creates the text for the link
+    linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.content + "</span>";
 
-    timeLink.innerHTML = this.note.noteTime
-    contentLink.innerHTML = this.note.content
-    // + "</span>" + "<span class='pinpoint-content'>" + this.note.content + "</span>";
-    // Append timeLink and deleteLink into the div 'timeAndDeleteNode'
-    timeAndDeleteNode.appendChild(deleteLink);
-    timeAndDeleteNode.appendChild(timeLink);
-    contentNode.appendChild(contentLink);
-    // Append the div'timeAncDeleteNode' to the div 'noteNode'
-    noteNode.appendChild(contentNode);
-    noteNode.appendChild(timeAndDeleteNode);
+    // Append the td 'timeAncContentNode' to the tr 'noteNode'
+    noteNode.appendChild(timeAndContentNode);
+    // Append the 'timeAncContentNode' to the tr 'noteNode'
+    timeAndContentNode.appendChild(linkNode);
 
-    //Sets attributes for delete link
-    deleteLink.setAttribute('class', 'pinpoint-delete');
-    deleteLink.setAttribute('href', '#');
-    deleteLink.setAttribute('data-seconds', this.note.seconds);
-    deleteLink.innerHTML = "x";
-
+    deleteLinkNode.setAttribute('class', 'pinpoint-delete');
+    deleteLinkNode.setAttribute('href', '#');
+    deleteLinkNode.setAttribute('data-seconds', this.note.seconds);
+    deleteLinkNode.innerHTML = "x";
+    deleteNode.appendChild(deleteLinkNode);
+    noteNode.appendChild(deleteNode);
+    deleteLinkNode.addEventListener('click', function(){
+       chrome.runtime.sendMessage({
+            method: "remove note",
+            url: this.url,
+            index: this.index,
+            seconds: this.note.seconds,
+        }, this.refreshFunc)
+    }.bind(this));
     return noteNode;
   }
 }
