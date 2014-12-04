@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,100italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="popup.css">
@@ -10,39 +10,21 @@
         <script src="JSONparser.js"></script>
         <script src="pinpoint-notes-presenter.js"></script>
     </head>
-    <body>
-        <section>
-            <ul id="title-bar">
-                <li id="title">PinPoint</li>
-                <li><a class="#menu-bar" href="#"><i class="fa fa-bars"></i></a>
-                    <ul id="drop-down">
-                        <li id="search-button">Search <i class="fa fa-search"></i></li>
+    <body class="pinpoint-body">
+        <section class = "pinpoint-section">
+            <div class="pinpoint-title-bar">
+                <h2 class="pinpoint-title">PinPoint</h2>
+            </div>
+            <ul class = "pinpoint-nav-icons">
+                <li><a class="pinpoint-menu-bar" href="#"><i class="fa fa-bars"></i></a>
+                    <ul class="pinpoint-drop-down">
+                        <li>Dashboard</li><br>
                         <li>About</li>
-                        <li>Options</li>
                     </ul>
                 </li>
+            </ul>
             </div>
         </section>
-        <div id="pop-up-container">
-            <form id="add-note">
-                <p>
-                    <input type="hidden" id="website" name="website" size="10" value=""/>
-                </p>
-                <p>
-                    <input type="hidden" id="time" name="time" size="10" value="" />
-                </p>
-                <p>
-                    <input type="text" id="note" name="note" size="50" placeholder=" Enter Note..." />
-                </p>
-                <input id="save" type="submit" value="Save Your Note" />
-            </form>
-            <span id="notes-icon">Notes <i class="fa fa-comment"></i></span>
-            <hr></div>
-            <div id="all-notes">
-                <table id="notes-table">
-                </table>
-            </div>
-        </div>
 
     </body>
 </html>
