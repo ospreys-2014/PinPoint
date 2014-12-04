@@ -3,11 +3,12 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	this.video.addEventListener('mouseenter', function(event){
+	this.videoParent = document.querySelector("video").parentNode
+	this.videoParent.addEventListener('mouseenter', function(event){
 		this.drawSideBar()
 	}.bind(this));
-	this.video.addEventListener('mouseleave', function(event){
-		if (event.fromElement === this.video && event.toElement != this.sideBar) {
+	this.videoParent.addEventListener('mouseleave', function(event){
+		if (event.fromElement === this.videoParent && event.toElement != this.sideBar) {
 			this.destroySideBar()
 		}
 	}.bind(this));
@@ -40,7 +41,6 @@ PinPoint.Widget.prototype = {
 
 	drawSideBar: function(){
 		if (!this.sideBar) {
-			this.videoParent = document.querySelector("video").parentNode
 			this.sideBar = document.createElement("div");
       this.sideBar.setAttribute("class", "pinpoint-sideBar");/**/
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
