@@ -89,8 +89,8 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawTable: function() {
-		this.tableContainer = document.createElement("table");
-		this.tableContainer.setAttribute('id', "all-notes");
+		this.tableContainer = document.createElement("div");
+		this.tableContainer.setAttribute('class', "pinpoint-notes-container");
 		// this.table = document.createElement("table");
 		// this.table.setAttribute('id', 'notes-table');
 		// this.tableContainer.appendChild(this.table);
@@ -120,7 +120,7 @@ PinPoint.Widget.prototype = {
 
   appendNotes: function(){
 		this.notesDiv = document.createElement("div");
-		this.notesDiv.setAttribute('id',"all-notes");
+		this.notesDiv.setAttribute('class',"pinpoint-all-notes");
 
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
   	this.tableContainer.innerHTML = ""

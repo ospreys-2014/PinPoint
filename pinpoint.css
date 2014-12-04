@@ -76,50 +76,28 @@ li:hover #drop-down {
 }
 
 /**** Sidebar Table ****/
-#notes-table {
-  /*opacity: .5;*/
-  /*max-width: 80%;*/
-  /*width:11.8em;*/
-  /*max-height: 1em;*/
-  border-collapse: collapse;
-  /*table-layout: fixed;*/
-  /*overflow: auto;*/
-}
-table tr td {
-  padding: 1em 0 1em 1em;
-  font-size: .8em;
-  /*white-space: nowrap;*/
-  /*text-overflow:ellipsis;*/
-}
 
-#time {
+.pinpoint-timelink {
     margin-right:.5em;
     border-bottom: 3px solid transparent;
     transition: 0.7s ease;
     width: 0px;
     white-space: nowrap;
 }
-#time:hover {
+
+.pinpoint-timelink:hover {
   /*text-decoration: none;*/
   /*border-bottom: 1px solid rgb(56, 249, 3);*/
   /*width:20%;*/
 }
 
-tr {
-
-}
-
-tr:nth-child(odd) {
-  background-color:rgb(48, 48, 48);
-
-}
 /***Div Containing Notes Table***/
 .pinpoint-all-notes {
   /*font-size: 1em;*/
   height: 13.9em;
   font-size: 1.2em;
   width: 10em;
-  overflow: auto;
+  /*overflow: auto;*/
   margin-top: 1em;
 }
 
@@ -134,7 +112,7 @@ tr:nth-child(odd) {
 }*/
 
 .pinpoint-note {
-
+  position: relative;
 }
 
 .pinpoint-note-input {
@@ -144,28 +122,17 @@ tr:nth-child(odd) {
 .pinpoint-content {
   width: 100%;
   word-wrap: break-word;
-  position: relative;
-
-/*  position: absolute;*/
-}
-
-/*.pinpoint-notes-table {
-  max-width: 9.87em;
-  table-layout: fixed;
-  width: 100%;
-}*/
-
-.pinpoint-content {
-  width: 80%
+  /*position: absolute;*/
+  /*left: 4.3em;*/
   display: inline-block;
-
-  position: absolute;
 }
 
-.pinpoint-time {
+.pinpoint-time-and-delete {
   display: inline-block;
   position: absolute;
+  /*left: 1.5em;*/
 }
+
 
 #save {
   display: none;
@@ -186,21 +153,21 @@ tr:nth-child(odd) {
 .pinpoint-sidebar {
   height: 19.5em;
   width: 11.78em;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 /*** Sidebar Delete button ***/
 .pinpoint-delete{
-  margin:14em -53em;
   font-size: .1em;
-/*  float: right;*/
   text-decoration: none;
   color: black;
   background-color: silver;
   padding: 2px;
   border-radius: 20px;
   opacity: .5;
-  position: absolute;
+  /*position: absolute;*/
+  left: -8.5em;
+  top: 3em;
 }
 
 .delete:hover {
