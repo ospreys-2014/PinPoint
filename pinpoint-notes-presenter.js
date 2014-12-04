@@ -8,6 +8,7 @@ PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
 
   // this.rootNodeType = "tr";
   // this.childNodeType = "td";
+  this.buttonNodeType = "button";
   this.linkNodeType = "a";
 }
 
@@ -21,7 +22,7 @@ PinPoint.NotePresenter.prototype = {
     timeLink = document.createElement(this.linkNodeType);
     //Creates delete link
     // deleteNode = document.createElement(this.childNodeType);
-    deleteLink = document.createElement(this.linkNodeType);
+    deleteLink = document.createElement(this.buttonNodeType);
     //Creates content div
     contentNode = document.createElement(this.nodeType);
     //Creates content link
@@ -35,8 +36,8 @@ PinPoint.NotePresenter.prototype = {
     timeLink.setAttribute('class', 'pinpoint-timelink');
     contentLink.setAttribute('class', 'pinpoint-contentlink')
     // Sets the link to a specific time within the video
-    timeLink.setAttribute('href', this.note.noteURL );
-    contentLink.setAttribute('href', this.note.noteURL)
+    timeLink.setAttribute('href', this.note.url + "#t=" + this.note.seconds );
+    contentLink.setAttribute('href', this.note.url + "#t=" + this.note.seconds)
 
     // Creates the text for the link
     timeLink.innerHTML = this.note.noteTime

@@ -3,14 +3,14 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	this.video.addEventListener('mouseenter', function(event){
+	// this.video.addEventListener('mouseenter', function(event){
 		this.drawSideBar()
-	}.bind(this));
-	this.video.addEventListener('mouseleave', function(event){
-		if (event.fromElement === this.video && event.toElement != this.sideBar) {
-			this.destroySideBar()
-		}
-	}.bind(this));
+	// }.bind(this));
+	// this.video.addEventListener('mouseleave', function(event){
+		// if (event.fromElement === this.video && event.toElement != this.sideBar) {
+			// this.destroySideBar()
+		// }
+	// }.bind(this));
 }
 
 PinPoint.Widget.prototype = {
@@ -44,17 +44,23 @@ PinPoint.Widget.prototype = {
       this.sideBar.setAttribute("class", "pinpoint-sideBar");/**/
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
-			this.sideBar.style.width = "13em";
+			// this.sideBar.style.width = "13em";
 			this.sideBar.style.position = "absolute";
 			this.sideBar.style.top = this.video.offsetTop + "px";
 			this.sideBar.style.left = this.video.offsetLeft + "px";
 			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
-      this.sideBar.style.height = "100%";
+      // this.sideBar.style.height = "100%";
 			this.sideBar.style.zIndex = 5e6;
 			this.video.offsetParent.appendChild(this.sideBar);
 			this.drawForm();
 			this.drawTable();
 			this.appendNotes();
+			var fonts = document.createElement('style');
+    	fonts.type = 'text/css';
+    	fonts.textContent = '@font-face { font-family: Lato; src: url("'
+        + chrome.extension.getURL('http://fonts.googleapis.com/css?family=Lato:100,300|Nunito:700')
+        + '"); }';
+			document.head.appendChild(fonts);
 		}
 	},
 
@@ -107,6 +113,7 @@ PinPoint.Widget.prototype = {
       content: noteContentFromForm,
       seconds: this.video.currentTime,
       url: this.getUrl()
+      // noteURL: this.video
     };
     chrome.runtime.sendMessage({
     	method: "add note",

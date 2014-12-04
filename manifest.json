@@ -14,7 +14,13 @@
             "matches": ["http://www.youtube.com/*", "https://www.youtube.com/*"],
             "all_frames": true,
             "js": ["widget.js", "pinpoint-notes-presenter.js"],
-            "css": ["pinpoint.css"]}],
+            "css": ["pinpoint.css", "font.css"]
+            }],
+    "web_accessible_resources": [
+    "font.css",
+    "Lato.woff2",
+    "fonts/*.woff2"
+    ],
     "permissions": [
         "storage",
         "tabs",
