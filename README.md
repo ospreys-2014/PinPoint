@@ -3,30 +3,23 @@ PinPoint
 
 **PinPoint is a google chrome extension that allows you to makes notes on particuar points in a video so you can revisit them later with ease.**
 
-### Team Members:
-- Edwin
-- Jensen
-- Corey
-- Ali
-- Rebecca
+## Create PinPoints on any YouTube video
+- Drag your mouse onto the video to bring up the Sidebar and create a PinPoint
+- Drag away from the video to hide the Sidebar and see your videos as normal
 
-#### Our MVP
-- As a user...
-    - I want to be able to make comments in a popup.
-    - I want my comments associated with the video's time at the point that I start typing a new note.
-    - I want specific notes saved to a specific video.
-    - I want to be able to see all the notes I've made on the video I'm currently watching in the popup.
-    - I want to be able to click on a note and have the video I'm watching jump to the associated time.
-    - I want to be able to make a note at any time (paused or unpaused).
+## PinPoints automatically load when you revisit a video
+- The Sidebar will display all PinPoints for that video you've already made
 
-#### Our IceBox
-- As a user...
-    - I want to be able to edit and delete these notes.
-    - I want to be able to use this extension on *any* site that has videos.
-    - I want to be able to make new notes directly from a text area underneath the video.
-    - I want to see a bar underneath the video that shows at what time in the video notes are being held via little markings.
-    - I want to see my notes pop up beside/underneath/over/above the video as I'm watching, when the time I made the note at comes up.
-    - I want to have the *option* of seeing other people's notes on the video I'm watching.
-    - Only my notes are viewable to me.
-    - I am only allowed 200 characters per note.
-    - I want to be able to visit any links I post in my note on a new tab.
+## Includes a full-page Dashboard to see your PinPoint videos
+- A visually appealing and organized way to see your favorite videos
+
+## Installation
+- visit the Chrome Extension webstore and download at * [PinPoint](www.google.com)
+- PinPoint is open-source and we are open to any improvements
+
+## PinPoint
+* [Ali Yeysides](https://github.com/aliyeysides)
+* [Corey Nilan](https://github.com/cen10)
+* [Jensen Bouzi](https://github.com/jbouzi12)
+* [Rebecca Perez](https://github.com/beccapaige)
+* [Edwin Kim](https://github.com/emoney86)
