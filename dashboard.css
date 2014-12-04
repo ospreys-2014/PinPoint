@@ -1,5 +1,5 @@
 header{
-	border-bottom:1px solid rgb(27, 111, 221);
+	border-bottom:10px solid rgb(27, 111, 221);
 	padding-bottom: 30px;
 }
 
@@ -91,13 +91,15 @@ body img{
 .back {
 	text-align: center;
 	transform: rotateY(180deg);
-	border: 1px solid rgb(27, 111, 221);
-	height: 195px;
-	width: 295px;
+	border: 20px solid rgb(27, 111, 221);
+  background-color: white;
+  /*color: black;*/
+	height: 180px;
+	width: 280px;
 }
 
 .back, a{
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 
@@ -110,6 +112,7 @@ body img{
   background: rgb(27, 111, 221);
   text-align: center;
   font: 30px "Lato", sans-serif;
+  color: white;
 }
 
 
