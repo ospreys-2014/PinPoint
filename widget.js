@@ -131,6 +131,8 @@ PinPoint.Widget.prototype = {
 		// this.noteDiv.setAttribute("class", "pinpoint-all-notes");
 
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
+	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
+
 	  	this.tableContainer.innerHTML = ""
 			var index = 0;
 			for (note of notes) {
@@ -144,6 +146,7 @@ PinPoint.Widget.prototype = {
 			}
 		}.bind(this))
 	},
+
 	getUrl: function(){
 		// other video source url's in if conditional
 
