@@ -3,14 +3,14 @@ var PinPoint = PinPoint || {};
 
 PinPoint.Widget = function(video){
 	this.video = video;
-	// this.video.addEventListener('mouseenter', function(event){
+	this.video.addEventListener('mouseenter', function(event){
 		this.drawSideBar()
-	// }.bind(this));
-	// this.video.addEventListener('mouseleave', function(event){
-		// if (event.fromElement === this.video && event.toElement != this.sideBar) {
-			// this.destroySideBar()
-		// }
-	// }.bind(this));
+	}.bind(this));
+	this.video.addEventListener('mouseleave', function(event){
+		if (event.fromElement === this.video && event.toElement != this.sideBar) {
+			this.destroySideBar()
+		}
+	}.bind(this));
 }
 
 PinPoint.Widget.prototype = {
@@ -40,16 +40,15 @@ PinPoint.Widget.prototype = {
 
 	drawSideBar: function(){
 		if (!this.sideBar) {
+			this.videoParent = document.querySelector("video").parentNode
 			this.sideBar = document.createElement("div");
       this.sideBar.setAttribute("class", "pinpoint-sideBar");/**/
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
-			// this.sideBar.style.width = "13em";
 			this.sideBar.style.position = "absolute";
-			this.sideBar.style.top = this.video.offsetTop + "px";
-			this.sideBar.style.left = this.video.offsetLeft + "px";
+			this.sideBar.style.top = this.videoParent.offsetTop + "px";
+			this.sideBar.style.left = this.videoParent.offsetLeft + "px";
 			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
-      // this.sideBar.style.height = "100%";
 			this.sideBar.style.zIndex = 5e6;
 			this.video.offsetParent.appendChild(this.sideBar);
 			this.drawForm();
