@@ -1,15 +1,10 @@
-/*** Pop Up***/
-body {
+.pinpoint-body {
   margin:0;
   background:rgb(37,37,37);
   font-family: "Lato", sans-serif;
   color: white;
-}
-
-hr{
-  width: 85%;
-  border-top:1px solid rgb(38, 38, 38);
-  border-bottom:1px solid rgb(28, 28, 28);
+  height: 27em;
+  width:16em;
 }
 
 a, .link{
@@ -17,65 +12,64 @@ a, .link{
   color: white;
 }
 
-
 /*** Title section ***/
-section {
+.pinpoint-section {
   list-style: none;
-  margin-bottom: 0 ;
-  padding:.2em;
-}
-li {
-  display: inline-block;
-  padding-right: 10px;
-}
-#title {
-  padding-right: 1.7em;
-  font-size: 1.4em;
+  margin-bottom: 0;
+  text-align: center;
+  color: white;
+  font-size: 2em;
 
 }
-section {
-  color: white;
+.pinpoint-title {
+  /*float:left;*/
   background: rgb(27, 111, 221);
-  text-align: center;
-  font-size: 2em;
+
+}
+.pinpoint-title-bar {
+  padding-top: 3.8em;
 }
 
 .fa {
   color: white;
 }
 
-#notes-icon {
-  text-align: center;
+/*** Dropdown Menu Bar ****/
+.pinpoint-section .pinpoint-nav-icons li {
   display: block;
+  float: left;
 }
 
-/*** Dropdown Menu Bar ****/
-#drop-down {
+.pinpoint-nav-icons {
+  padding-left: 3.4em;
+}
+
+.pinpoint-drop-down {
   position: absolute;
-  right: 0;
   display: none;
   opacity: 0;
   visibility: hidden;
   font-size: .7em;
+  margin-left: -4em;
 }
 
-#drop-down li {
+.pinpoint-drop-down li {
   background: #555;
   display: block;
   color: #fff;
   text-shadow: 0 -1px 0 #000;
-  padding:.2em;
+  /*border-top: 5px solid transparent;*/
 }
 
-#drop-down li:hover { background: #666; }
+.pinpoint-drop-down li:hover { background: #666; }
 
-li:hover #drop-down {
+li:hover .pinpoint-drop-down {
   display: block;
   opacity: 1;
   visibility: visible;
 }
 
-/**** Sidebar Table ****/
+/**** Sidebar ****/
 
 .pinpoint-timelink {
     margin-right:.5em;
@@ -85,13 +79,32 @@ li:hover #drop-down {
     white-space: nowrap;
 }
 
+.pinpoint-content {
+  margin-left: 1.2em;
+}
+
+.pinpoint-time {
+  border-bottom: 3px solid transparent;
+  transition: 0.7s ease;
+  width: 0px;
+  white-space: nowrap;
+}
+
+.pinpoint-time:hover {
+  border-bottom: 1px solid rgb(56, 249, 3);
+  width:20%;
+}
+
+tr:nth-child(odd) {
+  background-color:rgb(48, 48, 48);
+
 .pinpoint-timelink:hover {
   /*text-decoration: none;*/
   /*border-bottom: 1px solid rgb(56, 249, 3);*/
   /*width:20%;*/
 }
 
-/***Div Containing Notes Table***/
+/***Div Containing Notes ***/
 .pinpoint-all-notes {
   /*font-size: 1em;*/
   height: 13.9em;
@@ -100,20 +113,10 @@ li:hover #drop-down {
   /*overflow: auto;*/
   margin-top: 1em;
 }
-
 /*****Sidebar Note Form*****/
-/*#note {
-  margin-top: 0;
-  width:100%;
-  height: 5em;
-  background-color: transparent;
-  border: 1px;
-  font-size: 1.5em;
-}*/
 
 .pinpoint-note {
   position: relative;
-  /*padding-bottom: 13px;*/
   height:auto;
   overflow:hidden;
 }
@@ -128,7 +131,6 @@ li:hover #drop-down {
   position: relative;
   display: inline-block;
   margin-left: 50px;
-
 }
 
 .pinpoint-time-and-delete {
@@ -143,17 +145,7 @@ li:hover #drop-down {
 
 #save {
   display: none;
-  /*border-top: 1px;
   padding: 1em;
-  color: white;
-  font-size: 1.4em;
-  background: rgb(27, 111, 221);
-  text-decoration: none;
-  vertical-align: middle;
-  width: 100%;*/
-}
-#save:hover {
-  /*color: rgb(27, 111, 221);*/
 }
 
 /*Outer Div Containing The All-Notes Div*/
@@ -181,26 +173,4 @@ li:hover #drop-down {
   background-color: red;
 }
 
-/*::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
 
-::-webkit-scrollbar:vertical {
-    width: 12px;
-}
-
-::-webkit-scrollbar:horizontal {
-    height: 12px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #ffffff;
-}*/
-/**/
