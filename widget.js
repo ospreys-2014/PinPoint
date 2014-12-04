@@ -75,6 +75,7 @@ PinPoint.Widget.prototype = {
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
+		this.input.setAttribute('placeholder', 'Create a PinPoint here...')
 		this.input.setAttribute('class', 'pinpoint-note-input')
 		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){

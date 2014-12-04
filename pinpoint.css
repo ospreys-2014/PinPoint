@@ -105,17 +105,21 @@ li:hover .pinpoint-drop-down {
   height:auto;
   width: 100%;
   overflow-x:hidden;
-
-}
-
-.pinpoint-note:hover {
-  /*border-bottom: 0.2em solid blue*/
   opacity: .7;
 }
 
+.pinpoint-note:hover {
+  opacity: 1;
+}
+
 .pinpoint-note-input {
-  width: 15.6em;
+  width: 15.7em;
   height: 2em;
+  background-color: rgb(245,245,245);
+  border-top: 1px;
+  border-left: 1px;
+  border-bottom: 1px;
+  color: black;
 }
 
 .pinpoint-content {
