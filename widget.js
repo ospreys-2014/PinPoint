@@ -44,7 +44,7 @@ PinPoint.Widget.prototype = {
 			this.sideBar.setAttribute('id', "sideBar")
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
-			this.sideBar.style.width = "11.78em";
+			this.sideBar.style.width = "13em";
 			this.sideBar.style.position = "absolute";
 			this.sideBar.style.top = this.video.offsetTop + "px";
 			this.sideBar.style.left = this.video.offsetLeft + "px";

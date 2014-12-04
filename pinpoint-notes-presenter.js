@@ -43,8 +43,8 @@ PinPoint.NotePresenter.prototype = {
     timeAndDeleteNode.appendChild(timeLink);
     contentNode.appendChild(contentLink);
     // Append the div'timeAncDeleteNode' to the div 'noteNode'
-    noteNode.appendChild(timeAndDeleteNode);
     noteNode.appendChild(contentNode);
+    noteNode.appendChild(timeAndDeleteNode);
 
     //Sets attributes for delete link
     deleteLink.setAttribute('class', 'pinpoint-delete');

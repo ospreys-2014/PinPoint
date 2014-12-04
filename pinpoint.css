@@ -113,6 +113,9 @@ li:hover #drop-down {
 
 .pinpoint-note {
   position: relative;
+  /*padding-bottom: 13px;*/
+  height:auto;
+  overflow:hidden;
 }
 
 .pinpoint-note-input {
@@ -120,16 +123,20 @@ li:hover #drop-down {
 }
 
 .pinpoint-content {
-  width: 100%;
+  width: 110px;
   word-wrap: break-word;
-  /*position: absolute;*/
-  /*left: 4.3em;*/
+  position: relative;
   display: inline-block;
+  margin-left: 50px;
+
 }
 
 .pinpoint-time-and-delete {
   display: inline-block;
   position: absolute;
+  right: 100px;
+  top: 1px;
+  left: 1px;
   /*left: 1.5em;*/
 }
 
@@ -152,7 +159,7 @@ li:hover #drop-down {
 /*Outer Div Containing The All-Notes Div*/
 .pinpoint-sidebar {
   height: 19.5em;
-  width: 11.78em;
+  width: 13em;
   /*overflow: auto;*/
 }
 
