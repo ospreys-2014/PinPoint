@@ -7,9 +7,27 @@
   width:16em;
 }
 
-a, .link{
+a {
   text-decoration: none;
   color: white;
+}
+
+/*** Delete button ***/
+.pinpoint-delete{
+  font-size: .1em;
+  float: right;
+  text-decoration: none;
+  color: black;
+  background-color: silver;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 20px;
+  opacity: .5;
+}
+
+.pinpoint-delete:hover {
+  background-color: red;
 }
 
 /*** Title section ***/
@@ -21,13 +39,21 @@ a, .link{
   font-size: 2em;
 
 }
+
+.pinpoint-logo {
+  margin-top: 1em;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 30%;
+  opacity: .8;
+}
+
 .pinpoint-title {
   /*float:left;*/
   background: rgb(27, 111, 221);
 
-}
-.pinpoint-title-bar {
-  padding-top: 3.8em;
 }
 
 .fa {
@@ -73,9 +99,7 @@ li:hover .pinpoint-drop-down {
 .pinpoint-table {
   border-collapse: collapse;
   table-layout: fixed;
-  overflow: auto;
 }
-
 .pinpoint-table tr td {
   padding: 1em;
 }
@@ -85,12 +109,11 @@ li:hover .pinpoint-drop-down {
 }
 
 .pinpoint-time {
-  border-bottom: 3px solid transparent;
-  transition: 0.7s ease;
-  width: 0px;
-  white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: 0.7s ease;
+    width: 0px;
+    white-space: nowrap;
 }
-
 .pinpoint-time:hover {
   border-bottom: 1px solid rgb(56, 249, 3);
   width:20%;
@@ -98,6 +121,7 @@ li:hover .pinpoint-drop-down {
 
 tr:nth-child(odd) {
   background-color:rgb(48, 48, 48);
+  display: block;
 
 }
 
@@ -105,8 +129,7 @@ tr:nth-child(odd) {
   width: 20em;
   max-height: 15em;
   font-size: 1.2em;
-  max-width: 8em;
-  overflow-y: auto;
+  overflow: auto;
   margin-top: 1em;
 }
 
@@ -125,44 +148,19 @@ tr:nth-child(odd) {
   border: 1px;
   font-size: 1.5em;
 }
-
 .pinpoint-save {
   border-top: 1px solid #96d1f8;
   margin-bottom: 1em;
   padding: 10px 20px;
   color: white;
-  font-size: 1.4em;
-  background: rgb(27, 111, 221);
   text-decoration: none;
   vertical-align: middle;
-  width: 100%;
-}
-.pinpoint-save:hover {
-  color: rgb(27, 111, 221);
-}
-
-#sidebar {
-  height: 8em;
-  overflow: auto;
-}
-
-/*** Sidebar Delete button ***/
-.delete{
-  margin:4em;
-  font-size: .1em;
-  float: right;
-  text-decoration: none;
-  color: black;
-  background-color: silver;
-  padding: 2px;
-  border-radius: 20px;
-  opacity: .5;
-}
-
-.delete:hover {
-  background-color: red;
 }
 
 .pinpoint-create {
+  margin-left: 8.2em;
+}
+
+.pinpoint-save {
   margin-left: 8.2em;
 }

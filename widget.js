@@ -25,7 +25,7 @@ PinPoint.Widget.prototype = {
 	drawSideBar: function(){
 		if (!this.sideBar) {
 			this.sideBar = document.createElement("div");
-			this.sideBar.setAttribute('id', "sideBar")
+      		this.sideBar.setAttribute("class", "pinpoint-sideBar");
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
 			this.sideBar.style.width = "11.78em";
@@ -48,12 +48,12 @@ PinPoint.Widget.prototype = {
 
 	drawForm: function(){
 		this.form = document.createElement("form");
-		this.form.setAttribute('id',"add-note");
+		this.form.setAttribute('class',"pinpoint-add-note");
 		this.form.addEventListener('submit', this.createNote.bind(this));
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
-		this.input.setAttribute('class', 'note-input')
+		this.input.setAttribute('class', 'pinpoint-note-input')
 		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){
 			event.stopPropagation();
@@ -61,7 +61,8 @@ PinPoint.Widget.prototype = {
 
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
-		this.submit.setAttribute('id',"save");
+		this.submit.setAttribute('class',"pinpoint-save");
+		this.submit.setAttribute('value',"Save note");
 
 		this.sideBar.appendChild(this.form);
 		this.form.appendChild(this.input);
@@ -73,9 +74,9 @@ PinPoint.Widget.prototype = {
 		this.tableContainer = document.createElement("div");
 		this.tableContainer.setAttribute('id', "all-notes");
 		this.table = document.createElement("table");
-		this.table.setAttribute('id', 'notes-table');
+		this.table.setAttribute('class', 'pinpoint-notes-table');
 		this.tableContainer.appendChild(this.table);
-		this.sideBar.appendChild(this.tableContainer);
+		this.sideBar.appendChild(this.table);
 	},
 
 	createNote: function(event){
@@ -130,7 +131,7 @@ PinPoint.Widget.prototype = {
   },
 
   assignDeleteListeners: function(){
-    var deleteButtons = document.getElementsByClassName("delete");
+    var deleteButtons = document.getElementsByClassName("pinpoint-delete");
     for(var i=0; i < deleteButtons.length; i++) {
       deleteButtons[i].addEventListener("click", this.sendToRemoveNote(i));
     };

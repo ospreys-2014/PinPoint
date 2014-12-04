@@ -1,8 +1,23 @@
+header{
+	border-bottom:1px solid rgb(27, 111, 221);
+	padding-bottom: 30px;
+}
+
 #main-head{
+  float: left;
 	font-size: 70px;
 	color: white;
-	border-bottom:1px solid rgb(27, 111, 221);
 	font-family: "Lato", sans-serif;
+}
+
+.pinpoint-logo{
+	margin-top: 45px;
+	margin-left: 20px;
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 30%;
 }
 
 body {
@@ -16,13 +31,13 @@ body img{
 }
 
 #grid{
+	position: absolute;
 	margin-right: 5%;
 	margin-left: 5%;
 }
 
-
-.video-card {
-  float: left;
+.about-card{
+  /*float: left;*/
   margin: 50px;
   width: 300px;
   height: 200px;
@@ -57,8 +72,6 @@ body img{
 .front, .back {
 	backface-visibility: hidden;
 	position: absolute;
-	/*top: 0;*/
-	/*left: 0;*/
 }
 
 /* front pane, placed above back */
@@ -68,12 +81,13 @@ body img{
 
 /* back, initially hidden pane */
 .back {
+	text-align: center;
 	transform: rotateY(180deg);
-	border: 3px solid rgb(27, 111, 221);
-	height: 195px;
-	width: 295px;
+	height: 200px;
+	width: 300px;
 }
 
-
-
-
+.back, a{
+	color: white;
+	text-decoration: none;
+}

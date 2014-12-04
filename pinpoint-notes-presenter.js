@@ -19,11 +19,11 @@ PinPoint.NotePresenter.prototype = {
 
 
     // Assigns class names
-    noteNode.className = "note";
-    timeAndContentNode.className = 'note_info';
+    noteNode.className = "pinpoint-note";
+    timeAndContentNode.className = 'pinpoint-note_info';
 
     // Gives the link an id.
-    linkNode.setAttribute('class', 'link');
+    linkNode.setAttribute('class', 'pinpoint-link');
     // Sets the link to a specific time within the video
     linkNode.setAttribute('href', this.note.url+"#t="+this.note.seconds);
     // Opens the link in a new tab
@@ -36,7 +36,7 @@ PinPoint.NotePresenter.prototype = {
     // Append the 'timeAncContentNode' to the tr 'noteNode'
     timeAndContentNode.appendChild(linkNode);
 
-    deleteLinkNode.setAttribute('class', 'delete');
+    deleteLinkNode.setAttribute('class', 'pinpoint-delete');
     deleteLinkNode.setAttribute('href', '#');
     deleteLinkNode.setAttribute('data-seconds', this.note.seconds);
     deleteLinkNode.innerHTML = "x";
