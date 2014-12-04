@@ -97,9 +97,6 @@ PinPoint.Widget.prototype = {
 	drawTable: function() {
 		this.tableContainer = document.createElement("div");
 		this.tableContainer.setAttribute('class', "pinpoint-notes-container");
-		// this.table = document.createElement("table");
-		// this.table.setAttribute('class', 'notes-table');
-		// this.tableContainer.appendChild(this.table);
 		this.sideBar.appendChild(this.tableContainer);
 	},
 
