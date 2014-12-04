@@ -6,8 +6,8 @@ PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
   this.url = url;
   this.refreshFunc = refreshFunc;
 
-  this.rootNodeType = "tr";
-  this.childNodeType = "td";
+  // this.rootNodeType = "tr";
+  // this.childNodeType = "td";
   this.linkNodeType = "a";
 }
 
@@ -35,24 +35,23 @@ PinPoint.NotePresenter.prototype = {
     timeLink.setAttribute('class', 'pinpoint-timelink');
     contentLink.setAttribute('class', 'pinpoint-contentlink')
     // Sets the link to a specific time within the video
-    timeLink.setAttribute('href', this.note.noteUrl );
+    timeLink.setAttribute('href', this.note.noteURL );
     contentLink.setAttribute('href', this.note.noteURL)
 
     // Creates the text for the link
-    linkNode.innerHTML = "<span id='time'>" + this.note.noteTime + "</span>" + "<span id='content'>" + this.note.content + "</span>";
+    timeLink.innerHTML = this.note.noteTime
+    contentLink.innerHTML = this.note.content
+    timeAndDeleteNode.appendChild(deleteLink)
+    timeAndDeleteNode.appendChild(timeLink)
+    contentNode.appendChild(contentLink)
+    noteNode.appendChild(contentNode)
+    noteNode.appendChild(timeAndDeleteNode)
 
-    // Append the td 'timeAncContentNode' to the tr 'noteNode'
-    noteNode.appendChild(timeAndContentNode);
-    // Append the 'timeAncContentNode' to the tr 'noteNode'
-    timeAndContentNode.appendChild(linkNode);
-
-    deleteLinkNode.setAttribute('class', 'pinpoint-delete');
-    deleteLinkNode.setAttribute('href', '#');
-    deleteLinkNode.setAttribute('data-seconds', this.note.seconds);
-    deleteLinkNode.innerHTML = "x";
-    deleteNode.appendChild(deleteLinkNode);
-    noteNode.appendChild(deleteNode);
-    deleteLinkNode.addEventListener('click', function(){
+    deleteLink.setAttribute('class', 'pinpoint-delete');
+    deleteLink.setAttribute('href', '#');
+    deleteLink.setAttribute('data-seconds', this.note.seconds);
+    deleteLink.innerHTML = "x";
+    deleteLink.addEventListener('click', function(){
        chrome.runtime.sendMessage({
             method: "remove note",
             url: this.url,

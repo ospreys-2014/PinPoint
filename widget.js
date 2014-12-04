@@ -41,7 +41,7 @@ PinPoint.Widget.prototype = {
 	drawSideBar: function(){
 		if (!this.sideBar) {
 			this.sideBar = document.createElement("div");
-      		this.sideBar.setAttribute("class", "pinpoint-sideBar");
+      this.sideBar.setAttribute("class", "pinpoint-sideBar");/**/
 			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
 			this.sideBar.style.display = "block";
 			this.sideBar.style.width = "13em";
@@ -92,7 +92,7 @@ PinPoint.Widget.prototype = {
 		this.tableContainer = document.createElement("div");
 		this.tableContainer.setAttribute('class', "pinpoint-notes-container");
 		// this.table = document.createElement("table");
-		// this.table.setAttribute('id', 'notes-table');
+		// this.table.setAttribute('class', 'notes-table');
 		// this.tableContainer.appendChild(this.table);
 		this.sideBar.appendChild(this.tableContainer);
 	},
@@ -121,8 +121,11 @@ PinPoint.Widget.prototype = {
 	},
 
 	appendNotes: function(callback){
+		// this.notesDiv = document.createElement("div");
+		// this.noteDiv.setAttribute("class", "pinpoint-all-notes");
+
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-	  	this.table.innerHTML = ""
+	  	this.tableContainer.innerHTML = ""
 			var index = 0;
 			for (note of notes) {
 		  	var node = new PinPoint.NotePresenter(
@@ -131,7 +134,7 @@ PinPoint.Widget.prototype = {
 		  		this.getUrl(),
 		  		this.appendNotes.bind(this)).present();
 		  	index++;
-		 		this.table.appendChild(node);
+		 		this.tableContainer.appendChild(node);
 			}
 		}.bind(this))
 	},

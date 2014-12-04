@@ -1,5 +1,4 @@
 function addNote(url, note) {
-  debugger
   var noteObjects = getNotes(url);
   noteObjects.push(note);
   saveNotes(url, noteObjects);
@@ -35,6 +34,8 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   } else if (message.method === "remove note"){
     removeNote(message.url, message.index)
   }
+  console.log("getting response")
+
   sendResponse(getNotes(message.url))
 
 })
