@@ -14,7 +14,7 @@ PinPoint
 - A visually appealing and organized way to see your favorite videos
 
 ## Installation
-- visit the Chrome Extension webstore and download at * [PinPoint](www.google.com)
+- visit the Chrome Extension webstore and download at [PinPoint](https://chrome.google.com/webstore/detail/pinpoint/khcfpddiephakfkdhfnbbdihopbdopam?hl=en)
 - PinPoint is open-source and we are open to any improvements
 
 ## PinPoint
