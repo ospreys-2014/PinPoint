@@ -5,30 +5,39 @@ function addNote(url, note) {
 }
 
 function getNotes(url){
-  if (localStorage[url] == null){
-    return []
+  if (localStorage[url] === null){
+    return [];
   } else {
-    var retrievedObject = localStorage.getItem(url)
-    return JSON.parse(retrievedObject)
+    var retrievedObject = localStorage.getItem(url);
+    return JSON.parse(retrievedObject);
   }
 }
+
 function removeNote(url, index){
-  var notes = JSON.parse(localStorage.getItem(url))
-  notes.splice(index, 1)
+  var notes = JSON.parse(localStorage.getItem(url));
+  notes.splice(index, 1);
   saveNotes(url, notes);
 }
 
 function saveNotes(url, notes) {
-  localStorage[url] = JSON.stringify(notes)
+  localStorage[url] = JSON.stringify(notes);
 }
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+  console.log("message: ", message);  
   if (message.method === "add note"){
-    addNote(message.url, message.note)
-  } else if (message.method === "remove note"){
-    removeNote(message.url, message.index)
+    console.log("in the add note conditional of the listener");
+    addNote(message.url, message.note);
   }
-  sendResponse(getNotes(message.url))
-})
+  else if (message.method === "remove note"){
+    removeNote(message.url, message.index);
+  }
+  else if (message.method === "pinpoint-enabled") {
+  chrome.browserAction.setPopup({popup: "popup-disabled.html"});
+  }
+  sendResponse(getNotes(message.url));
+});
 
-chrome.browserAction.setPopup({popup: "popup.html"})
+chrome.browserAction.setPopup({popup: "popup-enabled.html"});
+
+
