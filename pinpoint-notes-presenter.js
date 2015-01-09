@@ -6,8 +6,6 @@ PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
   this.url = url;
   this.refreshFunc = refreshFunc;
 
-  // this.rootNodeType = "tr";
-  // this.childNodeType = "td";
   this.buttonNodeType = "button";
   this.linkNodeType = "a";
 }
