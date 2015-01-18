@@ -1,8 +1,4 @@
-var PinPoint = PinPoint || {};
-
-/// becca needs http://img.youtube.com/vi/<id>/hqdefault.
-window.addEventListener('load', function(){
-  PinPoint.VideoPresenter = function(url) {
+var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hqdefault. window.addEventListener('load', function(){ PinPoint.VideoPresenter = function(url) {
     this.url = url;
     this.present();
   }

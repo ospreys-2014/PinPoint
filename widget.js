@@ -19,24 +19,28 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawSideBar: function(){
-		var enabledPinPoint = document.getElementsByClassName("pinpoint-enabled");
-		if (!this.sideBar && enabledPinPoint.length > 0) {
-			this.sideBar = document.createElement("div");
-      this.sideBar.setAttribute("class", "pinpoint-sideBar");
-			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
-			this.sideBar.style.display = "block";
-			this.sideBar.style.position = "absolute";
-			this.sideBar.style.top = this.videoParent.offsetTop + "px";
-			this.sideBar.style.left = this.videoParent.offsetLeft + "px";
-			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
-			this.sideBar.style.zIndex = 5e6;
-			this.video.offsetParent.appendChild(this.sideBar);
-			this.drawForm();
-			this.drawTable();
-			this.appendNotes();
-		}
+		// var enabledPinPoint = document.getElementsByClassName("pinpoint-enabled");
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
+			console.log("response.enable =", response.enable);
+			if (response.enable) {
+				// console.log("in the if")
+				this.sideBar = document.createElement("div");
+	      this.sideBar.setAttribute("class", "pinpoint-sideBar");
+				this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
+				this.sideBar.style.display = "block";
+				this.sideBar.style.position = "absolute";
+				this.sideBar.style.top = this.videoParent.offsetTop + "px";
+				this.sideBar.style.left = this.videoParent.offsetLeft + "px";
+				this.sideBar.style.backgroundColor = "rgb(37,37,37)";
+				this.sideBar.style.zIndex = 5e6;
+				this.video.offsetParent.appendChild(this.sideBar);
+				this.drawForm();
+				this.drawTable();
+				this.appendNotes(); 
+			}
+		}.bind(this));
 	},
-
+	
 	destroySideBar: function(){
 		if (this.sideBar) {
 			this.sideBar.parentNode.removeChild(this.sideBar);
@@ -100,20 +104,22 @@ PinPoint.Widget.prototype = {
 	},
 
 	appendNotes: function(callback){
-		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-			notes.sort(function(a,b) { return a.seconds - b.seconds; } );
-			this.tableContainer.innerHTML = "";
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
+			console.log(response.notesArray, "I am the notes response")
+			var notes = response.notesArray
+	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
+	  	this.tableContainer.innerHTML = ""
 			var index = 0;
 			for (note of notes) {
-				var node = new PinPoint.NotePresenter(
-					note,
-					index,
-					this.getUrl(),
-					this.appendNotes.bind(this)).present();
-				index++;
-				this.tableContainer.appendChild(node);
+		  	var node = new PinPoint.NotePresenter(
+		  		note,
+		  		index,
+		  		this.getUrl(),
+		  		this.appendNotes.bind(this)).present();
+		  	index++;
+		 		this.tableContainer.appendChild(node);
 			}
-		}.bind(this));
+		}.bind(this))
 	},
 
 	getUrl: function(){
@@ -137,24 +143,25 @@ function main(){
 
 }
 
-window.addEventListener('load', function(){
-	chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-		if (message.method === "panel status"){
-			console.log("In panel status conditional");
-			var enabledPinPoint = document.getElementsByClassName("pinpoint-enabled");
-			if (enabledPinPoint.length > 0){
-				chrome.runtime.sendMessage({
-					method: "pinpoint-enabled"
-				});
-				var videos = document.querySelectorAll("video");
-				for (var i = 0; i < videos.length; i++){
-					videos[i].classList.remove("pinpoint-enabled");
-				}
-			}
-			else {
+window.addEventListener('DOMNodeInserted', function(){
+	// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+	// 	if (message.method === "panel status"){
+	// 		console.log("In panel status conditional");
+	// 		var enabledPinPoint = document.getElementsByClassName("pinpoint-enabled");
+	// 		if (enabledPinPoint.length > 0){
+	// 			chrome.runtime.sendMessage({
+	// 				method: "pinpoint-enabled"
+	// 			});
+	// 			var videos = document.querySelectorAll("video");
+	// 			for (var i = 0; i < videos.length; i++){
+	// 				videos[i].classList.remove("pinpoint-enabled");
+	// 			}
+	// 		}
+	// 		else {
+	// 			console.log("Going to main()")
 				main();
-			}
-		}
-	});
+	// 		}
+	// 	}
+	// });
 });
 
