@@ -19,11 +19,9 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawSideBar: function(){
-		// var enabledPinPoint = document.getElementsByClassName("pinpoint-enabled");
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			console.log("response.enable =", response.enable);
 			if (response.enable) {
-				// console.log("in the if")
 				this.sideBar = document.createElement("div");
 	      this.sideBar.setAttribute("class", "pinpoint-sideBar");
 				this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
@@ -140,28 +138,9 @@ function main(){
 		videos[i].pinPointWidget = videos[i].pinPointWidget || new PinPoint.Widget(videos[i]);
 		videos[i].className += " pinpoint-enabled";
 	}
-
 }
 
 window.addEventListener('DOMNodeInserted', function(){
-	// chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-	// 	if (message.method === "panel status"){
-	// 		console.log("In panel status conditional");
-	// 		var enabledPinPoint = document.getElementsByClassName("pinpoint-enabled");
-	// 		if (enabledPinPoint.length > 0){
-	// 			chrome.runtime.sendMessage({
-	// 				method: "pinpoint-enabled"
-	// 			});
-	// 			var videos = document.querySelectorAll("video");
-	// 			for (var i = 0; i < videos.length; i++){
-	// 				videos[i].classList.remove("pinpoint-enabled");
-	// 			}
-	// 		}
-	// 		else {
-	// 			console.log("Going to main()")
-				main();
-	// 		}
-	// 	}
-	// });
+	main();
 });
 

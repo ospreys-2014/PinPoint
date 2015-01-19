@@ -46,9 +46,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   else if (message.method === "remove note"){
     removeNote(message.url, message.index);
   }
-  // else if (message.method === "pinpoint-enabled") {
-  // chrome.browserAction.setPopup({popup: "popup-disabled.html"});
-  // }
   sendResponse({notesArray: getNotes(message.url), enable: enabled});
 });
 

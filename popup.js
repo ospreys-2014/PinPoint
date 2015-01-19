@@ -9,7 +9,6 @@ window.addEventListener('load', function() {
   dashLink.addEventListener("click", function(){
     chrome.tabs.create({url: "dashboard.html"});
   });
-
 });
 
 

@@ -73,6 +73,6 @@ var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hq
 
   main();
 
-})
+});
 
 
