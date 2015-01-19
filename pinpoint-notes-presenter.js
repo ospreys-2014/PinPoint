@@ -1,13 +1,9 @@
 PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
   this.note = note;
-
   this.nodeType = "div";
   this.index = index;
   this.url = url;
   this.refreshFunc = refreshFunc;
-
-  // this.rootNodeType = "tr";
-  // this.childNodeType = "td";
   this.buttonNodeType = "button";
   this.linkNodeType = "a";
 }
@@ -40,13 +36,13 @@ PinPoint.NotePresenter.prototype = {
     contentLink.setAttribute('href', this.note.url + "#t=" + this.note.seconds)
 
     // Creates the text for the link
-    timeLink.innerHTML = this.note.noteTime
-    contentLink.innerHTML = this.note.content
-    timeAndDeleteNode.appendChild(deleteLink)
-    timeAndDeleteNode.appendChild(timeLink)
-    contentNode.appendChild(contentLink)
-    noteNode.appendChild(contentNode)
-    noteNode.appendChild(timeAndDeleteNode)
+    timeLink.innerHTML = this.note.noteTime;
+    contentLink.innerHTML = this.note.content;
+    timeAndDeleteNode.appendChild(deleteLink);
+    timeAndDeleteNode.appendChild(timeLink);
+    contentNode.appendChild(contentLink);
+    noteNode.appendChild(contentNode);
+    noteNode.appendChild(timeAndDeleteNode);
 
     deleteLink.setAttribute('class', 'pinpoint-delete');
     deleteLink.setAttribute('href', '#');
@@ -58,8 +54,8 @@ PinPoint.NotePresenter.prototype = {
             url: this.url,
             index: this.index,
             seconds: this.note.seconds,
-        }, this.refreshFunc)
+        }, this.refreshFunc);
     }.bind(this));
     return noteNode;
   }
-}
+};

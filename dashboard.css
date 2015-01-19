@@ -51,7 +51,6 @@ body img{
  	border: 1px solid rgb(27, 111, 221);
 }
 
-
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000;
@@ -71,7 +70,6 @@ body img{
 .flipper {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-
 	position: relative;
 }
 
