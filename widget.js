@@ -102,7 +102,6 @@ PinPoint.Widget.prototype = {
 
 	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
-			console.log(response.notesArray, "I am the notes response")
 			var notes = response.notesArray
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
 	  	this.tableContainer.innerHTML = ""
