@@ -20,7 +20,6 @@ PinPoint.Widget.prototype = {
 
 	drawSideBar: function(){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
-			console.log("response.enable =", response.enable);
 			if (response.enable) {
 				this.sideBar = document.createElement("div");
 	      this.sideBar.setAttribute("class", "pinpoint-sideBar");
