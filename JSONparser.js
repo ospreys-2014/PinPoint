@@ -29,12 +29,10 @@ window.onload = function(){
 
   onButton.addEventListener('click', function(){
     localStorage["enabled"] = true
-    console.log(localStorage.enabled, "enabled should be true")
   });
 
   offButton.addEventListener('click', function(){
     localStorage["enabled"] = false
-    console.log(localStorage.enabled, "enabled should be false")
   });  
 }
 
