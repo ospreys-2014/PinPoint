@@ -1,18 +1,17 @@
 var PinPoint = PinPoint || {};
 
-
 PinPoint.Widget = function(video){
 	this.video = video;
-	this.videoParent = document.querySelector("video").parentNode
+	this.videoParent = document.querySelector("video").parentNode;
 	this.videoParent.addEventListener('mouseenter', function(event){
-		this.drawSideBar()
+		this.drawSideBar();
 	}.bind(this));
 	this.videoParent.addEventListener('mouseleave', function(event){
 		if (event.fromElement === this.videoParent && event.toElement != this.sideBar) {
-			this.destroySideBar()
+			this.destroySideBar();
 		}
 	}.bind(this));
-}
+};
 
 PinPoint.Widget.prototype = {
 	onSideBarClick: function(event){
@@ -20,26 +19,31 @@ PinPoint.Widget.prototype = {
 	},
 
 	drawSideBar: function(){
-		if (!this.sideBar) {
-			this.sideBar = document.createElement("div");
-      this.sideBar.setAttribute("class", "pinpoint-sideBar");
-			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
-			this.sideBar.style.display = "block";
-			this.sideBar.style.position = "absolute";
-			this.sideBar.style.top = this.videoParent.offsetTop + "px";
-			this.sideBar.style.left = this.videoParent.offsetLeft + "px";
-			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
-			this.sideBar.style.zIndex = 5e6;
-			this.video.offsetParent.appendChild(this.sideBar);
-			this.drawForm();
-			this.drawTable();
-			this.appendNotes();
-		}
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
+			console.log("response.enable =", response.enable);
+			if (response.enable) {
+				this.sideBar = document.createElement("div");
+	      this.sideBar.setAttribute("class", "pinpoint-sideBar");
+				this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
+				this.sideBar.style.display = "block";
+				this.sideBar.style.position = "absolute";
+				this.sideBar.style.top = this.videoParent.offsetTop + "px";
+				this.sideBar.style.left = this.videoParent.offsetLeft + "px";
+				this.sideBar.style.backgroundColor = "rgb(37,37,37)";
+				this.sideBar.style.zIndex = 5e6;
+				this.video.offsetParent.appendChild(this.sideBar);
+				this.drawForm();
+				this.drawTable();
+				this.appendNotes(); 
+			}
+		}.bind(this));
 	},
-
+	
 	destroySideBar: function(){
-		this.sideBar.parentNode.removeChild(this.sideBar);
-		this.sideBar = null
+		if (this.sideBar) {
+			this.sideBar.parentNode.removeChild(this.sideBar);
+			this.sideBar = null;
+		}
 	},
 
 	drawForm: function(){
@@ -49,12 +53,12 @@ PinPoint.Widget.prototype = {
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
-		this.input.setAttribute('placeholder', 'Create a PinPoint here...')
-		this.input.setAttribute('class', 'pinpoint-note-input')
+		this.input.setAttribute('placeholder', 'Create a PinPoint here...');
+		this.input.setAttribute('class', 'pinpoint-note-input');
 		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){
 			event.stopPropagation();
-		})
+		});
 
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
@@ -77,7 +81,7 @@ PinPoint.Widget.prototype = {
 	createNote: function(event){
     event.preventDefault();
 		var noteContentFromForm = this.input.value;
-    var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
+    var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML;
     var note = {
       title: document.title,
       noteTime: time,
@@ -86,19 +90,21 @@ PinPoint.Widget.prototype = {
       url: this.getUrl()
     };
     chrome.runtime.sendMessage({
-    	method: "add note",
-    	url: this.getUrl(),
-    	note: note
+			method: "add note",
+			url: this.getUrl(),
+			note: note
     }, this.appendNotes.bind(this));
     this.input.value = "";
 	},
 
 	displayNotes: function(notes){
-		this.notes = notes
+		this.notes = notes;
 	},
 
 	appendNotes: function(callback){
-		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
+			console.log(response.notesArray, "I am the notes response")
+			var notes = response.notesArray
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
 	  	this.tableContainer.innerHTML = ""
 			var index = 0;
@@ -116,22 +122,25 @@ PinPoint.Widget.prototype = {
 
 	getUrl: function(){
 		if (this.video.dataset.youtubeId){
-			var url = new URL("https://www.youtube.com/watch")
-			url.search = "v=" + this.video.dataset.youtubeId
-			return url.toString()
+			var url = new URL("https://www.youtube.com/watch");
+			url.search = "v=" + this.video.dataset.youtubeId;
+			return url.toString();
 		} else {
-			return this.video.src
+			return this.video.src;
 		}
 	},
-}
+};
 
 function main(){
 	var videos = document.querySelectorAll("video");
+
 	for (var i = 0; i < videos.length; i++){
 		videos[i].pinPointWidget = videos[i].pinPointWidget || new PinPoint.Widget(videos[i]);
+		videos[i].className += " pinpoint-enabled";
 	}
 }
 
 window.addEventListener('DOMNodeInserted', function(){
 	main();
 });
+
