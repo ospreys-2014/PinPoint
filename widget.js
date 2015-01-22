@@ -103,7 +103,6 @@ PinPoint.Widget.prototype = {
 	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			var notes = response.notesArray
-			console.log(notes);
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
 	  	this.tableContainer.innerHTML = ""
 			var index = 0;
@@ -120,13 +119,16 @@ PinPoint.Widget.prototype = {
 	},
 
 	getUrl: function(){
-		if (this.video.dataset.youtubeId){
-			var url = new URL("https://www.youtube.com/watch");
-			url.search = "v=" + this.video.dataset.youtubeId;
-			return url.toString();
-		} else {
-			return this.video.src;
-		}
+		console.log("this", this.video.baseURI);
+		return this.video.baseURI;
+		// if (this.video.dataset.youtubeId){
+		// 	var url = new URL("https://www.youtube.com/watch");
+		// 	url.search = "v=" + this.video.dataset.youtubeId;
+		// 	return url.toString();
+		// } else {
+		// 	console.log("this inside if", this);
+		// 	return this.video.src;
+		// }
 	},
 };
 
