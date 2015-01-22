@@ -68,13 +68,8 @@ window.addEventListener('load', function(){
     }
   }
 
-  // function allNotes(){
-  //   localStorage.removeItem("enabled");
-  // }
-
   function main(){
     for (url in localStorage){
-      console.log("url", url);
       if (url != "enabled"){
         var presenter = new PinPoint.VideoPresenter(url)
       }
