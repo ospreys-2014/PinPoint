@@ -119,16 +119,7 @@ PinPoint.Widget.prototype = {
 	},
 
 	getUrl: function(){
-		console.log("this", this.video.baseURI);
 		return this.video.baseURI;
-		// if (this.video.dataset.youtubeId){
-		// 	var url = new URL("https://www.youtube.com/watch");
-		// 	url.search = "v=" + this.video.dataset.youtubeId;
-		// 	return url.toString();
-		// } else {
-		// 	console.log("this inside if", this);
-		// 	return this.video.src;
-		// }
 	},
 };
 
