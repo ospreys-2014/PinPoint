@@ -27,6 +27,10 @@ window.onload = function(){
   var onButton = document.getElementById('on');
   var offButton = document.getElementById('off');
 
+  if (localStorage.enabled === undefined) {
+    localStorage.enabled = true;
+  }
+
   onButton.addEventListener('click', function(){
     localStorage["enabled"] = true
   });

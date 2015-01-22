@@ -103,6 +103,7 @@ PinPoint.Widget.prototype = {
 	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			var notes = response.notesArray
+			console.log(notes);
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
 	  	this.tableContainer.innerHTML = ""
 			var index = 0;
@@ -115,7 +116,7 @@ PinPoint.Widget.prototype = {
 		  	index++;
 		 		this.tableContainer.appendChild(node);
 			}
-		}.bind(this))
+		}.bind(this));
 	},
 
 	getUrl: function(){
