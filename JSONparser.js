@@ -14,9 +14,10 @@ function getNotes(url){
 }
 
 function removeNote(url, index){
-  var notes = JSON.parse(localStorage.getItem(url));
-  notes.splice(index, 1);
-  saveNotes(url, notes);
+  // instead of index here, cut by the seconds value 
+  // var notes = JSON.parse(localStorage.getItem(url));
+  // notes.splice(index, 1);
+  // saveNotes(url, notes);
 }
 
 function saveNotes(url, notes) {

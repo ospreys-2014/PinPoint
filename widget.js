@@ -109,6 +109,7 @@ PinPoint.Widget.prototype = {
 			for (note of notes) {
 		  	var node = new PinPoint.NotePresenter(
 		  		note,
+		  		// might not need index here
 		  		index,
 		  		this.getUrl(),
 		  		this.appendNotes.bind(this)).present();

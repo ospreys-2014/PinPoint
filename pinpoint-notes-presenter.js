@@ -1,7 +1,8 @@
 PinPoint.NotePresenter = function(note, index, url, refreshFunc) {
   this.note = note;
   this.nodeType = "div";
-  this.index = index;
+  // might not need index here anymore
+  this.index = index; 
   this.url = url;
   this.refreshFunc = refreshFunc;
   this.buttonNodeType = "button";
@@ -52,6 +53,8 @@ PinPoint.NotePresenter.prototype = {
        chrome.runtime.sendMessage({
             method: "remove note",
             url: this.url,
+            // might not need index here either could 
+            // just use seconds
             index: this.index,
             seconds: this.note.seconds,
         }, this.refreshFunc);
