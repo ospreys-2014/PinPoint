@@ -108,8 +108,8 @@ PinPoint.Widget.prototype = {
 	// the current URL.
 	appendNotes: function(){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
-			var notes = response.notesArray
-	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
+			var notes = response.notesArray;
+	    this.sortNotes(notes);
 	  	this.tableContainer.innerHTML = ""
 			for (note of notes) {
 		  	var node = new PinPoint.NotePresenter(
@@ -119,6 +119,13 @@ PinPoint.Widget.prototype = {
 		 		this.tableContainer.appendChild(node);
 			}
 		}.bind(this));
+	},
+
+	sortNotes: function(notesArray){
+		var notes = notesArray
+	    notes.sort(function(a,b) { 
+	    	return a.seconds - b.seconds
+    });
 	},
 
 	// returns the url of the current tab.
