@@ -66,12 +66,12 @@ window.addEventListener('load', function(){
 
     // returns the number of note objects in the note array
     noteCount: function(){
-      return JSON.parse(localStorage[this.url]).length
+      return getNotes(this.url).length
     },
 
     // returns the title of the page
     getNoteTitle: function(){
-      return JSON.parse(localStorage[this.url])[0].title
+      return getNotes(this.url)[0].title
     }
   }
 

@@ -20,7 +20,8 @@ function getNotes(url){
 // removes a note by matching the seconds attr of a note
 // object and excludes it from the notes array.
 function removeNote(url, seconds){
-  var notes = JSON.parse(localStorage.getItem(url));
+  // var notes = JSON.parse(localStorage.getItem(url));
+  var notes = getNotes(url);
   var result = notes.map(function(note){
     if (note.seconds != seconds){
       return note
