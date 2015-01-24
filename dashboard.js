@@ -1,4 +1,7 @@
-var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hqdefault. window.addEventListener('load', function(){ PinPoint.VideoPresenter = function(url) {
+var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hqdefault. 
+
+window.addEventListener('load', function(){ 
+  PinPoint.VideoPresenter = function(url) {
     this.url = url;
     this.present();
   }
@@ -67,7 +70,9 @@ var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hq
 
   function main(){
     for (url in localStorage){
-      var presenter = new PinPoint.VideoPresenter(url)
+      if (url != "enabled"){
+        var presenter = new PinPoint.VideoPresenter(url)
+      }
     }
   }
 
