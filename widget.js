@@ -1,5 +1,7 @@
+// Global Namespace
 var PinPoint = PinPoint || {};
 
+// Widget Class called in main
 PinPoint.Widget = function(video){
 	this.video = video;
 	this.videoParent = document.querySelector("video").parentNode;
@@ -14,10 +16,12 @@ PinPoint.Widget = function(video){
 };
 
 PinPoint.Widget.prototype = {
+	// stops clicks from being registered through widget
 	onSideBarClick: function(event){
 		event.stopPropagation();
 	},
 
+	// draws sidebar if enabled is true
 	drawSideBar: function(){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			if (response.enable) {
@@ -37,7 +41,7 @@ PinPoint.Widget.prototype = {
 			}
 		}.bind(this));
 	},
-	
+
 	destroySideBar: function(){
 		if (this.sideBar) {
 			this.sideBar.parentNode.removeChild(this.sideBar);
@@ -45,6 +49,7 @@ PinPoint.Widget.prototype = {
 		}
 	},
 
+	// draws input fields
 	drawForm: function(){
 		this.form = document.createElement("form");
 		this.form.setAttribute('class',"pinpoint-add-note");
@@ -71,12 +76,15 @@ PinPoint.Widget.prototype = {
 		this.sideBar.appendChild(this.form);
 	},
 
+	// draws divs for css
 	drawTable: function() {
 		this.tableContainer = document.createElement("div");
 		this.tableContainer.setAttribute('class', "pinpoint-notes-container");
 		this.sideBar.appendChild(this.tableContainer);
 	},
 
+	// creates a note object literal and fires the add
+	// note message to JSONparser.
 	createNote: function(event){
     event.preventDefault();
 		var noteContentFromForm = this.input.value;
@@ -96,10 +104,8 @@ PinPoint.Widget.prototype = {
     this.input.value = "";
 	},
 
-	displayNotes: function(notes){
-		this.notes = notes;
-	},
-
+	// asks JSONparser for the notes array by giving it
+	// the current URL.
 	appendNotes: function(callback){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			var notes = response.notesArray
@@ -115,17 +121,19 @@ PinPoint.Widget.prototype = {
 		}.bind(this));
 	},
 
+	// returns the url of the current tab.
 	getUrl: function(){
 		return this.video.baseURI;
 	},
 };
 
+// main loop attaches a widget instance to all videos on
+// the page.
 function main(){
 	var videos = document.querySelectorAll("video");
 
 	for (var i = 0; i < videos.length; i++){
 		videos[i].pinPointWidget = videos[i].pinPointWidget || new PinPoint.Widget(videos[i]);
-		videos[i].className += " pinpoint-enabled";
 	}
 }
 
