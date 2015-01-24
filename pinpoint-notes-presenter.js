@@ -1,3 +1,4 @@
+// NotePresenter class used to draw a note called in appendNotes
 PinPoint.NotePresenter = function(note, url, refreshFunc) {
   this.note = note;
   this.nodeType = "div";
@@ -43,6 +44,8 @@ PinPoint.NotePresenter.prototype = {
     noteNode.appendChild(contentNode);
     noteNode.appendChild(timeAndDeleteNode);
 
+    // Add delete link to note and fire message to JSONparser
+    // to remove note.
     deleteLink.setAttribute('class', 'pinpoint-delete');
     deleteLink.setAttribute('href', '#');
     deleteLink.setAttribute('data-seconds', this.note.seconds);

@@ -1,12 +1,15 @@
 var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hqdefault. 
 
-window.addEventListener('load', function(){ 
+window.addEventListener('load', function(){
+  // VideoPresenter class used to draw content on
+  // dashboard.html
   PinPoint.VideoPresenter = function(url) {
     this.url = url;
     this.present();
   }
 
   PinPoint.VideoPresenter.prototype = {
+    // creates a div with the propper attributes
     present: function() {
       var grid = document.getElementById("grid");
       var cardDiv = document.createElement("div");
@@ -47,6 +50,7 @@ window.addEventListener('load', function(){
       flipper.appendChild(backLink);
     },
 
+    // parses a youtube url for the YoutubeImageGen function
     youtubeParser: function(){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = this.url.match(regExp);
@@ -55,19 +59,25 @@ window.addEventListener('load', function(){
       }
     },
 
+    // returns url of img for the video
     youtubeImageGen: function(){
       return "http://img.youtube.com/vi/" + this.youtubeParser() + "/hqdefault.jpg";
     },
 
+    // returns the number of note objects in the note array
     noteCount: function(){
       return JSON.parse(localStorage[this.url]).length
     },
 
+    // returns the title of the page
     getNoteTitle: function(){
       return JSON.parse(localStorage[this.url])[0].title
     }
   }
 
+// main loop attaches a VideoPresenter instance for every
+// video that has notes. Exception for "enabled" key in
+// localStorage.
   function main(){
     for (url in localStorage){
       if (url != "enabled"){
