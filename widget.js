@@ -122,9 +122,8 @@ PinPoint.Widget.prototype = {
 	},
 
 	sortNotes: function(notesArray){
-		var notes = notesArray
-	    notes.sort(function(a,b) { 
-	    	return a.seconds - b.seconds
+    notesArray.sort(function(a,b) { 
+    	return a.seconds - b.seconds
     });
 	},
 
