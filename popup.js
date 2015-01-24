@@ -1,39 +1,43 @@
 var PinPoint = PinPoint || {};
 
-PinPoint.updatePopup = function() {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-    // Pull the url from the current tab
-    var url = tabs[0].url;
-    // Create array of note objects belonging to current url; returns empty array if no notes present.
-    var notes = getNotes(url);
-    // Sorts the notes by time of video
-    notes.sort(function(a,b) { return a.seconds - b.seconds } );
-
-    var table = document.getElementById('notes-table');
-    table.innerHTML = '';
-
-    for (note of notes) {
-      var node = new PinPoint.NotePresenter(note).present();
-      table.appendChild(node);
-    }
-
-    var links = document.getElementsByClassName("link");
-      for(var i=0;i< links.length; i++) {
-        links[i].addEventListener("click", tabUpdate(i));
-      };
-      function tabUpdate(i) {
-        return function(){
-        chrome.tabs.update(null, {url: links[i].href});
-        };
-      };
-  });
-};
-
-
-window.addEventListener('load', function() {
-  var dashLink = document.getElementById("dash-link")
-  dashLink.addEventListener("click", function(){
-    chrome.tabs.create({url: "dashboard.html"})
-  })
+// Chrome API event listener
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+  var enabled = localStorage.enabled === "true"
+  if (message.method === "add note"){
+    addNote(message.url, message.note);
+  }
+  else if (message.method === "remove note"){
+    removeNote(message.url, message.seconds);
+  }
+  sendResponse({notesArray: getNotes(message.url), enable: enabled});
 });
+
+// Chrome API icon event listener to open popup
+chrome.browserAction.setPopup({popup: "popup.html"});
+
+// event listeners for enable and disable feature on popup
+window.onload = function(){
+  var onButton = document.getElementById('on');
+  var offButton = document.getElementById('off');
+	var dashLink = document.getElementById("dash-link");
+
+  // sets default state of app after intall to true
+  if (localStorage.enabled === undefined) {
+    localStorage.enabled = true;
+  }
+  // sets enabled in localStorage to true
+  onButton.addEventListener('click', function(){
+    localStorage["enabled"] = true
+  });
+  // sets enabled in localStorage to false
+  offButton.addEventListener('click', function(){
+    localStorage["enabled"] = false
+  });
+  // sets event listener for dashboard
+  dashLink.addEventListener("click", function(){
+    chrome.tabs.create({url: "dashboard.html"});
+  });
+}
+
+
 

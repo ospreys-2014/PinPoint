@@ -1,47 +1,55 @@
+// Global Namespace
 var PinPoint = PinPoint || {};
 
-
+// Widget Class called in main
 PinPoint.Widget = function(video){
 	this.video = video;
-	this.videoParent = document.querySelector("video").parentNode
+	this.videoParent = document.querySelector("video").parentNode;
 	this.videoParent.addEventListener('mouseenter', function(event){
-		this.drawSideBar()
+		this.drawSideBar();
 	}.bind(this));
 	this.videoParent.addEventListener('mouseleave', function(event){
 		if (event.fromElement === this.videoParent && event.toElement != this.sideBar) {
-			this.destroySideBar()
+			this.destroySideBar();
 		}
 	}.bind(this));
-}
+};
 
 PinPoint.Widget.prototype = {
+	// stops clicks from being registered through widget
 	onSideBarClick: function(event){
 		event.stopPropagation();
 	},
 
+	// draws sidebar if enabled is true
 	drawSideBar: function(){
-		if (!this.sideBar) {
-			this.sideBar = document.createElement("div");
-      this.sideBar.setAttribute("class", "pinpoint-sideBar");
-			this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
-			this.sideBar.style.display = "block";
-			this.sideBar.style.position = "absolute";
-			this.sideBar.style.top = this.videoParent.offsetTop + "px";
-			this.sideBar.style.left = this.videoParent.offsetLeft + "px";
-			this.sideBar.style.backgroundColor = "rgb(37,37,37)";
-			this.sideBar.style.zIndex = 5e6;
-			this.video.offsetParent.appendChild(this.sideBar);
-			this.drawForm();
-			this.drawTable();
-			this.appendNotes();
-		}
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
+			if (response.enable) {
+				this.sideBar = document.createElement("div");
+	      this.sideBar.setAttribute("class", "pinpoint-sideBar");
+				this.sideBar.addEventListener('click', this.onSideBarClick.bind(this));
+				this.sideBar.style.display = "block";
+				this.sideBar.style.position = "absolute";
+				this.sideBar.style.top = this.videoParent.offsetTop + "px";
+				this.sideBar.style.left = this.videoParent.offsetLeft + "px";
+				this.sideBar.style.backgroundColor = "rgb(37,37,37)";
+				this.sideBar.style.zIndex = 5e6;
+				this.video.offsetParent.appendChild(this.sideBar);
+				this.drawForm();
+				this.drawTable();
+				this.appendNotes(); 
+			}
+		}.bind(this));
 	},
 
 	destroySideBar: function(){
-		this.sideBar.parentNode.removeChild(this.sideBar);
-		this.sideBar = null
+		if (this.sideBar) {
+			this.sideBar.parentNode.removeChild(this.sideBar);
+			this.sideBar = null;
+		}
 	},
 
+	// draws input fields
 	drawForm: function(){
 		this.form = document.createElement("form");
 		this.form.setAttribute('class',"pinpoint-add-note");
@@ -49,12 +57,12 @@ PinPoint.Widget.prototype = {
 
 		this.input = document.createElement("input");
 		this.input.setAttribute('type', 'text');
-		this.input.setAttribute('placeholder', 'Create a PinPoint here...')
-		this.input.setAttribute('class', 'pinpoint-note-input')
+		this.input.setAttribute('placeholder', 'Create a PinPoint here...');
+		this.input.setAttribute('class', 'pinpoint-note-input');
 		// Stops youtube keyboard shortcuts from interfering when typing a comment.
 		this.input.addEventListener('keypress', function(event){
 			event.stopPropagation();
-		})
+		});
 
 		this.submit = document.createElement("input");
 		this.submit.setAttribute('type',"submit");
@@ -68,16 +76,19 @@ PinPoint.Widget.prototype = {
 		this.sideBar.appendChild(this.form);
 	},
 
+	// draws divs for css
 	drawTable: function() {
 		this.tableContainer = document.createElement("div");
 		this.tableContainer.setAttribute('class', "pinpoint-notes-container");
 		this.sideBar.appendChild(this.tableContainer);
 	},
 
+	// creates a note object literal and fires the add
+	// note message to JSONparser.
 	createNote: function(event){
     event.preventDefault();
 		var noteContentFromForm = this.input.value;
-    var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML
+    var time = document.getElementsByClassName('ytp-time-current')[0].innerHTML;
     var note = {
       title: document.title,
       noteTime: time,
@@ -86,47 +97,48 @@ PinPoint.Widget.prototype = {
       url: this.getUrl()
     };
     chrome.runtime.sendMessage({
-    	method: "add note",
-    	url: this.getUrl(),
-    	note: note
+			method: "add note",
+			url: this.getUrl(),
+			note: note
     }, this.appendNotes.bind(this));
     this.input.value = "";
 	},
 
-	displayNotes: function(notes){
-		this.notes = notes
-	},
-
-	appendNotes: function(callback){
-		chrome.runtime.sendMessage({ url: this.getUrl() }, function(notes){
-	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
+	// asks JSONparser for the notes array by giving it
+	// the current URL.
+	appendNotes: function(){
+		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
+			var notes = response.notesArray;
+	    this.sortNotes(notes);
 	  	this.tableContainer.innerHTML = ""
-			var index = 0;
 			for (note of notes) {
 		  	var node = new PinPoint.NotePresenter(
 		  		note,
-		  		index,
 		  		this.getUrl(),
 		  		this.appendNotes.bind(this)).present();
-		  	index++;
 		 		this.tableContainer.appendChild(node);
 			}
-		}.bind(this))
+		}.bind(this));
 	},
 
+	// sorts the notes based on seconds
+	sortNotes: function(notesArray){
+    notesArray.sort(function(a,b) { 
+    	return a.seconds - b.seconds
+    });
+	},
+
+	// returns the url of the current tab.
 	getUrl: function(){
-		if (this.video.dataset.youtubeId){
-			var url = new URL("https://www.youtube.com/watch")
-			url.search = "v=" + this.video.dataset.youtubeId
-			return url.toString()
-		} else {
-			return this.video.src
-		}
+		return this.video.baseURI;
 	},
-}
+};
 
+// main loop attaches a widget instance to all videos on
+// the page.
 function main(){
 	var videos = document.querySelectorAll("video");
+
 	for (var i = 0; i < videos.length; i++){
 		videos[i].pinPointWidget = videos[i].pinPointWidget || new PinPoint.Widget(videos[i]);
 	}
@@ -135,3 +147,4 @@ function main(){
 window.addEventListener('DOMNodeInserted', function(){
 	main();
 });
+

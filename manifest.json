@@ -14,7 +14,8 @@
             "matches": ["http://www.youtube.com/*", "https://www.youtube.com/*"],
             "all_frames": true,
             "js": ["widget.js", "pinpoint-notes-presenter.js"],
-            "css": ["pinpoint.css"]
+            "css": ["pinpoint.css"],
+            "run_at":"document_start"
             }],
     "permissions": [
         "storage",
