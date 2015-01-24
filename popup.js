@@ -27,11 +27,11 @@ window.onload = function(){
   }
   // sets enabled in localStorage to true
   onButton.addEventListener('click', function(){
-    localStorage["enabled"] = true
+    localStorage["enabled"] = true;
   });
   // sets enabled in localStorage to false
   offButton.addEventListener('click', function(){
-    localStorage["enabled"] = false
+    localStorage["enabled"] = false;
   });
   // sets event listener for dashboard
   dashLink.addEventListener("click", function(){

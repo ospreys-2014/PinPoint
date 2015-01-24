@@ -1,11 +1,11 @@
 // NotePresenter class used to draw a note called in appendNotes
 PinPoint.NotePresenter = function(note, url, refreshFunc) {
   this.note = note;
-  this.nodeType = "div";
   this.url = url;
   this.refreshFunc = refreshFunc;
-  this.buttonNodeType = "button";
+  this.nodeType = "div";
   this.linkNodeType = "a";
+  this.buttonNodeType = "button";
 }
 
 PinPoint.NotePresenter.prototype = {
@@ -13,16 +13,16 @@ PinPoint.NotePresenter.prototype = {
     // Creates a 'div' node that represents a note
     var noteNode = document.createElement(this.nodeType),
     // Creates a 'div' node that represents the time and delete button in the note - when var is included, errors are thrown for some reason.
-    timeAndDeleteNode = document.createElement(this.nodeType);
+    timeAndDeleteNode = document.createElement(this.nodeType),
     // Creates an 'a' node to link to a point in the video - when var is included, errors are thrown for some reason.
-    timeLink = document.createElement(this.linkNodeType);
+    timeLink = document.createElement(this.linkNodeType),
     //Creates delete link
     // deleteNode = document.createElement(this.childNodeType);
-    deleteLink = document.createElement(this.buttonNodeType);
+    deleteLink = document.createElement(this.buttonNodeType),
     //Creates content div
-    contentNode = document.createElement(this.nodeType);
+    contentNode = document.createElement(this.nodeType),
     //Creates content link
-    contentLink = document.createElement(this.linkNodeType)
+    contentLink = document.createElement(this.linkNodeType);
 
     // Assigns class names
     noteNode.className = "pinpoint-note";
