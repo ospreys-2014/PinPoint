@@ -106,7 +106,7 @@ PinPoint.Widget.prototype = {
 
 	// asks JSONparser for the notes array by giving it
 	// the current URL.
-	appendNotes: function(callback){
+	appendNotes: function(){
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			var notes = response.notesArray
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
