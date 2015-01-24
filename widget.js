@@ -105,14 +105,11 @@ PinPoint.Widget.prototype = {
 			var notes = response.notesArray
 	    notes.sort(function(a,b) { return a.seconds - b.seconds } );
 	  	this.tableContainer.innerHTML = ""
-			var index = 0;
 			for (note of notes) {
 		  	var node = new PinPoint.NotePresenter(
 		  		note,
-		  		index,
 		  		this.getUrl(),
 		  		this.appendNotes.bind(this)).present();
-		  	index++;
 		 		this.tableContainer.appendChild(node);
 			}
 		}.bind(this));

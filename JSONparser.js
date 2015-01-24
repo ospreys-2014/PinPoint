@@ -13,15 +13,30 @@ function getNotes(url){
   }
 }
 
-function removeNote(url, index){
+function removeNote(url, seconds){ 
   var notes = JSON.parse(localStorage.getItem(url));
-  notes.splice(index, 1);
-  saveNotes(url, notes);
+  var result = notes.map(function(note){
+    if (note.seconds != seconds){
+      return note
+    }
+  })
+  result.clean(undefined);
+  saveNotes(url, result);
 }
 
 function saveNotes(url, notes) {
   localStorage[url] = JSON.stringify(notes);
 }
+
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {         
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
 
 window.onload = function(){
   var onButton = document.getElementById('on');
@@ -46,7 +61,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
     addNote(message.url, message.note);
   }
   else if (message.method === "remove note"){
-    removeNote(message.url, message.index);
+    removeNote(message.url, message.seconds);
   }
   sendResponse({notesArray: getNotes(message.url), enable: enabled});
 });
