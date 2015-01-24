@@ -20,6 +20,7 @@ function removeNote(url, seconds){
       return note
     }
   })
+  result.clean(undefined);
   saveNotes(url, result);
 }
 
