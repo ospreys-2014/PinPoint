@@ -121,6 +121,7 @@ PinPoint.Widget.prototype = {
 		}.bind(this));
 	},
 
+	// sorts the notes based on seconds
 	sortNotes: function(notesArray){
     notesArray.sort(function(a,b) { 
     	return a.seconds - b.seconds
