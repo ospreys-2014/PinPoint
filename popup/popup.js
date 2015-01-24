@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 });
 
 // Chrome API icon event listener to open popup
-chrome.browserAction.setPopup({popup: "popup.html"});
+chrome.browserAction.setPopup({popup: "/popup/popup.html"});
 
 // event listeners for enable and disable feature on popup
 window.onload = function(){
@@ -35,7 +35,7 @@ window.onload = function(){
   });
   // sets event listener for dashboard
   dashLink.addEventListener("click", function(){
-    chrome.tabs.create({url: "dashboard.html"});
+    chrome.tabs.create({url: "/dashboard/dashboard.html"});
   });
 }
 
