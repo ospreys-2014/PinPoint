@@ -1,4 +1,4 @@
-// Global Namespace
+// // Global Namespace
 var PinPoint = PinPoint || {};
 
 // Widget Class called in main

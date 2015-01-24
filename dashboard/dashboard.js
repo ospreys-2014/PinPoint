@@ -1,5 +1,3 @@
-var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hqdefault. 
-
 window.addEventListener('load', function(){
   // VideoPresenter class used to draw content on
   // dashboard.html

@@ -1,5 +1,3 @@
-var PinPoint = PinPoint || {};
-
 // Chrome API event listener
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   var enabled = localStorage.enabled === "true"
