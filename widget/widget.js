@@ -84,7 +84,7 @@ PinPoint.Widget.prototype = {
 	},
 
 	// creates a note object literal and fires the add
-	// note message to JSONparser.
+	// note message to popup.js
 	createNote: function(event){
     event.preventDefault();
 		var noteContentFromForm = this.input.value;
