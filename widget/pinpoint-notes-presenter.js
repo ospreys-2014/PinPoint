@@ -44,7 +44,7 @@ PinPoint.NotePresenter.prototype = {
     noteNode.appendChild(contentNode);
     noteNode.appendChild(timeAndDeleteNode);
 
-    // Add delete link to note and fire message to JSONparser
+    // Add delete link to note and fire message to popup.js
     // to remove note.
     deleteLink.setAttribute('class', 'pinpoint-delete');
     deleteLink.setAttribute('href', '#');
