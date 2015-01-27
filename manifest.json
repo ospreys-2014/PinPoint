@@ -4,7 +4,7 @@
     "description": "bookmark your favorite YouTube video moments",
     "version": "1.12",
     "background": {
-        "scripts": ["JSONparser.js", "/popup/popup.js"],
+        "scripts": ["JSONparser.js", "popup.js"],
         "persistent": true
     },
     "browser_action": {
@@ -13,8 +13,8 @@
     "content_scripts": [{
             "matches": ["http://www.youtube.com/*", "https://www.youtube.com/*"],
             "all_frames": true,
-            "js": ["widget/widget.js", "widget/pinpoint-notes-presenter.js"],
-            "css": ["/widget/widget.css"],
+            "js": ["widget.js", "pinpoint-notes-presenter.js"],
+            "css": ["pinpoint.css"],
             "run_at":"document_start"
             }],
     "permissions": [
@@ -23,5 +23,5 @@
         "http://www.youtube.com/*",
         "https://www.youtube.com/*"
     ],
-    "options_page": "/dashboard/dashboard.html"
+    "options_page": "dashboard.html"
 }
