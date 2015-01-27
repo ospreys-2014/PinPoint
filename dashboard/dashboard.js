@@ -1,5 +1,3 @@
-var PinPoint = PinPoint || {}; /// becca needs http://img.youtube.com/vi/<id>/hqdefault. 
-
 window.addEventListener('load', function(){
   // VideoPresenter class used to draw content on
   // dashboard.html
@@ -66,12 +64,12 @@ window.addEventListener('load', function(){
 
     // returns the number of note objects in the note array
     noteCount: function(){
-      return getNotes(this.url).length
+      return getNotes(this.url).length;
     },
 
     // returns the title of the page
     getNoteTitle: function(){
-      return getNotes(this.url)[0].title
+      return getNotes(this.url)[0].title;
     }
   }
 
@@ -81,7 +79,7 @@ window.addEventListener('load', function(){
   function main(){
     for (url in localStorage){
       if (url != "enabled"){
-        var presenter = new PinPoint.VideoPresenter(url)
+        var presenter = new PinPoint.VideoPresenter(url);
       }
     }
   }
@@ -89,5 +87,4 @@ window.addEventListener('load', function(){
   main();
 
 });
-
 

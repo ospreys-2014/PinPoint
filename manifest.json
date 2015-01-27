@@ -2,9 +2,9 @@
     "manifest_version": 2,
     "name": "PinPoint",
     "description": "bookmark your favorite YouTube video moments",
-    "version": "1.12",
+    "version": "1.40",
     "background": {
-        "scripts": ["JSONparser.js", "popup.js"],
+        "scripts": ["JSONparser.js", "/popup/popup.js"],
         "persistent": true
     },
     "browser_action": {
@@ -13,8 +13,8 @@
     "content_scripts": [{
             "matches": ["http://www.youtube.com/*", "https://www.youtube.com/*"],
             "all_frames": true,
-            "js": ["widget.js", "pinpoint-notes-presenter.js"],
-            "css": ["pinpoint.css"],
+            "js": ["widget/widget.js", "widget/pinpoint-notes-presenter.js"],
+            "css": ["/widget/widget.css"],
             "run_at":"document_start"
             }],
     "permissions": [
@@ -23,5 +23,5 @@
         "http://www.youtube.com/*",
         "https://www.youtube.com/*"
     ],
-    "options_page": "dashboard.html"
+    "options_page": "/dashboard/dashboard.html"
 }

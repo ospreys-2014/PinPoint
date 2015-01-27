@@ -23,10 +23,10 @@ function removeNote(url, seconds){
   var notes = getNotes(url);
   var result = notes.map(function(note){
     if (note.seconds != seconds){
-      return note
+      return note;
     }
   })
-  // result array includes an undefined value after one 
+  // result array includes an undefined value after one
   // of the objects are removed. Clean function removes
   // all undefined values before it is saved to record.
   result.clean(undefined);
@@ -48,6 +48,3 @@ Array.prototype.clean = function(deleteValue) {
   }
   return this;
 };
-
-
-

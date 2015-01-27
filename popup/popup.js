@@ -1,5 +1,3 @@
-var PinPoint = PinPoint || {};
-
 // Chrome API event listener
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
   var enabled = localStorage.enabled === "true"
@@ -13,7 +11,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 });
 
 // Chrome API icon event listener to open popup
-chrome.browserAction.setPopup({popup: "popup.html"});
+chrome.browserAction.setPopup({popup: "/popup/popup.html"});
 
 // event listeners for enable and disable feature on popup
 window.onload = function(){
@@ -27,15 +25,15 @@ window.onload = function(){
   }
   // sets enabled in localStorage to true
   onButton.addEventListener('click', function(){
-    localStorage["enabled"] = true
+    localStorage["enabled"] = true;
   });
   // sets enabled in localStorage to false
   offButton.addEventListener('click', function(){
-    localStorage["enabled"] = false
+    localStorage["enabled"] = false;
   });
   // sets event listener for dashboard
   dashLink.addEventListener("click", function(){
-    chrome.tabs.create({url: "dashboard.html"});
+    chrome.tabs.create({url: "/dashboard/dashboard.html"});
   });
 }
 

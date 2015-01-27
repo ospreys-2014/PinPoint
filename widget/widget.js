@@ -1,4 +1,4 @@
-// Global Namespace
+// // Global Namespace
 var PinPoint = PinPoint || {};
 
 // Widget Class called in main
@@ -84,7 +84,7 @@ PinPoint.Widget.prototype = {
 	},
 
 	// creates a note object literal and fires the add
-	// note message to JSONparser.
+	// note message to popup.js
 	createNote: function(event){
     event.preventDefault();
 		var noteContentFromForm = this.input.value;
@@ -110,7 +110,7 @@ PinPoint.Widget.prototype = {
 		chrome.runtime.sendMessage({ url: this.getUrl() }, function(response){
 			var notes = response.notesArray;
 	    this.sortNotes(notes);
-	  	this.tableContainer.innerHTML = ""
+	  	this.tableContainer.innerHTML = "";
 			for (note of notes) {
 		  	var node = new PinPoint.NotePresenter(
 		  		note,
@@ -124,7 +124,7 @@ PinPoint.Widget.prototype = {
 	// sorts the notes based on seconds
 	sortNotes: function(notesArray){
     notesArray.sort(function(a,b) { 
-    	return a.seconds - b.seconds
+    	return a.seconds - b.seconds;
     });
 	},
 
