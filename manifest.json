@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PinPoint",
     "description": "bookmark your favorite YouTube video moments",
-    "version": "1.12",
+    "version": "1.30",
     "background": {
         "scripts": ["JSONparser.js", "popup.js"],
         "persistent": true
