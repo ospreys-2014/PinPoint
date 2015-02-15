@@ -10,7 +10,9 @@ a:hover {
 .fa {
   color: white;
 }
-
+span {
+  color:rgb(5, 210, 247);
+}
 button {
   border: none;
   box-shadow: none;
