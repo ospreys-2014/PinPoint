@@ -23,7 +23,8 @@ button {
 }
 .pinpoint-body {
   margin:0;
-  background:rgb(37,37,37);
+  background-size: 180%;
+  background-image: url("../map-pinpoint.png");
   font-family: "Lato", sans-serif;
   color: white;
   height: 27em;
