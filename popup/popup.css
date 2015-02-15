@@ -33,14 +33,14 @@ button {
 
 
 /*** Title section ***/
-/*.pinpoint-section {
+.pinpoint-section {
   list-style: none;
   margin-bottom: 0;
   text-align: center;
   color: white;
   font-size: 2em;
 }
-*/
+
 .pinpoint-logo {
   margin-top: 1em;
   width: 50px;
