@@ -7,6 +7,20 @@ a {
   color: white;
 }
 
+button {
+  border: none;
+  box-shadow: none;
+  padding: 7px 19px 7px 19px;
+  color: white;
+}
+
+#on {
+  background-color: rgb(36, 228, 36);
+}
+
+#off {
+  background-color: rgb(239, 8, 8);
+}
 .pinpoint-body {
   margin:0;
   background:rgb(37,37,37);
