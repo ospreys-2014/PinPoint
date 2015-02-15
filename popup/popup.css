@@ -1,8 +1,12 @@
 a {
   text-decoration: none;
   color: white;
+  padding: 5px 27px 5px 27px;
+  transition:.4s ease-in;
 }
-
+a:hover {
+  background-color: rgb(8,127,224);
+}
 .fa {
   color: white;
 }
@@ -10,16 +14,23 @@ a {
 button {
   border: none;
   box-shadow: none;
-  padding: 7px 19px 7px 19px;
+  padding: 7px 30px 7px 30px;
   color: white;
+  transition: .4s ease-in;
 }
 
 #on {
-  background-color: rgb(36, 228, 36);
+  background-color: rgba(36, 228, 36, 0.0);
+}
+#on:hover {
+  background-color: rgba(36, 228, 36, 0.9)
 }
 
 #off {
-  background-color: rgb(239, 8, 8);
+  background-color: rgba(239, 8, 8, 0.0);
+}
+#off:hover{
+  background-color: rgba(239, 8, 8, 0.9);
 }
 .pinpoint-body {
   margin:0;
@@ -39,13 +50,12 @@ button {
   text-align: center;
   color: white;
   font-size: 2em;
-  background-color: rgba(6,6,6,0.42);
+  background-color: rgba(6,6,6,0.35);
 }
 
 .pinpoint-logo {
   width: 50px;
   height: 50px;
-  /*background-color: white;*/
   padding: 20px;
   border-radius: 30%;
 }
