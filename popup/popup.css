@@ -23,35 +23,33 @@ button {
 }
 .pinpoint-body {
   margin:0;
-  background-size: 180%;
+  background-size: 220%;
   background-image: url("../map-pinpoint.png");
+  /*background-position: right -5px;*/
   font-family: "Lato", sans-serif;
   color: white;
-  height: 27em;
   width:16em;
+  height: 20em;
 }
-
 
 /*** Title section ***/
 .pinpoint-section {
   list-style: none;
-  margin-bottom: 0;
+  margin: -10px 10px 20px 10px;
   text-align: center;
   color: white;
   font-size: 2em;
+  background-color: rgba(6,6,6,0.42);
 }
 
 .pinpoint-logo {
-  margin-top: 1em;
   width: 50px;
   height: 50px;
-  background-color: white;
+  /*background-color: white;*/
   padding: 20px;
   border-radius: 30%;
-  opacity: .8;
 }
 
 .pinpoint-title {
-  background: rgb(27, 111, 221);
 
 }
