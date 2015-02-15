@@ -19,6 +19,7 @@ button {
   padding: 7px 30px 7px 30px;
   color: white;
   transition: .4s ease-in;
+  font-size: 13px;
 }
 
 #on {
