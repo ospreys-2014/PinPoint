@@ -39,7 +39,6 @@ button {
   margin:0;
   background-size: 220%;
   background-image: url("../map-pinpoint.png");
-  /*background-position: right -5px;*/
   font-family: "Lato", sans-serif;
   color: white;
   width:16em;
@@ -61,8 +60,4 @@ button {
   height: 50px;
   padding: 20px;
   border-radius: 30%;
-}
-
-.pinpoint-title {
-
 }
