@@ -12,23 +12,6 @@ a {
   color: white;
 }
 
-/*** Delete button ***/
-.pinpoint-delete{
-  font-size: .1em;
-  float: right;
-  text-decoration: none;
-  color: black;
-  background-color: silver;
-  padding: 2px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 20px;
-  opacity: .5;
-}
-
-.pinpoint-delete:hover {
-  background-color: red;
-}
 
 /*** Title section ***/
 .pinpoint-section {
@@ -50,116 +33,10 @@ a {
 }
 
 .pinpoint-title {
-  /*float:left;*/
   background: rgb(27, 111, 221);
 
 }
 
 .fa {
   color: white;
-}
-
-/*** Dropdown Menu Bar ****/
-.pinpoint-section .pinpoint-nav-icons li {
-  display: block;
-  float: left;
-}
-
-.pinpoint-nav-icons {
-  padding-left: 3.4em;
-}
-
-.pinpoint-drop-down {
-  position: absolute;
-  display: none;
-  opacity: 0;
-  visibility: hidden;
-  font-size: .7em;
-  margin-left: -4em;
-}
-
-.pinpoint-drop-down li {
-  background: #555;
-  display: block;
-  color: #fff;
-  text-shadow: 0 -1px 0 #000;
-  /*border-top: 5px solid transparent;*/
-}
-
-.pinpoint-drop-down li:hover { background: #666; }
-
-li:hover .pinpoint-drop-down {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-}
-
-/**** Notes Table ****/
-.pinpoint-table {
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-.pinpoint-table tr td {
-  padding: 1em;
-}
-
-.pinpoint-content {
-  margin-left: 1.2em;
-}
-
-.pinpoint-time {
-  border-bottom: 3px solid transparent;
-  transition: 0.7s ease;
-  width: 0px;
-  white-space: nowrap;
-}
-.pinpoint-time:hover {
-  border-bottom: 1px solid rgb(56, 249, 3);
-  width:20%;
-}
-
-tr:nth-child(odd) {
-  background-color:rgb(48, 48, 48);
-  display: block;
-
-}
-
-.pinpoint-all-notes {
-  width: 20em;
-  max-height: 15em;
-  font-size: 1.2em;
-  overflow: auto;
-  margin-top: 1em;
-}
-
-.pinpoint-note_info {
-  word-wrap: break-word;
-  max-width: 18em;
-  min-width: 18em;
-}
-
-/*****Note Form*****/
-.pinpoint-note {
-  margin-top: 0;
-  width:100%;
-  height: 5em;
-  background-color: transparent;
-  border: 1px;
-  font-size: 1.5em;
-}
-.pinpoint-save {
-  border-top: 1px solid #96d1f8;
-  margin-bottom: 1em;
-  padding: 10px 20px;
-  color: white;
-  text-decoration: none;
-  vertical-align: middle;
-}
-
-.pinpoint-create {
-  margin-left: 8.2em;
-}
-
-.pinpoint-save {
-  margin-left: 8.2em;
 }
